@@ -1,5 +1,5 @@
-book_filename: "kuyper-stat202"
+book_filename: "intro-to-stats-with-r"
 delete_merged_file: true
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""

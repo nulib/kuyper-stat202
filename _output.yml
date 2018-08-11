@@ -3,10 +3,15 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">A Minimal Book Example</a></li>
+        <li><a href="./">Introduction to Statistics: R Labs</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://www.libraries.northwestern.edu" target="blank">Published by Northwestern University Libraries</a></li>
     download: ["pdf", "epub"]
+    highlight: pygments
+    fontsettings:
+      theme: 'white'
+      family: 'serif'
+      size: '3'
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

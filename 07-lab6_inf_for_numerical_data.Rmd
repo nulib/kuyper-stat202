@@ -1,0 +1,242 @@
+---
+title: 'Inference for Numerical Data (Lab 06)'
+output:
+  html_document:
+    css: ../lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+* * *
+The lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section. 
+
+Please complete the **Inference for Numerical Data (Lab 06)** quiz on Canvas. The quiz questions mirror those provided throughout this lab. 
+
+* * *
+
+## Overview
+
+We will be conducting hypothesis tests (HTs) and constructing confidence intervals (CIs) for means and difference of means throughout this lab. We will calculate them by "hand" and through the use of a built in function in R called `t.test()`, which is an extremely useful and flexible function when given the raw sample. Sometimes we are only given access to sample statistics (e.g. $\bar{x}$, $s_x$, $n$), which necessitates that we perform calculations by "hand" -- the function `t.test()` requires the raw data. 
+
+## North Carolina births
+
+In 2004, the state of North Carolina released a large data set containing information on all births recorded in their state. This data set is useful to researchers studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of observations from this data set.
+
+## Exploratory analysis
+
+Load the `nc` data set into our workspace.
+
+```{r , eval=FALSE}
+download.file("http://www.openintro.org/stat/data/nc.RData", destfile = "nc.RData")
+load("nc.RData")
+```
+
+We observations of 13 different variables, some categorical and some numerical. The meaning of each variable is as follows:
+
+variable         | description
+---------------- | -----------
+`fage`           | father's age in years.
+`mage`           | mother's age in years.
+`mature`         | maturity status of mother.
+`weeks`          | length of pregnancy in weeks.
+`premie`         | whether the birth was classified as premature (premie) or full-term.
+`visits`         | number of hospital visits during pregnancy.
+`marital`        | whether mother is `married` or `not married` at birth.
+`gained`         | weight gained by mother during pregnancy in pounds.
+`weight`         | weight of the baby at birth in pounds.
+`lowbirthweight` | whether baby was classified as low birthweight (`low`) or not (`not low`).
+`gender`         | gender of the baby, `female` or `male`.
+`habit`          | status of the mother as a `nonsmoker` or a `smoker`.
+`whitemom`       | whether mom is `white` or `not white`.
+
+1.  What are the cases in this data set? How many cases are there in our sample?
+
+As a first step in the analysis, we should consider summaries of the data. This can be done using the `summary` command:
+
+```{r summary, eval=FALSE}
+summary(nc)
+```
+
+As you review the variable summaries, consider which variables are categorical and which are numerical. For numerical variables, are there outliers? If you aren't sure or want to take a closer look at the data, make a graph.
+
+Suppose we want to investigate the typical age for mothers and fathers in North Carolina. Begin by constructing histograms, box plots, and calculating summary statistics. 
+
+```{r, eval=FALSE}
+# Mother's age
+hist(nc$mage)
+boxplot(nc$mage, horizontal = TRUE)
+summary(nc$mage)
+sd(nc$mage)
+IQR(nc$mage)
+
+# Father's age
+hist(nc$fage)
+boxplot(nc$fage, horizontal = TRUE)
+summary(nc$fage)
+sd(nc$fage)
+IQR(nc$fage)
+```
+
+Note that `sd(nc$fage)` or `IQR(nc$fage)` do not return valid output/values. The summary output indicated that there were 171 births where a father's age was missing or not reported. By default most R function will not return valid output when data is missing. This can be fixed by adding the argument `na.rm = TRUE` in the function call -- see below.
+
+```{r, eval = FALSE}
+# Father's age continued
+sd(nc$fage, na.rm = TRUE)
+IQR(nc$fage, na.rm = TRUE)
+```
+
+Suppose we want to test the hypothesis that the mean age for women giving birth in North Carolina is 26.5 years. Calculating by "hand": 
+
+```{r, eval = FALSE}
+# Sample Data
+xbar <- mean(nc$mage)
+std <- sd(nc$mage)
+samp_size <- length(nc$mage)
+
+# Hypothesis Test -- Calculating p-value
+dof <- samp_size - 1
+std_err <- std/sqrt(samp_size)
+test_stat <- (xbar - 26.5)/std_err
+p_value <- 2*pt(-abs(test_stat),df = dof)
+p_value
+
+# Constructing 95% CI for the mean
+t_star <- qt(p = .975, df = dof)
+LB <- xbar - t_star*std_err
+UB <- xbar + t_star*std_err
+c(LB,UB)
+```
+
+Since our p-value is less than significance level $\alpha$ (0.05), we have sufficient evidence to reject that the mean age of women giving birth in North Carolina is 26.5 years old. Note that 26.5 is not in the 95% confidence interval for the mean age of birthing women in NC. Two-tailed hypothesis tests for the mean with significance level $\alpha$ are logically equivalent to $100(1-\alpha)\%$ confidence interval for the mean -- **this is a big deal**.
+
+Let's make use of the `t.test()` function now. The function has several inputs that you should become familiar with and work to understand. 
+
+```{r, eval = FALSE}
+# Mother's mean age -- HT and 95% CI
+t.test(x = nc$mage, alternative = "two.sided", mu = 26.5, conf.level = 0.95)
+```
+
+2. Suppose now we want test whether the mean age of NC fathers is 30 years. Use $\alpha = 0.01$. Also construct a 99% confidence interval for the mean. Calculate by "hand" and by using `t.test()`. *Hint: When calculating by "hand", missing values can be an issue so first extract and store the useful observations as shown below. The `t.test()` takes care of missingness automatically.* 
+
+```{r, eval = FALSE}
+# Extract and store useful data
+keep_condition <- !is.na(nc$fage)
+f_age <- nc$fage[keep_condition]
+```
+
+Suppose a researcher wants to test the hypothesis that in NC the mean age of fathers is different than the mean age of mothers at birth -- assume an $\alpha = 0.01$. This is a test for the difference in two population means, which requires us to ask whether the data for the two groups (mothers and fathers) is paired or not. Clearly, the data is paired since each mother and father can be reasonably matched together. First by "hand",
+
+```{r, eval = FALSE}
+# Paired -- only need the differences in age
+age_diff <- nc$mage - nc$fage  
+summary(age_diff)
+
+# Diff. sample statistics -- note their are missing values
+xbar <- mean(age_diff, na.rm = TRUE)
+std <- sd(age_diff, na.rm = TRUE)
+samp_size <- sum(!is.na(age_diff))
+
+# Hypothesis Test -- Calculating p-value
+dof <- samp_size - 1
+std_err <- std/sqrt(samp_size)
+test_stat <- (xbar - 0)/std_err
+p_value <- 2*pt(-abs(test_stat),df = dof)
+p_value
+
+# Constructing 99% CI for the mean
+t_star <- qt(p = .995, df = dof)
+LB <- xbar - t_star*std_err
+UB <- xbar + t_star*std_err
+c(LB,UB)
+```
+
+Using `t.test()` -- a few coding options.
+
+```{r, eval = FALSE}
+# Option 1: Calculate the differences externally and feed
+# them into the t.test function
+t.test(x = age_diff, alternative = "two.sided", mu = 0, conf.level = 0.99)
+
+# Option 2: Let the function calculate the differences by
+# setting paired = TRUE
+t.test(x = nc$mage, y = nc$fage, alternative = "two.sided", mu = 0, paired = TRUE)
+```
+
+Now consider the possible relationship between a mother's smoking habit and the weight of her baby. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research
+questions.
+
+3.  Make a side-by-side box plot of `habit` and `weight`. What does the plot highlight about the relationship between these two variables?
+
+The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following function to split the `weight` variable into the `habit` groups, then take the mean of each using the `mean` function.
+
+```{r by-means, eval=FALSE}
+by(nc$weight, nc$habit, mean)
+```
+
+There is an observed difference, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.
+
+4.  Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size using the same `by` command above but replacing `mean` with `length`.
+
+5.  Write the hypotheses for testing if the average weights of babies born to smoking and non-smoking mothers are different.
+
+Again, this a hypothesis test for a difference of two means, but in this case the data is not paired -- there is no reasonable way of matching members from one group (smokers) to the other (non-smokers). Are the two groups independent from one another? There is no reason to believe that the groups are dependent since the records were randomly sampled. First by "hand",
+
+```{r, eval = FALSE}
+# Sample statistics for baby weights for smoking mothers
+grp1 <- nc$weight[nc$habit == "smoker"]
+xbar1 <- mean(grp1, na.rm = TRUE)
+std1 <- sd(grp1, na.rm = TRUE)
+samp_size1 <- sum(!is.na(grp1))
+
+# Sample statistics for baby weights for nonsmoking mothers
+grp2 <- nc$weight[nc$habit == "nonsmoker"]
+xbar2 <- mean(grp2, na.rm = TRUE)
+std2 <- sd(grp2, na.rm = TRUE)
+samp_size2 <- sum(!is.na(grp2))
+
+# Hypothesis Test -- Calculating p-value
+dof <- min(c(samp_size1,samp_size2)) - 1 
+std_err <- sqrt(std1^2/samp_size1 + std2^2/samp_size2)
+test_stat <- (xbar1-xbar2 - 0)/std_err
+p_value <- 2*pt(-abs(test_stat),df = dof)
+p_value
+
+# Constructing 95% CI for the mean
+t_star <- qt(p = .975, df = dof)
+LB <- (xbar1 - xbar2) - t_star*std_err
+UB <- (xbar1 - xbar2) + t_star*std_err
+c(LB,UB)
+```
+
+Using `t.test()`. 
+
+```{r, eval = FALSE}
+# Note taht grp1 and grp2 come from above
+t.test(x = grp1, y = grp2, alternative = "two.sided", mu = 0, var.equal = FALSE, conf.level = .95)
+```
+
+**Notice that the by "hand" calculations and the results from `t.test()` do not match.** The difference is caused by the use of different degrees of freedom calculations. The software is utilizing the exact calculation for the degrees of freedom while we are utilizing a *conservative* estimate to the degrees of freedom.  
+
+Also note `var.equal = ` is an indicator/flag for whether we are willing to make the assumption that the two groups have equal variance (i.e. spread/variability). In most cases it is safer not to make this assumption, thus the default is `FALSE`. Although, some software and researchers will make this assumption. Set `var.equal = TRUE` and see what happens. **What affect did this assumption have on the p-value and confidence interval?**
+
+* * *
+
+## On your own
+
+-   Calculate a 95% confidence interval for the average length of pregnancies (`weeks`) and interpret it in context.
+
+-   Calculate a new confidence interval for the same parameter at the 90% confidence level.
+
+-   Conduct a hypothesis test evaluating whether the average weight gained by younger mothers is different than the average weight gained by mature mothers.
+
+-   Now, a non-inference task: Determine the age cutoff for younger and mature mothers. Use a method of your choice, and explain how your method works.
+
+-   Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `t.test()` function, report the statistical results, and also provide an explanation in plain language.
+
+<div id="license">
+This is a product of OpenIntro that is released under a 
+[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
+This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel 
+from a lab written by Mark Hansen of UCLA Statistics. The lab has been lightly edited for use in STAT 202 by Arend M Kuyper of the Department of Statistics at Northwestern University.
+</div>
