@@ -24,5 +24,6 @@ Cloning projects with Git will create local copies of the files of a GitHub repo
 
 **Make a commit**
 - Edit files in the project and save the changes
+- Click on the check box in the staged column for the changes you want to include in the commit
 - click on the `Commit` button in the `Git` tab
 - Write a brief commit message (e.g. `Updates the README with instructions on contributing to the project`)
