@@ -3,7 +3,6 @@ This is an R Project that uses the Bookdown package to develop a lab manual for 
 ## Prerequisites
 - An installation of the [RStudio](https://www.rstudio.com/products/rstudio/download/) IDE for R programming
 - An installation of the [Bookdown](https://bookdown.org/) R package
-- A GitHub account
 - (Recommend) [GitHub Desktop](https://desktop.github.com/) for pushing changes from your local repository to GitHub (Note: pushing from RStudio requires ssh key to be set up or entering your GitHub username and password every time you push)
 
 ## Get Started
