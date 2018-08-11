@@ -4,7 +4,7 @@ This is an R Project that uses the Bookdown package to develop a lab manual for 
 - An installation of the [RStudio](https://www.rstudio.com/products/rstudio/download/) IDE for R programming
 - An installation of the [Bookdown](https://bookdown.org/) R package
 - A GitHub account
-- (Optional) GitHub Desktop in order to bypass entering GitHub username and password every time you push changes to the GitHub repo
+- (Recommend) [GitHub Desktop](https://desktop.github.com/) for pushing changes from your local repository to GitHub (Note: pushing from RStudio requires ssh key to be set up or entering your GitHub username and password every time you push)
 
 ## Get Started
 - Open RStudio
@@ -32,6 +32,12 @@ Cloning projects with Git will create local copies of the files of a GitHub repo
 
 **Push changes to GitHub**
 After you satisfied with changes you have made and are ready to update the GitHub repository, push your change from your local branch to the origin branch. 
+
+_With RStudio_
 - In the `Git` tab, click on the `Push` button
 - Enter in your username and password
-- Check the GitHub repo to make sure your changes were pushed.
+
+_With GitHub Desktop_
+The first time you use GitHub Desktop, you will need to open your cloned (local) repository. You can do so by clicking... File -> Add local Repository and finding the project folder on your computer.
+
+Once you're ready to push to GitHub
