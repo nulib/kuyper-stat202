@@ -4,6 +4,7 @@ This is an R Project that uses the Bookdown package to develop a lab manual for 
 - An installation of the [RStudio](https://www.rstudio.com/products/rstudio/download/) IDE for R programming
 - An installation of the [Bookdown](https://bookdown.org/) R package
 - A GitHub account
+- (Optional) GitHub Desktop in order to bypass entering GitHub username and password every time you push changes to the GitHub repo
 
 ## Get Started
 - Open RStudio
