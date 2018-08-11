@@ -27,3 +27,10 @@ Cloning projects with Git will create local copies of the files of a GitHub repo
 - Click on the check box in the staged column for the changes you want to include in the commit
 - click on the `Commit` button in the `Git` tab
 - Write a brief commit message (e.g. `Updates the README with instructions on contributing to the project`)
+- Finish the commit 
+
+**Push changes to GitHub**
+After you satisfied with changes you have made and are ready to update the GitHub repository, push your change from your local branch to the origin branch. 
+- In the `Git` tab, click on the `Push` button
+- Enter in your username and password
+- Check the GitHub repo to make sure your changes were pushed.
