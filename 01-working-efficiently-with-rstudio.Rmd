@@ -22,7 +22,7 @@ Create a folder somewhere on your computer, say on your desktop, and give it a d
 
 Next you will want to create a subfolder for an individual task or sub-project (e.g. **Lab 01**). The graphic below displays an example folder structure.  
 
-![Lab 1](./assets/images/01-01.png)
+![Step 2](./assets/images/01-01.png)
 
 **Step 3**
 
@@ -32,23 +32,23 @@ Open RStudio.
 
 4. Create a project by navigating to the upper right-hand corner of the program and clicking **Project (None) &raquo; New Project**.
 
-![](figures/fig_01.png)
+![Step 4](./assets/images/01-02.png)
 
 **Step 5**
 
 Select **Existing Directory**. Recall that in step 1, you created a file location for lab 1 --- our data analysis project.
 
-![](figures/fig_02.png)
+![Step 5](./assets/images/01-03.png)
 
 **Step 6**
 
 Click **Browse** and navigate to where you created the **Lab 01** folder. Select this folder and then click **Create Project**.
 
-![](figures/fig_03.png)
+![Step 6, 1](./assets/images/01-04.png)
 
 Your R project has now been created. Note that in the upper right-hand corner, the program indicates that you are working on the project named **Lab 01**.
 
-![](figures/fig_04.png)
+![Step 6, 2](./assets/images/01-05.png)
 
 **Step 7**
 
@@ -56,7 +56,7 @@ Creating an R script is the next MAJOR step in this process. Using a script file
 
 To create an R script, go to the upper left-hand corner and click the white box icon then select **R Script**.
 
-![](figures/fig_05.png)
+![Step 7](./assets/images/01-06.png)
 
 **Step 8**
 
@@ -70,11 +70,11 @@ You also have the option of running multiple lines of code by highlighting the l
 
 After running the command, the result will show up in your Console pane, which is located beneath the Script pane. In the screenshot below, you can see that our `2+2` command has generated an answer of `4`.
 
-![](figures/fig_06.png)
+![Step 8](./assets/images/01-07.png)
 
 Continue to practice writting an R script by reproducing the code depicted below. As the comments in the pictured code indicate, we are loading/reading-in the `arbuthnot` dataset. Then we are taking a look at some of the observations from the dataset by using the functions `head()` and `tail()`. Make sure to run the lines of code in order, otherwise the the software will return error messages. We suggest running one line at a time to ensure your code is typed correctly and to see what each line is doing.
 
-![](figures/fig_07.png)
+![Step 8](./assets/images/01-08.png)
 
 Notice the copious usage of comments in our analytic code. In general, analytic code should make liberal use of comments. The length and specificity of comments depends on a person’s experience with a coding language. With experience comes the understanding and ability to write concise comments that cut directly to what information is absolutely necessary to communicate. It never hurts to have more comments than actual executable code, especially for those new to coding. Keep in mind that in the future you might want to share analytic code with co-workers or peers, or go back to reference code months or years after you’ve written it.  
 
