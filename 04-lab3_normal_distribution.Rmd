@@ -151,13 +151,12 @@ Although the probabilities are not exactly the same, they are reasonably close. 
 
     **d.** The histogram for female chest depth (`che.de`) belongs to normal probability plot letter ____.
 
-    ![](more/histQQmatch.png)
-    <br><br>
+![HistQMatch](./assets/images/04-01.png) 
 
 - Note that normal probability plot D has a slight stepwise pattern. Why do you think this is the case?
 
 - As you can see, normal probability plots can be used both to assess normality and visualize skewness. Make a normal probability plot for female knee diameter (`kne.di`). Based on this normal probability plot, is this variable left skewed, symmetric, or right skewed? Use a histogram to confirm your findings.
 
-<div id="license">
+***
+
 This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics. The lab has been lightly edited for use in STAT 202 by Arend M Kuyper of the Department of Statistics at Northwestern University.
-</div>
