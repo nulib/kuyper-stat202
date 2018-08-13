@@ -9,11 +9,11 @@ bookdown::gitbook:
       after: |
         <li><a href="https://www.libraries.northwestern.edu" target="blank">Published by Northwestern University Libraries</a></li>
     download: ["pdf", "epub"]
-    highlight: pygments
+    highlight: tango
     fontsettings:
       theme: 'white'
       family: 'serif'
-      size: '3'
+      size: '2'
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
