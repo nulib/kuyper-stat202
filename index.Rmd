@@ -23,3 +23,5 @@ This book follows the format used in [OpenIntro Stats](https://www.openintro.org
 The contents of this book are licensed with [Creative Commons](https://creativecommons.org/), allowing for unrestricted distribution and use with attribution.
 
 ## About the Author
+
+Arend Kuyper is an Assistant Professor of Instruction at Northwestern University His primary work is dedicated to developing and implementing methods, techniques, and strategies for teaching statistics, especially for introductory statistics and data science related courses. He recieved a PhD in Statistics from Northwestern University in 2015. 
