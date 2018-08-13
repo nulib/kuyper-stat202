@@ -17,6 +17,20 @@ This is an R Project that uses the Bookdown package to develop a lab manual for 
 - Clone the repository into a directory on your computer
 - The cloning process will require you enter in your GitHub username and password
 
+## Preview the Book
+
+You can view a preview version of the book on your computer with RStudio. 
+
+- Open the Build tab
+- Click the arrow next to `Build Book`
+- Change the selection to `Bookdown::GitBook`
+
+![Build Gitbook](./assets/images/readme/build-gitbook.png)
+
+- Click on `Build Book`
+
+RStudio will open a new window with a preview version of the book.
+
 ## Contributing
 Cloning projects with Git will create local copies of the files of a GitHub repository onto your computer. Git automatically tracks changes you make to the local files, which you can then push to the repository on GitHub. All of this can be done from the `Git` tab in the `Environment` window. 
 
