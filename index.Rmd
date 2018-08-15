@@ -14,6 +14,8 @@ description: "This book contains labs for an introduction to statistics course. 
 
 This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.
 
+![Book Cover](./assets/images/cover.png) 
+
 ## Using this Lab Book
 
 This book follows the format used in [OpenIntro Stats](https://www.openintro.org/stat/textbook.php?stat_book=os) with modifications made to the code, examples, and instructional text by Arend Kuyper.
