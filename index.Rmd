@@ -1,10 +1,6 @@
 ---
 title: "OpenIntro Statistics: Labs for R"
-author: "David M. Diez"
-author: "Christopher D. Barr"
-author: "Mine Cetinkaya-Rundel"
-author: "Arend Kuyper"
-date: "`r Sys.Date()`"
+date: "`r format(Sys.time(), '%Y')`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -19,18 +15,18 @@ These lab exercises supplement the third edition of [OpenIntro Statistics](https
 
 ## Using these labs
 
-The contents of this website are made available under the terms of a Creative Commons license. Read the license for [more information](https://creativecommons.org/licenses/by-sa/3.0/).
+All of the labs on this website are made available under a [Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/3.0/). You are free to copy, redistribute, and modify the material in any format so long as you provide attribution to the original. Any derivative versions of the content must be distributed under the same license.  
 
 ![Creative Commons Attribution ShareAlike ](./assets/images/by-sa.png)
 
-The contents of this book are licensed with [Creative Commons](https://creativecommons.org/), allowing for unrestricted distribution and use with attribution.
-
 ## About the Contributors
 
-David M. Diez David Diez co-founded [OpenIntro](https://www.openintro.org) and is focusing his time scaling OpenIntro into new subjects. He is a quantitative analyst in the SF Bay Area.
+The chapters in this book were adapted from labs written by Mark Hansen. All of the labs have been modified and adapted for the purposes of teaching introductory statistics. 
 
-Christopher D. Barr co-founded [OpenIntro](https://www.openintro.org) and is currently on sabbatical. He was previously an Assistant Professor at Harvard University and is currently working in finance in Manhattan.
+- **Mine Çetinkaya-Rundel** is a co-author on the textbook and also develops supporting material such as labs. She is an Assistant Professor of the Practice at Duke University.
 
-Mine Çetinkaya-Rundel is a co-author on the textbook and also develops supporting material such as labs. She is an Assistant Professor of the Practice at Duke University.
+- **Arend Kuyper** is an Assistant Professor of Instruction at Northwestern University. 
 
-Arend Kuyper is an Assistant Professor of Instruction at Northwestern University. His primary work is dedicated to developing and implementing methods, techniques, and strategies for teaching statistics, especially for introductory statistics and data science related courses. He recieved a PhD in Statistics from Northwestern University in 2015. 
+- **Andrew Bray** is an Assistant Professor of Statistics at Reed College.
+
+- **Mark Hansen** is a Professor of Journalism at Columbia University.
