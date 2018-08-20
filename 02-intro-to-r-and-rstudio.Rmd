@@ -1,11 +1,12 @@
 # Introduction to R and RStudio
 
-The goal of this lab is to introduce you to R and RStudio, which you'll be using throughout the course both to learn the statistical concepts discussed in the texbook and also to analyze real data and come to informed conclusions.  To straighten out which is which: R is the name of the programming language itself and RStudio is a convenient interface.
+The goal of this lab is to introduce you to R and RStudio for learning the statistical concepts for analyzing real data and making informed conclusions.  To straighten out which is which: **R is the name of the programming language itself** and **RStudio is a convenient user interface**.
 
-As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer.  Before we get to that stage, however, you need to build some basic fluency in R.  Today we
-begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.
+As the labs progress, you are encouraged to explore beyond what the labs dictate; a willingness to experiment will make you a much better programmer.  Before we get to that stage, however, you need to build some basic fluency in R. 
 
-![rinterface](./assets/images/02-01.png)
+Today we begin with the fundamental building blocks of R and RStudio: the interface, reading in data, and basic commands.
+
+![The RStudio Interface](./assets/images/02-01.png)
 
 The panel in the upper right contains your *workspace* as well as a history of the commands that you've previously entered.  Any plots that you generate will show up in the panel in the lower right corner.
 
