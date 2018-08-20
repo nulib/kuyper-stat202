@@ -1,7 +1,7 @@
 book_filename: "kuyper-stat202"
 # repo: 
 delete_merged_file: true
-output_dir: _book
+output_dir: "docs"
 clean: [packages.bib]
 language:
   label:
@@ -9,3 +9,4 @@ language:
     tab: "TABLE "
   ui:
     chapter_name: ""
+    
