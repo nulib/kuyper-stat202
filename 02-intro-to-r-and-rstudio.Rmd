@@ -65,13 +65,7 @@ arbuthnot$boys
 
 This command will only show the number of boys baptized each year.
 
-***
-
-### Excercise 1
-
-**What command would you use to extract just the counts of girls baptized? Try it!**
-
-***
+> **Excercise 1:** What command would you use to extract just the counts of girls baptized? Try it!
 
 Notice that the way R has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data are no longer structured in a table with other variables, so they are displayed one right after another. Objects that print out in this way are called *vectors*; they represent a set of numbers. R has added numbers in [brackets] along the left side of the printout to indicate locations within the vector. For example, `5218` follows `[1]`, indicating that `5218` is the first entry in the vector.
 And if `[43]` starts a line, then that would mean the first number on that line would represent the 43<sup>rd</sup> entry in the vector.
@@ -98,13 +92,7 @@ just type in a question mark followed by the name of the function that you're in
 
 Notice that the help file replaces the plot  in the lower right panel. You can toggle between plots and help files using the tabs at the top of that panel.
 
-***
-
-> **Exercise 2:**
-
-**Is there an apparent trend in the number of girls baptized over the years? How would you describe it?**
-
-***
+> **Exercise 2:**Is there an apparent trend in the number of girls baptized over the years? How would you describe it?
 
 Now, suppose we want to plot the total number of baptisms.  To compute this, we could use the fact that R is really just a big calculator. We can type in mathematical expressions like
 
@@ -197,7 +185,3 @@ Check it out if you would like to read more about an analysis of sex ratios at b
 
 That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses. Feel free to browse around the websites for [R](http://www.r-project.org) and
 [RStudio](http://rstudio.org) if you're interested in learning more, or find more labs for practice at http://openintro.org.
-
-## Acknowledgements
-
-"Introduction to R and RStudio" by Andrew Bray and Mine &Ccedil;etinkaya-Rundel, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from a lab written by Mark Hansen.

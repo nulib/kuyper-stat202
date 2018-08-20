@@ -34,13 +34,7 @@ mdims <- subset(bdims, sex == 1)
 fdims <- subset(bdims, sex == 0)
 ```
 
-***
-
-> **Exercise 1:**
-
-**Make a histogram of men's heights and a histogram of women's heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?**
-
-***
+> **Exercise 1:** Make a histogram of men's heights and a histogram of women's heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?
 
 Complete the code chunk below, by replacing `????`, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.
 
@@ -81,13 +75,7 @@ After plotting the density histogram with the first command, we create the x- an
 
 The top of the curve is cut off because the limits of the x- and y-axes are set to best fit the histogram. To adjust the y-axis you can add a third argument to the histogram function: `ylim = c(0, 0.06)` -- **go back to your code and add this**.
 
-***
-
-> **Exercise 2:**
-
-**Based on the this plot, does it appear that the data follow a nearly normal distribution?**
-
-***
+> **Exercise 2:** Based on the this plot, does it appear that the data follow a nearly normal distribution?
 
 ## Evaluating the normal distribution
 
@@ -116,19 +104,11 @@ Even better than comparing the original plot to a single plot generated from a n
 qqnormsim(fdims$hgt)
 ```
 
-***
-
-> **Exercise 4:**
-
-**Does the normal probability plot for `fdims$hgt` look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?**
+> **Exercise 4:** Does the normal probability plot for `fdims$hgt` look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?
 
 ***
 
-> **Exercise 5:**
-
-**Using the same technique, determine whether or not female weights appear to come from a normal distribution.**
-
-***
+> **Exercise 5:**Using the same technique, determine whether or not female weights appear to come from a normal distribution.
 
 ## Normal probabilities
 
@@ -152,11 +132,7 @@ sum(fdims$hgt > 182) / length(fdims$hgt)
 
 Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.
 
-***
-
-> **Exercise 6:**
-
-**Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?**
+> **Exercise 6:** Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?
 
 ***
 
@@ -177,9 +153,3 @@ Although the probabilities are not exactly the same, they are reasonably close. 
 - Note that normal probability plot D has a slight stepwise pattern. Why do you think this is the case?
 
 - As you can see, normal probability plots can be used both to assess normality and visualize skewness. Make a normal probability plot for female knee diameter (`kne.di`). Based on this normal probability plot, is this variable left skewed, symmetric, or right skewed? Use a histogram to confirm your findings.
-
-***
-
-## Acknowledgements
-
-"The Normal Distribution" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/normal_distribution/normal_distribution.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.
