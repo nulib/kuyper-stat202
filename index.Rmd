@@ -1,5 +1,8 @@
 ---
-title: "Introduction to Statistics: R Labs"
+title: "OpenIntro Statistics: Labs for R"
+author: "David M. Diez"
+author: "Christopher D. Barr"
+author: "Mine Cetinkaya-Rundel"
 author: "Arend Kuyper"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -12,18 +15,22 @@ description: "This book contains labs for an introduction to statistics course. 
 ---
 # Preface {-} 
 
-This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.
+These lab exercises supplement the third edition of [OpenIntro Statistics](https://www.openintro.org/stat/index.php) textbook. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena. Many of the labs have been modified by Arenda Kuyper to include new datasets and examples. Visit [Labs for R](https://www.openintro.org/stat/labs.php) at OpenIntro for the original material. 
 
-![Book Cover](./assets/images/cover.png) 
+## Using these labs
 
-## Using this Lab Book
+The contents of this website are made available under the terms of a Creative Commons license. Read the license for [more information](https://creativecommons.org/licenses/by-sa/3.0/).
 
-This book follows the format used in [OpenIntro Stats](https://www.openintro.org/stat/textbook.php?stat_book=os) with modifications made to the code, examples, and instructional text by Arend Kuyper.
-
-![Creative Commons Attribution Noncommercial ](./assets/images/by-nc.png)
+![Creative Commons Attribution ShareAlike ](./assets/images/by-sa.png)
 
 The contents of this book are licensed with [Creative Commons](https://creativecommons.org/), allowing for unrestricted distribution and use with attribution.
 
-## About the Author
+## About the Contributors
 
-Arend Kuyper is an Assistant Professor of Instruction at Northwestern University His primary work is dedicated to developing and implementing methods, techniques, and strategies for teaching statistics, especially for introductory statistics and data science related courses. He recieved a PhD in Statistics from Northwestern University in 2015. 
+David M. Diez David Diez co-founded [OpenIntro](https://www.openintro.org) and is focusing his time scaling OpenIntro into new subjects. He is a quantitative analyst in the SF Bay Area.
+
+Christopher D. Barr co-founded [OpenIntro](https://www.openintro.org) and is currently on sabbatical. He was previously an Assistant Professor at Harvard University and is currently working in finance in Manhattan.
+
+Mine Çetinkaya-Rundel is a co-author on the textbook and also develops supporting material such as labs. She is an Assistant Professor of the Practice at Duke University.
+
+Arend Kuyper is an Assistant Professor of Instruction at Northwestern University. His primary work is dedicated to developing and implementing methods, techniques, and strategies for teaching statistics, especially for introductory statistics and data science related courses. He recieved a PhD in Statistics from Northwestern University in 2015. 
