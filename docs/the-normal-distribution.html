@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>OpenIntro Statistics: Labs for R</title>
+  <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="OpenIntro Statistics: Labs for R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="OpenIntro Statistics: Labs for R" />
+  
+  <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
+  
+
+
+
+<meta name="date" content="2018-01-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="introduction-to-data.html">
+<link rel="next" href="foundations-for-statistical-inference-sampling-distributions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">OpenIntro Statistics: Labs for R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#using-these-labs"><i class="fa fa-check"></i><b>0.1</b> Using these labs</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#about-the-contributors"><i class="fa fa-check"></i><b>0.2</b> About the Contributors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="working-efficiently-with-rstudio.html"><a href="working-efficiently-with-rstudio.html"><i class="fa fa-check"></i><b>1</b> Working Efficiently with RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="working-efficiently-with-rstudio.html"><a href="working-efficiently-with-rstudio.html#why-rstudio"><i class="fa fa-check"></i><b>1.1</b> Why RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="working-efficiently-with-rstudio.html"><a href="working-efficiently-with-rstudio.html#setting-up-an-r-project"><i class="fa fa-check"></i><b>1.2</b> Setting Up an R Project</a></li>
+<li class="chapter" data-level="1.3" data-path="working-efficiently-with-rstudio.html"><a href="working-efficiently-with-rstudio.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-data-dr.arbuthnots-baptism-records"><i class="fa fa-check"></i><b>2.1</b> The Data: Dr. Arbuthnot’s Baptism Records</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#some-exploration"><i class="fa fa-check"></i><b>2.2</b> Some Exploration</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#excercise-1"><i class="fa fa-check"></i><b>2.2.1</b> Excercise 1</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-2"><i class="fa fa-check"></i><b>2.2.2</b> Exercise 2</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#exercise-3"><i class="fa fa-check"></i><b>2.2.3</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#on-your-own"><i class="fa fa-check"></i><b>2.3</b> On Your Own</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#acknowledgements"><i class="fa fa-check"></i><b>2.4</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-data.html"><a href="introduction-to-data.html"><i class="fa fa-check"></i><b>3</b> Introduction to Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#exercise-1"><i class="fa fa-check"></i><b>3.1.1</b> Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-data.html"><a href="introduction-to-data.html#summaries-and-tables"><i class="fa fa-check"></i><b>3.2</b> Summaries and tables</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#exercise-2-1"><i class="fa fa-check"></i><b>3.2.1</b> Exercise 2</a></li>
+<li class="chapter" data-level="3.2.2" data-path="introduction-to-data.html"><a href="introduction-to-data.html#exercise-3-1"><i class="fa fa-check"></i><b>3.2.2</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-data.html"><a href="introduction-to-data.html#interlude-how-r-thinks-about-data"><i class="fa fa-check"></i><b>3.3</b> Interlude: How R thinks about data</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-data.html"><a href="introduction-to-data.html#a-little-more-on-subsetting"><i class="fa fa-check"></i><b>3.4</b> A little more on subsetting</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#exercise-4"><i class="fa fa-check"></i><b>3.4.1</b> Exercise 4</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="introduction-to-data.html"><a href="introduction-to-data.html#quantitative-data"><i class="fa fa-check"></i><b>3.5</b> Quantitative data</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#exercise-5"><i class="fa fa-check"></i><b>3.5.1</b> Exercise 5</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="introduction-to-data.html"><a href="introduction-to-data.html#on-your-own-1"><i class="fa fa-check"></i><b>3.6</b> On Your Own</a></li>
+<li class="chapter" data-level="3.7" data-path="introduction-to-data.html"><a href="introduction-to-data.html#acknowledgements-1"><i class="fa fa-check"></i><b>3.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html"><i class="fa fa-check"></i><b>4</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#the-data"><i class="fa fa-check"></i><b>4.2</b> The Data</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#exercise-1-1"><i class="fa fa-check"></i><b>4.2.1</b> Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal distribution</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#exercise-2-2"><i class="fa fa-check"></i><b>4.3.1</b> Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#evaluating-the-normal-distribution"><i class="fa fa-check"></i><b>4.4</b> Evaluating the normal distribution</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#exercise-4-1"><i class="fa fa-check"></i><b>4.4.1</b> Exercise 4</a></li>
+<li class="chapter" data-level="4.4.2" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#exercise-5-1"><i class="fa fa-check"></i><b>4.4.2</b> Exercise 5</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#normal-probabilities"><i class="fa fa-check"></i><b>4.5</b> Normal probabilities</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#exercise-6"><i class="fa fa-check"></i><b>4.5.1</b> Exercise 6</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#on-your-own-2"><i class="fa fa-check"></i><b>4.6</b> On Your Own</a></li>
+<li class="chapter" data-level="4.7" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#acknowledgements-2"><i class="fa fa-check"></i><b>4.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html"><i class="fa fa-check"></i><b>5</b> Foundations for Statistical Inference - Sampling Distributions</a><ul>
+<li class="chapter" data-level="5.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#getting-started-2"><i class="fa fa-check"></i><b>5.1</b> Getting started</a></li>
+<li class="chapter" data-level="5.2" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#the-data-1"><i class="fa fa-check"></i><b>5.2</b> The data</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-1-2"><i class="fa fa-check"></i><b>5.2.1</b> Exercise 1</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#the-unknown-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> The unknown sampling distribution</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-2-3"><i class="fa fa-check"></i><b>5.3.1</b> Exercise 2</a></li>
+<li class="chapter" data-level="5.3.2" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-3-2"><i class="fa fa-check"></i><b>5.3.2</b> Exercise 3</a></li>
+<li class="chapter" data-level="5.3.3" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-4-2"><i class="fa fa-check"></i><b>5.3.3</b> Exercise 4</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#interlude-the-for-loop"><i class="fa fa-check"></i><b>5.4</b> Interlude: The <code>for</code> loop</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-5-2"><i class="fa fa-check"></i><b>5.4.1</b> Exercise 5</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#sample-size-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.5</b> Sample size and the sampling distribution</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#exercise-6-1"><i class="fa fa-check"></i><b>5.5.1</b> Exercise 6</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#on-your-own-3"><i class="fa fa-check"></i><b>5.6</b> On your own</a></li>
+<li class="chapter" data-level="5.7" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#acknowledgements-3"><i class="fa fa-check"></i><b>5.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html"><i class="fa fa-check"></i><b>6</b> Confidence Intervals - Foundations for Statistical Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#sampling-from-ames-iowa"><i class="fa fa-check"></i><b>6.1</b> Sampling from Ames, Iowa</a></li>
+<li class="chapter" data-level="6.2" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#the-data-2"><i class="fa fa-check"></i><b>6.2</b> The data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-1-3"><i class="fa fa-check"></i><b>6.2.1</b> Exercise 1</a></li>
+<li class="chapter" data-level="6.2.2" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-2-4"><i class="fa fa-check"></i><b>6.2.2</b> Exercise 2</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence intervals</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-3-3"><i class="fa fa-check"></i><b>6.3.1</b> Exercise 3</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#confidence-levels"><i class="fa fa-check"></i><b>6.4</b> Confidence levels</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-4-3"><i class="fa fa-check"></i><b>6.4.1</b> Exercise 4</a></li>
+<li class="chapter" data-level="6.4.2" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-5-3"><i class="fa fa-check"></i><b>6.4.2</b> Exercise 5</a></li>
+<li class="chapter" data-level="6.4.3" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#exercise-6-2"><i class="fa fa-check"></i><b>6.4.3</b> Exercise 6</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#on-your-own-4"><i class="fa fa-check"></i><b>6.5</b> On your own</a></li>
+<li class="chapter" data-level="6.6" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#acknowledgements-4"><i class="fa fa-check"></i><b>6.6</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html"><i class="fa fa-check"></i><b>7</b> Inference for Numerical Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#overview"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#north-carolina-births"><i class="fa fa-check"></i><b>7.2</b> North Carolina births</a></li>
+<li class="chapter" data-level="7.3" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#exploratory-analysis"><i class="fa fa-check"></i><b>7.3</b> Exploratory analysis</a></li>
+<li class="chapter" data-level="7.4" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#on-your-own-5"><i class="fa fa-check"></i><b>7.4</b> On your own</a></li>
+<li class="chapter" data-level="7.5" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#acknowledgements-5"><i class="fa fa-check"></i><b>7.5</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html"><i class="fa fa-check"></i><b>8</b> Inference for Categorical Data</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#getting-started-3"><i class="fa fa-check"></i><b>8.0.1</b> Getting Started</a></li>
+<li class="chapter" data-level="8.1" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#the-survey"><i class="fa fa-check"></i><b>8.1</b> The survey</a></li>
+<li class="chapter" data-level="8.2" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#the-data-3"><i class="fa fa-check"></i><b>8.2</b> The data</a></li>
+<li class="chapter" data-level="8.3" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#inference-on-proportions"><i class="fa fa-check"></i><b>8.3</b> Inference on proportions</a></li>
+<li class="chapter" data-level="8.4" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#how-does-the-proportion-affect-the-margin-of-error"><i class="fa fa-check"></i><b>8.4</b> How does the proportion affect the margin of error?</a></li>
+<li class="chapter" data-level="8.5" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#success-failure-condition"><i class="fa fa-check"></i><b>8.5</b> Success-failure condition</a></li>
+<li class="chapter" data-level="8.6" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#on-your-own-6"><i class="fa fa-check"></i><b>8.6</b> On your own</a></li>
+<li class="chapter" data-level="8.7" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#options-for-using-built-in-functions-in-r-prop.test-binom.test"><i class="fa fa-check"></i><b>8.7</b> Options for using built in functions in R: <code>prop.test()</code> &amp; <code>binom.test()</code></a></li>
+<li class="chapter" data-level="8.8" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#acknowledgements-6"><i class="fa fa-check"></i><b>8.8</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Introduction to Linear Regression</a><ul>
+<li class="chapter" data-level="9.1" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#batter-up-getting-started"><i class="fa fa-check"></i><b>9.1</b> Batter up (Getting Started)</a></li>
+<li class="chapter" data-level="9.2" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#the-data-4"><i class="fa fa-check"></i><b>9.2</b> The data</a></li>
+<li class="chapter" data-level="9.3" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#sum-of-squared-residuals"><i class="fa fa-check"></i><b>9.3</b> Sum of squared residuals</a></li>
+<li class="chapter" data-level="9.4" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#the-linear-model"><i class="fa fa-check"></i><b>9.4</b> The linear model</a></li>
+<li class="chapter" data-level="9.5" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#prediction-and-prediction-errors"><i class="fa fa-check"></i><b>9.5</b> Prediction and prediction errors</a></li>
+<li class="chapter" data-level="9.6" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>9.6</b> Model diagnostics</a></li>
+<li class="chapter" data-level="9.7" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#on-your-own-7"><i class="fa fa-check"></i><b>9.7</b> On Your Own</a></li>
+<li class="chapter" data-level="9.8" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#acknowledgements-7"><i class="fa fa-check"></i><b>9.8</b> Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="10.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#getting-started-4"><i class="fa fa-check"></i><b>10.1</b> Getting Started</a></li>
+<li class="chapter" data-level="10.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-data-5"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
+<li class="chapter" data-level="10.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-search-for-the-best-model"><i class="fa fa-check"></i><b>10.3</b> The search for the best model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#predicting-runs-with-backward-selection"><i class="fa fa-check"></i><b>10.3.1</b> Predicting runs with backward selection</a></li>
+<li class="chapter" data-level="10.3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#predicting-runs-with-forward-selection"><i class="fa fa-check"></i><b>10.3.2</b> Predicting runs with forward selection</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#assessing-the-conditions"><i class="fa fa-check"></i><b>10.4</b> Assessing the conditions</a></li>
+<li class="chapter" data-level="10.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#on-your-own-8"><i class="fa fa-check"></i><b>10.5</b> On Your Own</a></li>
+<li class="chapter" data-level="10.6" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#acknowledgements-8"><i class="fa fa-check"></i><b>10.6</b> Acknowledgements</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.libraries.northwestern.edu" target="blank">Published by Northwestern University Libraries</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenIntro Statistics: Labs for R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-normal-distribution" class="section level1">
+<h1><span class="header-section-number">4</span> The Normal Distribution</h1>
+<hr />
+<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments – meaning your R script – into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab – including in the <strong>Own Your Own</strong> section.</p>
+<hr />
+<div id="getting-started-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> Getting started</h2>
+<p>In this lab we’ll investigate the probability distribution that is most central to statistics: the normal distribution. If we are confident that our data are nearly normal, that opens the door to many powerful statistical methods. Here we’ll use the graphical tools of R to assess the normality of our data and also learn how to generate random numbers from a normal distribution.</p>
+</div>
+<div id="the-data" class="section level2">
+<h2><span class="header-section-number">4.2</span> The Data</h2>
+<p>This week we’ll be working with measurements of body dimensions. This data set contains measurements from 247 men and 260 women, most of whom were considered healthy young adults.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/bdims.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;bdims.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">load</span>(<span class="st">&quot;bdims.RData&quot;</span>)</a></code></pre></div>
+<p>Let’s take a quick peek at the first few rows of the data.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">head</span>(bdims)</a></code></pre></div>
+<p>You’ll see that for every observation we have 25 measurements, many of which are either diameters or girths. A key to the variable names can be found at <a href="http://www.openintro.org/stat/data/bdims.php" class="uri">http://www.openintro.org/stat/data/bdims.php</a>, but we’ll be focusing on just three columns to get started: weight in kg (<code>wgt</code>), height in cm (<code>hgt</code>), and <code>sex</code> (<code>1</code> indicates male, <code>0</code> indicates female).</p>
+<p>Since males and females tend to have different body dimensions, it will be useful to create two additional data sets: one with only men and another with only women.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">mdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">fdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a></code></pre></div>
+<hr />
+<div id="exercise-1-1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Exercise 1</h3>
+<p><strong>Make a histogram of men’s heights and a histogram of women’s heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?</strong></p>
+<hr />
+<p>Complete the code chunk below, by replacing <code>????</code>, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">### Constructing plot with histogtrams of heights by sex</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2"><span class="co"># 1) Calculating &amp; storing the x-axis limits to encompass all possible height values</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3"><span class="co"># with a little extra &quot;padding&quot;</span></a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">x_limits &lt;-<span class="st"> </span><span class="kw">range</span>(bdims<span class="op">$</span>hgt) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="co"># 2) Plot the first histogram, which initilizes the plotting space</span></a>
+<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="kw">hist</span>( ???? , <span class="dt">xlim =</span> x_limits, <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">4</span>), <span class="dt">main =</span> <span class="st">&quot;Histograms of Heights by Sex&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Height (cm)&quot;</span>)</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7"><span class="co"># 3) Add the other gender&#39;s histogram</span></a>
+<a class="sourceLine" id="cb58-8" data-line-number="8"><span class="kw">hist</span>( ???? , <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">4</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="normal-distribution" class="section level2">
+<h2><span class="header-section-number">4.3</span> Normal distribution</h2>
+<p>In your description of the distributions, did you use words like <em>bell-shaped</em> or <em>normal</em>? It’s tempting to say so when faced with a unimodal symmetric distribution.</p>
+<p>To see how accurate that description is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution.</p>
+<p>The overlaid normal curve should have the same mean and standard deviation as the data. We’ll be working with the heights of women, so let’s store them as a separate object and then calculate some statistics that will be used/referenced later.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">fhgtmean &lt;-<span class="st"> </span><span class="kw">mean</span>(fdims<span class="op">$</span>hgt)</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2">fhgtsd  &lt;-<span class="st"> </span><span class="kw">sd</span>(fdims<span class="op">$</span>hgt)</a></code></pre></div>
+<p>Next we make a density histogram to use as the backdrop and use the <code>lines</code> function to overlay a normal probability curve. The difference between a frequency histogram and a density histogram is that while in a frequency histogram the <em>heights</em> of the bars add up to the total number of observations, in a density histogram the <em>areas</em> of the bars add up to 1. The area of each bar can be calculated as simply the height <em>times</em> the width of the bar. Using a density histogram allows us to properly overlay a normal distribution curve over the histogram since the curve is a normal probability density function. Frequency and density histograms both display the same exact shape; they only differ in their y-axis. You can verify this by comparing the frequency histogram you constructed earlier and the density histogram created by the commands below.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">hist</span>(fdims<span class="op">$</span>hgt, <span class="dt">probability =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">140</span><span class="op">:</span><span class="dv">190</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> fhgtmean, <span class="dt">sd =</span> fhgtsd)</a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="kw">lines</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p>After plotting the density histogram with the first command, we create the x- and y-coordinates for the normal curve. We chose the <code>x</code> range as 140 to 190 in order to span the entire range of <code>fheight</code>. To create <code>y</code>, we use <code>dnorm</code> to calculate the density of each of those x-values in a distribution that is normal with mean <code>fhgtmean</code> and standard deviation <code>fhgtsd</code>. The final command draws a curve on the existing plot (the density histogram) by connecting each of the points specified by <code>x</code> and <code>y</code>. The argument <code>col</code> simply sets the color for the line to be drawn. If we left it out, the line would be drawn in black.</p>
+<p>The top of the curve is cut off because the limits of the x- and y-axes are set to best fit the histogram. To adjust the y-axis you can add a third argument to the histogram function: <code>ylim = c(0, 0.06)</code> – <strong>go back to your code and add this</strong>.</p>
+<hr />
+<div id="exercise-2-2" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Exercise 2</h3>
+<p><strong>Based on the this plot, does it appear that the data follow a nearly normal distribution?</strong></p>
+<hr />
+</div>
+</div>
+<div id="evaluating-the-normal-distribution" class="section level2">
+<h2><span class="header-section-number">4.4</span> Evaluating the normal distribution</h2>
+<p>Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve. An alternative approach involves constructing a normal probability plot, also called a normal Q-Q plot for “quantile-quantile”.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">qqnorm</span>(fdims<span class="op">$</span>hgt)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">qqline</span>(fdims<span class="op">$</span>hgt)</a></code></pre></div>
+<p>A data set that is nearly normal will result in a probability plot where the points closely follow the line. Any deviations from normality leads to deviations of these points from the line. The plot for female heights shows points that tend to follow the line but with some errant points towards the tails. We’re left with the same problem that we encountered with the histogram above: how close is close enough?</p>
+<p>A useful way to address this question is to rephrase it as: what do probability plots look like for data that I <em>know</em> came from a normal distribution? We can answer this by simulating data from a normal distribution using <code>rnorm</code>.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">sim_norm &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="kw">length</span>(fdims<span class="op">$</span>hgt), <span class="dt">mean =</span> fhgtmean, <span class="dt">sd =</span> fhgtsd)</a></code></pre></div>
+<p>The first argument indicates how many numbers you’d like to generate, which we specify to be the same number of heights in the <code>fdims</code> data set using the <code>length</code> function. The last two arguments determine the mean and standard deviation of the normal distribution from which the simulated sample will be generated. We can take a look at the shape of our simulated data set, <code>sim_norm</code>, as well as its normal probability plot.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Make a normal probability plot of <code>sim_norm</code>. Do all of the points fall on the line? How does this plot compare to the probability plot for the real data?</li>
+</ol>
+<p>Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to many more plots using the following function. It may be helpful to click the zoom button in the plot window.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">qqnormsim</span>(fdims<span class="op">$</span>hgt)</a></code></pre></div>
+<hr />
+<div id="exercise-4-1" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Exercise 4</h3>
+<p><strong>Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?</strong></p>
+<hr />
+</div>
+<div id="exercise-5-1" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Exercise 5</h3>
+<p><strong>Using the same technique, determine whether or not female weights appear to come from a normal distribution.</strong></p>
+<hr />
+</div>
+</div>
+<div id="normal-probabilities" class="section level2">
+<h2><span class="header-section-number">4.5</span> Normal probabilities</h2>
+<p>Okay, so now you have a slew of tools to judge whether or not a variable is normally distributed. Why should we care?</p>
+<p>It turns out that statisticians know a lot about the normal distribution. Once we decide that a random variable is approximately normal, we can answer all sorts of questions about that variable related to probability. Take, for example, the question of, “What is the probability that a randomly chosen young adult female is taller than 6 feet (about 182 cm)?” (<strong>The study that published this data set is clear to point out that the sample was not random and therefore inference to a general population is not suggested. We do so here only as an exercise.</strong>)</p>
+<p>If we assume that female heights are normally distributed (a very close approximation is also okay), we can find this probability by calculating a Z score and consulting a Z table (also called a normal probability table). In R, this is done in one step with the function <code>pnorm</code>.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dt">q =</span> <span class="dv">182</span>, <span class="dt">mean =</span> fhgtmean, <span class="dt">sd =</span> fhgtsd)</a></code></pre></div>
+<p>Note that the function <code>pnorm</code> gives the area under the normal curve below a given value, <code>q</code>, with a given mean and standard deviation. Since we’re interested in the probability that someone is taller than 182 cm, we have to take one minus that probability.</p>
+<p>Assuming a normal distribution has allowed us to calculate a theoretical probability. If we want to calculate the probability empirically, we simply need to determine how many observations fall above 182 then divide this number by the total sample size.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">sum</span>(fdims<span class="op">$</span>hgt <span class="op">&gt;</span><span class="st"> </span><span class="dv">182</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(fdims<span class="op">$</span>hgt)</a></code></pre></div>
+<p>Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.</p>
+<hr />
+<div id="exercise-6" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Exercise 6</h3>
+<p><strong>Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?</strong></p>
+<hr />
+</div>
+</div>
+<div id="on-your-own-2" class="section level2">
+<h2><span class="header-section-number">4.6</span> On Your Own</h2>
+<ul>
+<li><p>Now let’s consider some of the other variables in the body dimensions data set. Using the figures at the end of the exercises, match the histogram to its normal probability plot. All of the variables have been standardized (first subtract the mean, then divide by the standard deviation), so the units won’t be of any help. If you are uncertain based on these figures, generate the plots in R to check.</p>
+<p><strong>a.</strong> The histogram for female biiliac (pelvic) diameter (<code>bii.di</code>) belongs to normal probability plot letter ____.</p>
+<p><strong>b.</strong> The histogram for female elbow diameter (<code>elb.di</code>) belongs to normal probability plot letter ____.</p>
+<p><strong>c.</strong> The histogram for general age (<code>age</code>) belongs to normal probability plot letter ____.</p>
+<p><strong>d.</strong> The histogram for female chest depth (<code>che.de</code>) belongs to normal probability plot letter ____.</p></li>
+</ul>
+<div class="figure">
+<img src="assets/images/04-01.png" alt="HistQMatch" />
+<p class="caption">HistQMatch</p>
+</div>
+<ul>
+<li><p>Note that normal probability plot D has a slight stepwise pattern. Why do you think this is the case?</p></li>
+<li><p>As you can see, normal probability plots can be used both to assess normality and visualize skewness. Make a normal probability plot for female knee diameter (<code>kne.di</code>). Based on this normal probability plot, is this variable left skewed, symmetric, or right skewed? Use a histogram to confirm your findings.</p></li>
+</ul>
+<hr />
+</div>
+<div id="acknowledgements-2" class="section level2">
+<h2><span class="header-section-number">4.7</span> Acknowledgements</h2>
+<p>“The Normal Distribution” by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/intro_to_data/intro_to_data.html" target="_blank">original work</a> by Andrew Bray, Mine Çetinkaya-Rundel, and Mark Hansen.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="foundations-for-statistical-inference-sampling-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": "2"
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["kuyper-stat202.pdf", "kuyper-stat202.epub"],
+"toc": {
+"collapse": "none"
+},
+"highlight": "tango"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
