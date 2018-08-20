@@ -1,12 +1,4 @@
----
-title: 'Inference for Categorical Data (Lab 07)'
-output:
-  html_document:
-    css: ../lab.css
-    highlight: pygments
-    theme: cerulean
-  pdf_document: default
----
+# Inference for Categorical Data
 
 * * *
 You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section.
@@ -194,8 +186,8 @@ These methods, in most cases, **do not** result in confidence intervals that are
 
 -   Compare and contrast the 95% confidence intervals for the proportion of atheists in the United States in 2012 constructed using `binom.test()`, `prop.test()`, and by "hand" calculations.
 
-<div id="license">
-This is a product of OpenIntro that is released under a [Creative Commons
-Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
-This lab was written for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel. The lab has been lightly edited for use in STAT 202 by Arend M Kuyper of the Department of Statistics at Northwestern University.
-</div>
+***
+
+## Acknowledgements
+
+"Introduction to Data" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/intro_to_data/intro_to_data.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.

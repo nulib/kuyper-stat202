@@ -1,17 +1,8 @@
----
-title: 'Inference for Numerical Data (Lab 06)'
-output:
-  html_document:
-    css: ../lab.css
-    highlight: pygments
-    theme: cerulean
-  pdf_document: default
----
+# Inference for Numerical Data
 
 * * *
-The lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section. 
 
-Please complete the **Inference for Numerical Data (Lab 06)** quiz on Canvas. The quiz questions mirror those provided throughout this lab. 
+The lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section. 
 
 * * *
 
@@ -234,9 +225,8 @@ Also note `var.equal = ` is an indicator/flag for whether we are willing to make
 
 -   Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `t.test()` function, report the statistical results, and also provide an explanation in plain language.
 
-<div id="license">
-This is a product of OpenIntro that is released under a 
-[Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). 
-This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel 
-from a lab written by Mark Hansen of UCLA Statistics. The lab has been lightly edited for use in STAT 202 by Arend M Kuyper of the Department of Statistics at Northwestern University.
-</div>
+***
+
+## Acknowledgements
+
+"Introduction to Data" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/intro_to_data/intro_to_data.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.

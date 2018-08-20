@@ -1,11 +1,10 @@
-# The Normal Distribution (Lab 3)
+# The Normal Distribution
 
-* * *
+***
+
 You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
 
-Please complete the **The Normal Distribution (Lab 03)** quiz on Canvas. The quiz questions mirror those provided throughout this lab.
-
-* * *
+***
 
 ## Getting started
 
@@ -35,9 +34,16 @@ mdims <- subset(bdims, sex == 1)
 fdims <- subset(bdims, sex == 0)
 ```
 
-1. Make a histogram of men's heights and a histogram of women's heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?
+***
 
-Complete the code chunk below, by replacing `????`, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.  
+### Exercise 1
+
+**Make a histogram of men's heights and a histogram of women's heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?**
+
+***
+
+Complete the code chunk below, by replacing `????`, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.
+
 ```{r hist_plots, eval=FALSE}
 ### Constructing plot with histogtrams of heights by sex
 # 1) Calculating & storing the x-axis limits to encompass all possible height values
@@ -49,7 +55,7 @@ hist( ???? , xlim = x_limits, col = rgb(1,0,0,.4), main = "Histograms of Heights
 hist( ???? , col = rgb(0,0,1,.4), add = TRUE)
 ```
 
-## The normal distribution
+## Normal distribution
 
 In your description of the distributions, did you use words like *bell-shaped* or *normal*? It's tempting to say so when faced with a unimodal symmetric distribution.
 
@@ -62,11 +68,7 @@ fhgtmean <- mean(fdims$hgt)
 fhgtsd  <- sd(fdims$hgt)
 ```
 
-Next we make a density histogram to use as the backdrop and use the `lines`
-function to overlay a normal probability curve. The difference between a
-frequency histogram and a density histogram is that while in a frequency
-histogram the *heights* of the bars add up to the total number of observations,
-in a density histogram the *areas* of the bars add up to 1. The area of each bar can be calculated as simply the height *times* the width of the bar. Using a density histogram allows us to properly overlay a normal distribution curve over the histogram since the curve is a normal probability density function. Frequency and density histograms both display the same exact shape; they only differ in their y-axis. You can verify this by comparing the frequency histogram you constructed earlier and the density histogram created by the commands below.
+Next we make a density histogram to use as the backdrop and use the `lines` function to overlay a normal probability curve. The difference between a frequency histogram and a density histogram is that while in a frequency histogram the *heights* of the bars add up to the total number of observations, in a density histogram the *areas* of the bars add up to 1. The area of each bar can be calculated as simply the height *times* the width of the bar. Using a density histogram allows us to properly overlay a normal distribution curve over the histogram since the curve is a normal probability density function. Frequency and density histograms both display the same exact shape; they only differ in their y-axis. You can verify this by comparing the frequency histogram you constructed earlier and the density histogram created by the commands below.
 
 ```{r hist-height, eval=FALSE}
 hist(fdims$hgt, probability = TRUE)
@@ -79,8 +81,13 @@ After plotting the density histogram with the first command, we create the x- an
 
 The top of the curve is cut off because the limits of the x- and y-axes are set to best fit the histogram. To adjust the y-axis you can add a third argument to the histogram function: `ylim = c(0, 0.06)` -- **go back to your code and add this**.
 
-2. Based on the this plot, does it appear that the data follow a nearly normal distribution?
+***
 
+### Exercise 2
+
+**Based on the this plot, does it appear that the data follow a nearly normal distribution?**
+
+***
 
 ## Evaluating the normal distribution
 
@@ -109,9 +116,19 @@ Even better than comparing the original plot to a single plot generated from a n
 qqnormsim(fdims$hgt)
 ```
 
-4. Does the normal probability plot for `fdims$hgt` look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?
+***
 
-5. Using the same technique, determine whether or not female weights appear to come from a normal distribution.
+### Exercise 4
+
+**Does the normal probability plot for `fdims$hgt` look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?**
+
+***
+
+### Exercise 5
+
+**Using the same technique, determine whether or not female weights appear to come from a normal distribution.**
+
+***
 
 ## Normal probabilities
 
@@ -135,9 +152,13 @@ sum(fdims$hgt > 182) / length(fdims$hgt)
 
 Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.
 
-6. Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?
+***
 
-* * *
+### Exercise 6
+
+**Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?**
+
+***
 
 ## On Your Own
 
@@ -159,4 +180,6 @@ Although the probabilities are not exactly the same, they are reasonably close. 
 
 ***
 
-This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was adapted for OpenIntro by Andrew Bray and Mine &Ccedil;etinkaya-Rundel from a lab written by Mark Hansen of UCLA Statistics. The lab has been lightly edited for use in STAT 202 by Arend M Kuyper of the Department of Statistics at Northwestern University.
+## Acknowledgements
+
+"The Normal Distribution" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/intro_to_data/intro_to_data.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.
