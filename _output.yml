@@ -5,7 +5,7 @@ bookdown::gitbook:
     toc:
       collapse: none
       before: |
-        <li><a href="./">Introduction to Statistics: R Labs</a></li>
+        <li><a href="./">OpenIntro Statistics: Labs for R</a></li>
       after: |
         <li><a href="https://www.libraries.northwestern.edu" target="blank">Published by Northwestern University Libraries</a></li>
     download: ["pdf", "epub"]
