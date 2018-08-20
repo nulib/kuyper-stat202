@@ -94,5 +94,3 @@ There are many other features of RStudio that you'll find useful, but are not co
 1. The help tab within the lower right-hand pane.
 2. Help automatically appears when typing a function (auto-complete).
 3. You may begin by typing the name of function and it will suggest several options.
-
-We will be offering a help session to demonstrate some of these features and you are encouraged to stop in during office hours for assistance with the software.

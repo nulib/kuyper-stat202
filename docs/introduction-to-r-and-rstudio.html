@@ -322,9 +322,11 @@ a function with some number of arguments. The <code>dim</code> and <code>names</
 <p>Let’s start to examine the data a little more closely. We can access the data in a single column of a data frame separately using a command like</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">arbuthnot<span class="op">$</span>boys</a></code></pre></div>
 <p>This command will only show the number of boys baptized each year.</p>
+<hr />
 <div id="excercise-1" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Excercise 1</h3>
 <p><strong>What command would you use to extract just the counts of girls baptized? Try it!</strong></p>
+<hr />
 <p>Notice that the way R has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data are no longer structured in a table with other variables, so they are displayed one right after another. Objects that print out in this way are called <em>vectors</em>; they represent a set of numbers. R has added numbers in [brackets] along the left side of the printout to indicate locations within the vector. For example, <code>5218</code> follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector.
 And if <code>[43]</code> starts a line, then that would mean the first number on that line would represent the 43<sup>rd</sup> entry in the vector.</p>
 <p>R has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the command:</p>
@@ -336,10 +338,12 @@ this time with two arguments separated by a comma. The first argument in the plo
 just type in a question mark followed by the name of the function that you’re interested in. Try the following.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">?plot</a></code></pre></div>
 <p>Notice that the help file replaces the plot in the lower right panel. You can toggle between plots and help files using the tabs at the top of that panel.</p>
+<hr />
 </div>
 <div id="exercise-2" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Exercise 2</h3>
 <p><strong>Is there an apparent trend in the number of girls baptized over the years? How would you describe it?</strong></p>
+<hr />
 <p>Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that R is really just a big calculator. We can type in mathematical expressions like</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="dv">5218</span> <span class="op">+</span><span class="st"> </span><span class="dv">4683</span></a></code></pre></div>
 <p>to see the total number of baptisms in 1629. We could repeat this once for each year, but there is a faster way. If we add the vector for baptisms for boys and girls, R will compute all sums simultaneously.</p>
