@@ -49,7 +49,7 @@ boxplot(area,horizontal = TRUE)
 
 ***
 
-### Exercise 1
+> **Exercise 1:**
 
 **Describe this population distribution.**
 
@@ -77,7 +77,7 @@ home sales.
 
 ***
 
-### Exercise 2
+> **Exercise 2:**
 
 **Describe the distribution of this sample. How does it compare to the distribution of the population?**
 
@@ -98,7 +98,7 @@ population.
 
 ***
 
-### Exercise 3
+> **Exercise 3:**
 
 **Take a second sample, also of size 50, and call it `samp2`. How does the mean of `samp2` compare with the mean of `samp1`?  Suppose we took two more samples, one of size 100 and one of size 1000. Which would you think would provide a more accurate estimate of the population mean?**
 
@@ -137,7 +137,7 @@ the mean of each sample, and store each result in a vector called
 
 ***
 
-### Exercise 4
+> **Exercise 4:**
 
 **How many elements are there in `sample_means50`?  Describe the sampling distribution, and be sure to specifically note its center.  Would you expect the distribution to change if we instead collected 50,000 sample means?**
 
@@ -210,7 +210,7 @@ The `for` loop allows us to not just run the code 5000 times, but to neatly
 package the results, element by element, into the empty vector that we
 initialized at the outset.
 
-### Exercise 5
+> **Exercise 5:**
 
 **To make sure you understand what you've done in this loop, try running a smaller version.  Initialize a vector of 100 zeros called `sample_means_small`.  Run a loop that takes a sample of size 50 from `area` and stores the sample mean in `sample_means_small`, but only iterate from 1 to 100.  Print the output to your screen (type `sample_means_small` into the console and press enter).  How many elements are there in this object called `sample_means_small`? What does each  element represent?**
 
@@ -273,7 +273,7 @@ plotted with the same limits on the x-axis.
 
 ***
 
-### Exercise 6
+> **Exercise 6:**
 
 **When the sample size is larger, what happens to the center?  What about the spread?**
 

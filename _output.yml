@@ -7,7 +7,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">OpenIntro Statistics: Labs for R</a></li>
       after: |
-        <li><a href="https://www.libraries.northwestern.edu" target="blank">Published by Northwestern University Libraries</a></li>
+        <li><a href="https://www.library.northwestern.edu/research/scholarly/digital-publishing.html" target="blank">Published by Northwestern University Libraries</a></li>
     download: ["pdf", "epub"]
     highlight: tango
     fontsettings:

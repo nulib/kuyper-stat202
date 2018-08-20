@@ -41,7 +41,7 @@ variable         | description
 `habit`          | status of the mother as a `nonsmoker` or a `smoker`.
 `whitemom`       | whether mom is `white` or `not white`.
 
-1.  What are the cases in this data set? How many cases are there in our sample?
+> **Exercise 1:** What are the cases in this data set? How many cases are there in our sample?
 
 As a first step in the analysis, we should consider summaries of the data. This can be done using the `summary` command:
 
@@ -108,7 +108,7 @@ Let's make use of the `t.test()` function now. The function has several inputs t
 t.test(x = nc$mage, alternative = "two.sided", mu = 26.5, conf.level = 0.95)
 ```
 
-2. Suppose now we want test whether the mean age of NC fathers is 30 years. Use $\alpha = 0.01$. Also construct a 99% confidence interval for the mean. Calculate by "hand" and by using `t.test()`. *Hint: When calculating by "hand", missing values can be an issue so first extract and store the useful observations as shown below. The `t.test()` takes care of missingness automatically.* 
+> **Exercise 2:** Suppose now we want test whether the mean age of NC fathers is 30 years. Use $\alpha = 0.01$. Also construct a 99% confidence interval for the mean. Calculate by "hand" and by using `t.test()`. *Hint: When calculating by "hand", missing values can be an issue so first extract and store the useful observations as shown below. The `t.test()` takes care of missingness automatically.* 
 
 ```{r, eval = FALSE}
 # Extract and store useful data
@@ -157,7 +157,7 @@ t.test(x = nc$mage, y = nc$fage, alternative = "two.sided", mu = 0, paired = TRU
 Now consider the possible relationship between a mother's smoking habit and the weight of her baby. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research
 questions.
 
-3.  Make a side-by-side box plot of `habit` and `weight`. What does the plot highlight about the relationship between these two variables?
+> **Exercise 3:** Make a side-by-side box plot of `habit` and `weight`. What does the plot highlight about the relationship between these two variables?
 
 The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following function to split the `weight` variable into the `habit` groups, then take the mean of each using the `mean` function.
 
@@ -167,9 +167,9 @@ by(nc$weight, nc$habit, mean)
 
 There is an observed difference, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.
 
-4.  Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size using the same `by` command above but replacing `mean` with `length`.
+> **Exercise 4:** Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size using the same `by` command above but replacing `mean` with `length`.
 
-5.  Write the hypotheses for testing if the average weights of babies born to smoking and non-smoking mothers are different.
+> **Exercise 5:** Write the hypotheses for testing if the average weights of babies born to smoking and non-smoking mothers are different.
 
 Again, this a hypothesis test for a difference of two means, but in this case the data is not paired -- there is no reasonable way of matching members from one group (smokers) to the other (non-smokers). Are the two groups independent from one another? There is no reason to believe that the groups are dependent since the records were randomly sampled. First by "hand",
 
@@ -224,9 +224,3 @@ Also note `var.equal = ` is an indicator/flag for whether we are willing to make
 -   Now, a non-inference task: Determine the age cutoff for younger and mature mothers. Use a method of your choice, and explain how your method works.
 
 -   Pick a pair of numerical and categorical variables and come up with a research question evaluating the relationship between these variables. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Answer your question using the `t.test()` function, report the statistical results, and also provide an explanation in plain language.
-
-***
-
-## Acknowledgements
-
-"Inference for numerical data" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/inf_for_numerical_data/inf_for_numerical_data.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.

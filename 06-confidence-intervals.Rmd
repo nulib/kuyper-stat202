@@ -1,11 +1,10 @@
 # Confidence Intervals - Foundations for Statistical Inference
 
-* * *
+***
+
 You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
 
-Please complete the **Confidence Intervals (Lab 05)** quiz on Canvas. The quiz questions mirror those provided throughout this lab.
-
-* * *
+***
 
 ## Sampling from Ames, Iowa
 
@@ -39,17 +38,11 @@ population <- ames$Gr.Liv.Area
 samp <- sample(population, 60)
 ```
 
-***
-
-### Exercise 1
-
-**Describe the distribution of your sample. What would you say is the "typical" size within your sample? Also state precisely what you interpreted "typical" to mean.**
+> **Exercise 1:** Describe the distribution of your sample. What would you say is the "typical" size within your sample? Also state precisely what you interpreted "typical" to mean.
 
 ***
 
-### Exercise 2
-
-**Would you expect another student's distribution to be identical to yours? Would you expect it to be similar? Why or why not?**
+> **Exercise 2:** Would you expect another student's distribution to be identical to yours? Would you expect it to be similar? Why or why not?
 
 ***
 
@@ -94,23 +87,11 @@ what the full population looks like, we're 95% confident that the true
 average size of houses in Ames lies between the values *lower* and *upper*.
 There are a few conditions that must be met for this interval to be valid.
 
-***
-
-### Exercise 3
-
-**For the confidence interval to be valid, the sample mean must be normally distributed and have standard error $s / \sqrt{n}.$ What conditions must be met for this to be true?**
-
-***
+> **Exercise 3:** For the confidence interval to be valid, the sample mean must be normally distributed and have standard error $s / \sqrt{n}.$ What conditions must be met for this to be true?
 
 ## Confidence levels
 
-***
-
-### Exercise 4
-
-**What does "95% confidence" mean?**
-
-***
+> **Exercise 4:** What does "95% confidence" mean?
 
 In this case we have the luxury of knowing the true population mean since we
 have data on the entire population. This value can be calculated using the
@@ -120,23 +101,15 @@ following command:
 mean(population)
 ```
 
-***
-
-### Exercise 5
-
-**Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor's interval capture this value?**
+> **Exercise 5:**Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor's interval capture this value?
 
 ***
 
-### Exercise 6
-
-**Each student in your class should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why? If you are working in this lab in a classroom, collect data on the intervals created by other students in the class and calculate the proportion of intervals that capture the true population mean.**
+> **Exercise 6:** Each student in your class should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why? If you are working in this lab in a classroom, collect data on the intervals created by other students in the class and calculate the proportion of intervals that capture the true population mean.
 
 ***
 
-Using R, we're going to recreate many samples to learn more about how sample
-means and confidence intervals vary from one sample to another. *Loops* come
-in handy here (If you are unfamiliar with loops, review the **Foundations for Statistical Inference (Lab 04)**).
+Using R, we're going to recreate many samples to learn more about how sample means and confidence intervals vary from one sample to another. *Loops* come in handy here (If you are unfamiliar with loops, review the **Foundations for Statistical Inference (Lab 04)**).
 
 Here is the rough outline:
 
@@ -146,9 +119,7 @@ Here is the rough outline:
 -   Use these stored statistics to calculate many confidence intervals.
 
 
-But before we do all of this, we need to first create empty vectors where we
-can save the means and standard deviations that will be calculated from each
-sample. And while we're at it, let's also store the desired sample size as `n`.
+But before we do all of this, we need to first create empty vectors where we can save the means and standard deviations that will be calculated from each sample. And while we're at it, let's also store the desired sample size as `n`.
 
 ```{r set-up, eval=FALSE}
 samp_mean <- rep(NA, 500)
@@ -194,9 +165,3 @@ c(lower_vector[1], upper_vector[1])
     the appropriate critical value?
 
 -   Construct 500 90% confidence intervals. You do not need to obtain new samples, simply calculate new intervals based on the sample means and standard deviations you have already collected. Using the `plot_ci` function, plot the first 50 90% confidence intervals and calculate the proportion of intervals that include the true population mean. How does this percentage compare to the confidence level selected for the intervals? Using the method which you implemented in question 1 of the **On Your Own** section, determine the number (and proportion) of the 500 randomly generated 90% confidence intervals that include the true population mean.
-
-***
-
-## Acknowledgements
-
-"Confidence Intervals - Foundations for Statistical Inference" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/confidence_intervals/confidence_intervals.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.

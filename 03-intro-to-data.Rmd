@@ -29,7 +29,7 @@ names(cdc)
 This returns the names `genhlth`, `exerany`, `hlthplan`, `smoke100`, `height`, `weight`, `wtdesire`, `age`, and `gender`. Each one of these variables corresponds to a question that was asked in the survey.  For example, for `genhlth`, respondents were asked to evaluate their general health, responding either excellent, very good, good, fair or poor. The `exerany` variable indicates whether the respondent exercised in the past month (1) or did not (0). Likewise, `hlthplan` indicates whether the respondent had some form of health coverage (1) or did not (0). The `smoke100` variable indicates whether the respondent had smoked at least 100 cigarettes in her lifetime. The other
 variables record the respondent's `height` in inches, `weight` in pounds as well as their desired weight, `wtdesire`, `age` in years, and `gender`.
 
-### Exercise 1
+> **Exercise 1:**
 
 **How many cases are there in this data set?  How many variables?  For each variable, identify its data type (e.g. categorical, discrete).**
 
@@ -101,7 +101,7 @@ barplot(smoke)
 
 Here, we've made a new object, a table, called `smoke` (the contents of which we can see by typing `smoke` into the console) and then used it in as the input for `barplot`. The special symbol `<-` performs an *assignment*, taking the output of one line of code and saving it into an object in your workspace.  This is another important idea that we'll return to later.
 
-### Exercise 2
+> **Exercise 2:**
 
 **Create a numerical summary for `height` and `age`, and compute the interquartile range for each. Compute the relative frequency distribution for `gender` and `exerany`. How many males are in the sample? What proportion of the sample reports being in excellent health?**
 
@@ -119,7 +119,7 @@ mosaicplot(table(cdc$gender,cdc$smoke100))
 
 We could have accomplished this in two steps by saving the table in one line and applying `mosaicplot` in the next (see the table/barplot example above).
 
-### Exercise 3
+> **Exercise 3:**
 
 **What does the mosaic plot reveal about smoking habits and gender?**
 
@@ -233,7 +233,7 @@ m_or_over30 <- subset(cdc, gender == "m" | age > 30)
 will take people who are men or over the age of 30 (why that's an interesting group is hard to say, but right now the mechanics of this are the important thing). In principle, you may use as many "and" and "or" clauses as you like
 when forming a subset.
 
-### Exercise 4
+> **Exercise 4:**
 
 **Create a new object called `under23_and_smoke` that contains all observations of respondents under the age of 23 that have smoked 100 cigarettes in their lifetime. Write the command you used to create the new object as the answer to this exercise.**
 
@@ -275,7 +275,7 @@ boxplot(bmi ~ cdc$genhlth)
 
 Notice that the first line above is just some arithmetic, but it's applied to all 20,000 numbers in the `cdc` data set. That is, for each of the 20,000 participants, we take their weight, divide by their height-squared and then multiply by 703. The result is 20,000 BMI values, one for each respondent. This is one reason why we like R: it lets us perform computations like this using very simple expressions.
 
-### Exercise 5
+> **Exercise 5:**
 
 **What does this box plot show? Pick another categorical variable from the  data set and see how it relates to BMI. List the variable you chose, why you might think it would have a relationship to BMI,  and indicate what the figure seems to suggest.**
 

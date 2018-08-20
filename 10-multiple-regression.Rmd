@@ -3,23 +3,13 @@
 * * *
 You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section. 
 
-Please complete the **Introduction to Multiple Regression (Lab 09)** quiz on Canvas. The quiz questions mirror those provided throughout this lab. 
-
 * * *
 
 ## Getting Started
 
-Recall that we explored simple linear regression by examining baseball data from the 2011 Major League Baseball (MLB) season. We will also use this data to explore multiple regression. Our inspiration for exploring this data stems from the movie [Moneyball](http://en.wikipedia.org/wiki/Moneyball_(film)), which focused on
-the "quest for the secret of success in baseball". It follows a low-budget team, 
-the Oakland Athletics, who believed that underused statistics, such as a player's 
-ability to get on base, better predict the ability to score runs than typical 
-statistics like home runs, RBIs (runs batted in), and batting average. Obtaining 
-players who excelled in these underused statistics turned out to be much more 
-affordable for the team.
+Recall that we explored simple linear regression by examining baseball data from the 2011 Major League Baseball (MLB) season. We will also use this data to explore multiple regression. Our inspiration for exploring this data stems from the movie [Moneyball](http://en.wikipedia.org/wiki/Moneyball_(film)), which focused on the "quest for the secret of success in baseball". It follows a low-budget team, the Oakland Athletics, who believed that underused statistics, such as a player's ability to get on base, better predict the ability to score runs than typical statistics like home runs, RBIs (runs batted in), and batting average. Obtaining players who excelled in these underused statistics turned out to be much more affordable for the team.
 
-In this lab we'll be looking at data from all 30 Major League Baseball teams and
-examining the linear relationship between runs scored in a season and a number 
-of other player statistics. Our aim will be to find the model that best predicts a team's runs scored in a season. We also aim to find the model that best predicts a team's total wins in a season. The first model would tell us which player statistics we should pay attention to if we wish to purchase runs and the second model would indicate which player statistics we should utilize when we wish to purchase wins.  
+In this lab we'll be looking at data from all 30 Major League Baseball teams and examining the linear relationship between runs scored in a season and a number of other player statistics. Our aim will be to find the model that best predicts a team's runs scored in a season. We also aim to find the model that best predicts a team's total wins in a season. The first model would tell us which player statistics we should pay attention to if we wish to purchase runs and the second model would indicate which player statistics we should utilize when we wish to purchase wins.  
 
 ## The data
 
@@ -64,7 +54,13 @@ runs_full <- lm(runs ~ ., data = mlb11_runs)
 summary(runs_full)
 ```
 
-1. How many variables are being used to predict `runs` in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model's $R^2_{adj}$?
+***
+
+> **Exercise 1:**
+
+**How many variables are being used to predict `runs` in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model's $R^2_{adj}$?**
+
+***
 
 Now that we have a full model defined we can go about backwards model selection. The `step()` function in R makes it extremely easy to use AIC (Akiake's Information Criterion) for model selection. Similar to $R^2_{adj}$, AIC applies a penalty to models using more predictor variables. Run the following code to determine the best model for predicting a team's runs in a season using backward selection with AIC as the criterion (note that lower AIC indicates a better model). 
 
@@ -73,7 +69,13 @@ runs_backAIC <- step(runs_full, direction = "backward")
 summary(runs_backAIC)
 ```
 
-2. How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs? 
+***
+
+> **Exercise 2:**
+
+**How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs?** 
+
+***
 
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting backward selection. Remember that $R^2_{adj}$ indicates a better model.
 
@@ -158,7 +160,13 @@ runs_backPval <- lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hi
 summary(runs_backPval)
 ```
 
-4. Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs? Why might someone prefer this final model over all of the models thus far? 
+***
+
+> **Exercise 4:**
+
+**Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs? Why might someone prefer this final model over all of the models thus far?**
+
+***
 
 ### Predicting runs with forward selection 
 
@@ -177,7 +185,13 @@ runs_forwardAIC <- step(runs_null, direction = "forward", scope = formula(runs_f
 summary(runs_forwardAIC)
 ```
 
-5. How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn't always happen? 
+***
+
+> **Exercise 5:**
+
+**How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn't always happen?**
+
+***
 
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting forward selection. Remember that $R^2_{adj}$ indicates a better model.
 
@@ -231,7 +245,13 @@ runs_forwardADJr <- lm(runs ~ new_obs + stolen_bases, mlb11_runs)
 summary(runs_forwardADJr)
 ```
 
-6. Does the final model selected using forward selection with $R^2_{adj}$ differ from the final model using forward selection with AIC? 
+***
+
+> **Exercise 6:**
+
+**Does the final model selected using forward selection with $R^2_{adj}$ differ from the final model using forward selection with AIC?**
+
+***
 
 Finally let's use a p-value method with a 0.05 significance level as our criterion when conducting forward selection. Remember that hlower p-values are consider better so we add a variable when it has the lowest p-value and is less than 0.05. If newly added variable is not less than 0.05 then we stop and conclude that we have arrived at our final model. Fortunately, R does have a function that makes this easier which is `add1()`. We must input model fit, the possible full model, and then indicate that the `test = "F"` so p-values are printed. 
 
@@ -252,7 +272,11 @@ runs_forwardPval <- lm(runs ~ new_obs + stolen_bases, mlb11_runs)
 summary(runs_forwardPval)
 ```
 
-7. What do you note about the final model selected using forward selection with p-values? This does not always occur.
+***
+
+> **Exercise 7:** What do you note about the final model selected using forward selection with p-values? This does not always occur.**
+
+***
 
 ## Assessing the conditions
 
@@ -265,6 +289,7 @@ plot(runs_backAIC)
 None of the models have and severe departures from our necessary conditions for multiple regression. Diagnostic methods can be tricky and to really get a good understanding of them will require either further self-study or taking a regression course.  
 
 * * *
+
 ## On Your Own
 
 -   Using all the available variables in our dataset, conduct backward selection using AIC to select the best model for predicting `wins` for a team in a single season. **Hints: make sure you are using the `mlb11_wins` dataset.** How many variables are being used to predict `wins` in the full model? Which variables are included in the this final model? 
@@ -274,9 +299,3 @@ None of the models have and severe departures from our necessary conditions for 
 -   Conduct backward selection using $R^2_{adj}$ and then p-value method to select the best model for predicting `wins`. Do either of the final models selected using these criterions match the final model selected using backward selection with AIC? Do they match eachother?
 
 -   Conduct forward selection with the three different criterions we have been using to select the best model for predicting `wins` for each. Are they all the same? Different?
-
-***
-
-## Acknowledgements
-
-"Multiple linear regression" by <a href="https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html" target="_blank">Arend Kuyper</a>, Northwestern University, is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC BY-SA 4.0</a> / A derivative from the <a href="http://htmlpreview.github.io/?https://github.com/andrewpbray/oiLabs-base-R/blob/master/multiple_regression/multiple_regression.html" target="_blank">original work</a> by Andrew Bray, Mine &Ccedil;etinkaya-Rundel, and Mark Hansen.
