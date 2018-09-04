@@ -17,7 +17,7 @@ To download a copy of the press release for the poll, conducted by WIN-Gallup In
 
 Take a moment to review the report, then address the following questions.
 
-> ** Exercise 1:** In the first paragraph, several key findings are reported. Do these percentages appear to be *sample statistics* (derived from the sample data) or *population parameters*?
+> **Exercise 1:** In the first paragraph, several key findings are reported. Do these percentages appear to be *sample statistics* (derived from the sample data) or *population parameters*?
 
 > **Exercise 2:** The title of the report is "Global Index of Religiosity and Atheism". To generalize the report's findings to the global human population, what must we assume about the sampling method? Does that seem like a reasonable assumption?
 
