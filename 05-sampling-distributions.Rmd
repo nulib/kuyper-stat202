@@ -34,7 +34,7 @@ hist(area)
 boxplot(area,horizontal = TRUE)
 ```
 
-> **Exercise 1:** Describe this population distribution.**
+> **Exercise 1:** Describe this population distribution.
 
 ## The unknown sampling distribution
 
