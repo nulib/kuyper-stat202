@@ -3,8 +3,6 @@
 * * *
 You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section.
 
-Please complete the **Inference for Categorical Data (Lab 07)** quiz on Canvas. The quiz questions mirror those provided throughout this lab.
-
 * * *
 
 ### Getting Started
