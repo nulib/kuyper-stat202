@@ -142,9 +142,7 @@ arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
 Note that with R as with your calculator, you need to be conscious of the order of operations.  Here, we want to divide the number of boys by the total number of newborns, so we have to use parentheses.  Without them, R will first do the
 division, then the addition, giving you something that is not a proportion.
 
-> **Exercise 3:**
-
-**Now, make a plot of the proportion of boys over time. What do you see? Tip: If you use the up and down arrow keys, you can scroll through your previous commands, your so-called command history. You can also access it by clicking on the history tab in the upper right panel.  This will save you a lot of typing in the future.** 
+> **Exercise 3:** Now, make a plot of the proportion of boys over time. What do you see? Tip: If you use the up and down arrow keys, you can scroll through your previous commands, your so-called command history. You can also access it by clicking on the history tab in the upper right panel.  This will save you a lot of typing in the future.** 
 
 Finally, in addition to simple mathematical operators like subtraction and division, you can ask R to make comparisons like greater than, `>`, less than, `<`, and equality, `==`. For example, we can ask if boys outnumber girls in each
 year with the expression

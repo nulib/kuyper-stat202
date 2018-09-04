@@ -29,9 +29,7 @@ names(cdc)
 This returns the names `genhlth`, `exerany`, `hlthplan`, `smoke100`, `height`, `weight`, `wtdesire`, `age`, and `gender`. Each one of these variables corresponds to a question that was asked in the survey.  For example, for `genhlth`, respondents were asked to evaluate their general health, responding either excellent, very good, good, fair or poor. The `exerany` variable indicates whether the respondent exercised in the past month (1) or did not (0). Likewise, `hlthplan` indicates whether the respondent had some form of health coverage (1) or did not (0). The `smoke100` variable indicates whether the respondent had smoked at least 100 cigarettes in her lifetime. The other
 variables record the respondent's `height` in inches, `weight` in pounds as well as their desired weight, `wtdesire`, `age` in years, and `gender`.
 
-> **Exercise 1:**
-
-**How many cases are there in this data set?  How many variables?  For each variable, identify its data type (e.g. categorical, discrete).**
+> **Exercise 1:** How many cases are there in this data set?  How many variables?  For each variable, identify its data type (e.g. categorical, discrete).**
 
 We can have a look at the first few entries (rows) of our data with the command
 
