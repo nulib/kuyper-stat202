@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -238,8 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="foundations-for-statistical-inference---sampling-distributions" class="section level1">
 <h1><span class="header-section-number">5</span> Foundations for Statistical Inference - Sampling Distributions</h1>
-<hr />
-<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
+<p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="getting-started-2" class="section level2">
 <h2><span class="header-section-number">5.1</span> Getting started</h2>
@@ -258,9 +260,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">summary</span>(area)</a>
 <a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">hist</span>(area)</a>
 <a class="sourceLine" id="cb68-3" data-line-number="3"><span class="kw">boxplot</span>(area,<span class="dt">horizontal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<blockquote>
+<hr />
 <p><strong>Exercise 1:</strong> Describe this population distribution.</p>
-</blockquote>
+<hr />
 </div>
 <div id="the-unknown-sampling-distribution" class="section level2">
 <h2><span class="header-section-number">5.3</span> The unknown sampling distribution</h2>
@@ -268,15 +270,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If we were interested in estimating the mean living area in Ames based on a sample, we can use the following command to survey the population.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">samp1 &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">50</span>)</a></code></pre></div>
 <p>This command collects a simple random sample of size 50 from the vector <code>area</code>, which is assigned to <code>samp1</code>. This is like going into the City Assessor’s database and pulling up the files on 50 random home sales.Working with these 50 files would be considerably simpler than working with all 2930 home sales.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 2:</strong> Describe the distribution of this sample. How does it compare to the distribution of the population?</p>
-</blockquote>
+<hr />
 <p>If we’re interested in estimating the average living area in homes in Ames using the sample, our best single guess is the sample mean.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">mean</span>(samp1)</a></code></pre></div>
 <p>Depending on which 50 homes you selected, your estimate could be a bit above or a bit below the true population mean of 1499.69 square feet. In general, though, the sample mean turns out to be a pretty good estimate of the average living area, and we were able to get it by sampling less than 3% of the population.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 3:</strong> Take a second sample, also of size 50, and call it <code>samp2</code>. How does the mean of <code>samp2</code> compare with the mean of <code>samp1</code>? Suppose we took two more samples, one of size 100 and one of size 1000. Which would you think would provide a more accurate estimate of the population mean?</p>
-</blockquote>
+<hr />
 <p>Not surprisingly, every time we take another random sample, we get a different sample mean. It’s useful to get a sense of just how much variability we should expect when estimating the population mean this way. The distribution of sample means, called the <em>sampling distribution</em>, can help us understand this variability. In this lab, because we have access to the population, we can build up the sampling distribution for the sample mean by repeating the above steps many times. Here we will generate 5000 samples and compute the sample mean of each.</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">sample_means50 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)</a>
 <a class="sourceLine" id="cb71-2" data-line-number="2"></a>
@@ -289,9 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you would like to adjust the bin width of your histogram to show a little more detail, you can do so by changing the <code>breaks</code> argument.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">hist</span>(sample_means50, <span class="dt">breaks =</span> <span class="dv">25</span>)</a></code></pre></div>
 <p>Here we use R to take 5000 samples of size 50 from the population, calculate the mean of each sample, and store each result in a vector called <code>sample_means50</code>. On the next page, we’ll review how this set of code works.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 4:</strong> How many elements are there in <code>sample_means50</code>? Describe the sampling distribution, and be sure to specifically note its center. Would you expect the distribution to change if we instead collected 50,000 sample means?</p>
-</blockquote>
+<hr />
 </div>
 <div id="interlude-the-for-loop" class="section level2">
 <h2><span class="header-section-number">5.4</span> Interlude: The <code>for</code> loop</h2>
@@ -323,9 +325,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The body of the <code>for</code> loop is the part inside the curly braces, and this set of code is run for each value of <code>i</code>. Here, on every loop, we take a random sample of size 50 from <code>area</code>, take its mean, and store it as the <span class="math inline">\(i\)</span><sup>th</sup> element of <code>sample_means50</code>.</p>
 <p>In order to display that this is really happening, we asked R to print <code>i</code> at each iteration. This line of code is optional and is only used for displaying what’s going on while the <code>for</code> loop is running.</p>
 <p>The <code>for</code> loop allows us to not just run the code 5000 times, but to neatly package the results, element by element, into the empty vector that we initialized at the outset.</p>
-<blockquote>
-<p><strong>Exercise 5:</strong> To make sure you understand what you’ve done in this loop, try running a smaller version. Initialize a vector of 100 zeros called <code>sample_means_small</code>. Run a loop that takes a sample of size 50 from <code>area</code> and stores the sample mean in <code>sample_means_small</code>, but only iterate from 1 to 100. Print the output to your screen (type <code>sample_means_small</code> into the console and press enter). How many elements are there in this object called <code>sample_means_small</code>? What does each element represent?**</p>
-</blockquote>
+<hr />
+<p><strong>Exercise 5:</strong> To make sure you understand what you’ve done in this loop, try running a smaller version. Initialize a vector of 100 zeros called <code>sample_means_small</code>. Run a loop that takes a sample of size 50 from <code>area</code> and stores the sample mean in <code>sample_means_small</code>, but only iterate from 1 to 100. Print the output to your screen (type <code>sample_means_small</code> into the console and press enter). How many elements are there in this object called <code>sample_means_small</code>? What does each element represent?</p>
+<hr />
 </div>
 <div id="sample-size-and-the-sampling-distribution" class="section level2">
 <h2><span class="header-section-number">5.5</span> Sample size and the sampling distribution</h2>
@@ -355,9 +357,9 @@ you create an object using a name that is already in use, the old object will ge
 <a class="sourceLine" id="cb77-6" data-line-number="6"><span class="kw">hist</span>(sample_means50, <span class="dt">breaks =</span> <span class="dv">20</span>, <span class="dt">xlim =</span> xlimits)</a>
 <a class="sourceLine" id="cb77-7" data-line-number="7"><span class="kw">hist</span>(sample_means100, <span class="dt">breaks =</span> <span class="dv">20</span>, <span class="dt">xlim =</span> xlimits)</a></code></pre></div>
 <p>The first command specifies that you’d like to divide the plotting area into 3 rows and 1 column of plots (to return to the default setting of plotting one at a time, use <code>par(mfrow = c(1, 1))</code>). The <code>breaks</code> argument specifies the number of bins used in constructing the histogram. The <code>xlim</code> argument specifies the range of the x-axis of the histogram, and by setting it equal to <code>xlimits</code> for each histogram, we ensure that all three histograms will be plotted with the same limits on the x-axis.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 6:</strong> When the sample size is larger, what happens to the center? What about the spread?</p>
-</blockquote>
+<hr />
 </div>
 <div id="on-your-own-3" class="section level2">
 <h2><span class="header-section-number">5.6</span> On your own</h2>

@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -238,8 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="multiple-linear-regression" class="section level1">
 <h1><span class="header-section-number">10</span> Multiple Linear Regression</h1>
-<hr />
-<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
+<p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="getting-started-4" class="section level2">
 <h2><span class="header-section-number">10.1</span> Getting Started</h2>
@@ -272,19 +274,13 @@ work with the newer variables on your own.</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">runs_full &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> mlb11_runs)</a>
 <a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">summary</span>(runs_full)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 1:</strong></p>
-</blockquote>
-<p><strong>How many variables are being used to predict <code>runs</code> in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model’s <span class="math inline">\(R^2_{adj}\)</span>?</strong></p>
+<p><strong>Exercise 1:</strong> How many variables are being used to predict <code>runs</code> in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model’s <span class="math inline">\(R^2_{adj}\)</span>?</p>
 <hr />
 <p>Now that we have a full model defined we can go about backwards model selection. The <code>step()</code> function in R makes it extremely easy to use AIC (Akiake’s Information Criterion) for model selection. Similar to <span class="math inline">\(R^2_{adj}\)</span>, AIC applies a penalty to models using more predictor variables. Run the following code to determine the best model for predicting a team’s runs in a season using backward selection with AIC as the criterion (note that lower AIC indicates a better model).</p>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">runs_backAIC &lt;-<span class="st"> </span><span class="kw">step</span>(runs_full, <span class="dt">direction =</span> <span class="st">&quot;backward&quot;</span>)</a>
 <a class="sourceLine" id="cb122-2" data-line-number="2"><span class="kw">summary</span>(runs_backAIC)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 2:</strong></p>
-</blockquote>
-<p><strong>How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs?</strong></p>
+<p><strong>Exercise 2:</strong> How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs?</p>
 <hr />
 <p>Instead of AIC, let’s use <span class="math inline">\(R^2_{adj}\)</span> as our criterion when conducting backward selection. Remember that <span class="math inline">\(R^2_{adj}\)</span> indicates a better model.</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">## Step 1</a>
@@ -347,10 +343,7 @@ work with the newer variables on your own.</p>
 <a class="sourceLine" id="cb128-2" data-line-number="2">runs_backPval &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats <span class="op">-</span><span class="st"> </span>hits  <span class="op">-</span><span class="st"> </span>bat_avg <span class="op">-</span><span class="st"> </span>new_slug, mlb11_runs)</a>
 <a class="sourceLine" id="cb128-3" data-line-number="3"><span class="kw">summary</span>(runs_backPval)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 4:</strong></p>
-</blockquote>
-<p><strong>Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs? Why might someone prefer this final model over all of the models thus far?</strong></p>
+<p><strong>Exercise 4:</strong> Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs? Why might someone prefer this final model over all of the models thus far?</p>
 <hr />
 </div>
 <div id="predicting-runs-with-forward-selection" class="section level3">
@@ -363,10 +356,7 @@ work with the newer variables on your own.</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">runs_forwardAIC &lt;-<span class="st"> </span><span class="kw">step</span>(runs_null, <span class="dt">direction =</span> <span class="st">&quot;forward&quot;</span>, <span class="dt">scope =</span> <span class="kw">formula</span>(runs_full))</a>
 <a class="sourceLine" id="cb130-2" data-line-number="2"><span class="kw">summary</span>(runs_forwardAIC)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 5:</strong></p>
-</blockquote>
-<p><strong>How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn’t always happen?</strong></p>
+<p><strong>Exercise 5:</strong> How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn’t always happen?</p>
 <hr />
 <p>Instead of AIC, let’s use <span class="math inline">\(R^2_{adj}\)</span> as our criterion when conducting forward selection. Remember that <span class="math inline">\(R^2_{adj}\)</span> indicates a better model.</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">## Step 1</a>
@@ -405,10 +395,7 @@ work with the newer variables on your own.</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">runs_forwardADJr &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases, mlb11_runs)</a>
 <a class="sourceLine" id="cb134-2" data-line-number="2"><span class="kw">summary</span>(runs_forwardADJr)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 6:</strong></p>
-</blockquote>
-<p><strong>Does the final model selected using forward selection with <span class="math inline">\(R^2_{adj}\)</span> differ from the final model using forward selection with AIC?</strong></p>
+<p><strong>Exercise 6:</strong> Does the final model selected using forward selection with <span class="math inline">\(R^2_{adj}\)</span> differ from the final model using forward selection with AIC?</p>
 <hr />
 <p>Finally let’s use a p-value method with a 0.05 significance level as our criterion when conducting forward selection. Remember that hlower p-values are consider better so we add a variable when it has the lowest p-value and is less than 0.05. If newly added variable is not less than 0.05 then we stop and conclude that we have arrived at our final model. Fortunately, R does have a function that makes this easier which is <code>add1()</code>. We must input model fit, the possible full model, and then indicate that the <code>test = &quot;F&quot;</code> so p-values are printed.</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">## Step 1</a>
@@ -422,9 +409,7 @@ work with the newer variables on your own.</p>
 <a class="sourceLine" id="cb136-2" data-line-number="2">runs_forwardPval &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases, mlb11_runs)</a>
 <a class="sourceLine" id="cb136-3" data-line-number="3"><span class="kw">summary</span>(runs_forwardPval)</a></code></pre></div>
 <hr />
-<blockquote>
-<p><strong>Exercise 7:</strong> What do you note about the final model selected using forward selection with p-values? This does not always occur.**</p>
-</blockquote>
+<p><strong>Exercise 7:</strong> What do you note about the final model selected using forward selection with p-values? This does not always occur.</p>
 <hr />
 </div>
 </div>

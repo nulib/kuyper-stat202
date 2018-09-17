@@ -1,6 +1,6 @@
 # Introduction to Data
 
-You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
+This lab is structured to guide you through an organized process such that you could easily organize your code with comments -- meaning your R script -- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
 
 ***
 
@@ -29,7 +29,11 @@ names(cdc)
 This returns the names `genhlth`, `exerany`, `hlthplan`, `smoke100`, `height`, `weight`, `wtdesire`, `age`, and `gender`. Each one of these variables corresponds to a question that was asked in the survey.  For example, for `genhlth`, respondents were asked to evaluate their general health, responding either excellent, very good, good, fair or poor. The `exerany` variable indicates whether the respondent exercised in the past month (1) or did not (0). Likewise, `hlthplan` indicates whether the respondent had some form of health coverage (1) or did not (0). The `smoke100` variable indicates whether the respondent had smoked at least 100 cigarettes in her lifetime. The other
 variables record the respondent's `height` in inches, `weight` in pounds as well as their desired weight, `wtdesire`, `age` in years, and `gender`.
 
-> **Exercise 1:** How many cases are there in this data set?  How many variables?  For each variable, identify its data type (e.g. categorical, discrete).**
+---
+
+**Exercise 1:** How many cases are there in this data set?  How many variables?  For each variable, identify its data type (e.g. categorical, discrete).
+
+---
 
 We can have a look at the first few entries (rows) of our data with the command
 
@@ -99,7 +103,11 @@ barplot(smoke)
 
 Here, we've made a new object, a table, called `smoke` (the contents of which we can see by typing `smoke` into the console) and then used it in as the input for `barplot`. The special symbol `<-` performs an *assignment*, taking the output of one line of code and saving it into an object in your workspace.  This is another important idea that we'll return to later.
 
-> **Exercise 2:** Create a numerical summary for `height` and `age`, and compute the interquartile range for each. Compute the relative frequency distribution for `gender` and `exerany`. How many males are in the sample? What proportion of the sample reports being in excellent health?
+---
+
+**Exercise 2:** Create a numerical summary for `height` and `age`, and compute the interquartile range for each. Compute the relative frequency distribution for `gender` and `exerany`. How many males are in the sample? What proportion of the sample reports being in excellent health?
+
+---
 
 The `table` command can be used to tabulate any number of variables that you provide.  For example, to examine which participants have smoked across each gender, we could use the following.
 
@@ -115,7 +123,11 @@ mosaicplot(table(cdc$gender,cdc$smoke100))
 
 We could have accomplished this in two steps by saving the table in one line and applying `mosaicplot` in the next (see the table/barplot example above).
 
-> **Exercise 3:** What does the mosaic plot reveal about smoking habits and gender?
+---
+
+**Exercise 3:** What does the mosaic plot reveal about smoking habits and gender?
+
+---
 
 ## Interlude: How R thinks about data
 
@@ -227,7 +239,11 @@ m_or_over30 <- subset(cdc, gender == "m" | age > 30)
 will take people who are men or over the age of 30 (why that's an interesting group is hard to say, but right now the mechanics of this are the important thing). In principle, you may use as many "and" and "or" clauses as you like
 when forming a subset.
 
-> **Exercise 4:** Create a new object called `under23_and_smoke` that contains all observations of respondents under the age of 23 that have smoked 100 cigarettes in their lifetime. Write the command you used to create the new object as the answer to this exercise.
+---
+
+**Exercise 4:** Create a new object called `under23_and_smoke` that contains all observations of respondents under the age of 23 that have smoked 100 cigarettes in their lifetime. Write the command you used to create the new object as the answer to this exercise.
+
+---
 
 ## Quantitative data
 
@@ -267,7 +283,11 @@ boxplot(bmi ~ cdc$genhlth)
 
 Notice that the first line above is just some arithmetic, but it's applied to all 20,000 numbers in the `cdc` data set. That is, for each of the 20,000 participants, we take their weight, divide by their height-squared and then multiply by 703. The result is 20,000 BMI values, one for each respondent. This is one reason why we like R: it lets us perform computations like this using very simple expressions.
 
-> **Exercise 5:** What does this box plot show? Pick another categorical variable from the  data set and see how it relates to BMI. List the variable you chose, why you might think it would have a relationship to BMI,  and indicate what the figure seems to suggest.
+---
+
+**Exercise 5:** What does this box plot show? Pick another categorical variable from the  data set and see how it relates to BMI. List the variable you chose, why you might think it would have a relationship to BMI,  and indicate what the figure seems to suggest.
+
+---
 
 Finally, let's make some histograms. We can look at the histogram for the age of our respondents with the command
 

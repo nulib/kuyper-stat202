@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -238,8 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="confidence-intervals---foundations-for-statistical-inference" class="section level1">
 <h1><span class="header-section-number">6</span> Confidence Intervals - Foundations for Statistical Inference</h1>
-<hr />
-<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab – including in the <strong>Own Your Own</strong> section.</p>
+<p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab – including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="sampling-from-ames-iowa" class="section level2">
 <h2><span class="header-section-number">6.1</span> Sampling from Ames, Iowa</h2>
@@ -265,13 +267,9 @@ portion of the lab we’ll focus on the size of the house, represented by the
 variable <code>Gr.Liv.Area</code>.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1">population &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area</a>
 <a class="sourceLine" id="cb79-2" data-line-number="2">samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <span class="dv">60</span>)</a></code></pre></div>
-<blockquote>
-<p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
-</blockquote>
 <hr />
-<blockquote>
+<p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
 <p><strong>Exercise 2:</strong> Would you expect another student’s distribution to be identical to yours? Would you expect it to be similar? Why or why not?</p>
-</blockquote>
 <hr />
 </div>
 <div id="confidence-intervals" class="section level2">
@@ -301,26 +299,22 @@ you are unfamiliar with this formula). Note that the 1.96 is the result of round
 what the full population looks like, we’re 95% confident that the true
 average size of houses in Ames lies between the values <em>lower</em> and <em>upper</em>.
 There are a few conditions that must be met for this interval to be valid.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 3:</strong> For the confidence interval to be valid, the sample mean must be normally distributed and have standard error <span class="math inline">\(s / \sqrt{n}.\)</span> What conditions must be met for this to be true?</p>
-</blockquote>
+<hr />
 </div>
 <div id="confidence-levels" class="section level2">
 <h2><span class="header-section-number">6.4</span> Confidence levels</h2>
-<blockquote>
+<hr />
 <p><strong>Exercise 4:</strong> What does “95% confidence” mean?</p>
-</blockquote>
+<hr />
 <p>In this case we have the luxury of knowing the true population mean since we
 have data on the entire population. This value can be calculated using the
 following command:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">mean</span>(population)</a></code></pre></div>
-<blockquote>
-<p><strong>Exercise 5:</strong>Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor’s interval capture this value?</p>
-</blockquote>
 <hr />
-<blockquote>
+<p><strong>Exercise 5:</strong>Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor’s interval capture this value?</p>
 <p><strong>Exercise 6:</strong> Each student in your class should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why? If you are working in this lab in a classroom, collect data on the intervals created by other students in the class and calculate the proportion of intervals that capture the true population mean.</p>
-</blockquote>
 <hr />
 <p>Using R, we’re going to recreate many samples to learn more about how sample means and confidence intervals vary from one sample to another. <em>Loops</em> come in handy here (If you are unfamiliar with loops, review the <strong>Foundations for Statistical Inference (Lab 04)</strong>).</p>
 <p>Here is the rough outline:</p>

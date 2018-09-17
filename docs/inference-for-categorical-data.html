@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -238,8 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="inference-for-categorical-data" class="section level1">
 <h1><span class="header-section-number">8</span> Inference for Categorical Data</h1>
-<hr />
-<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
+<p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="getting-started-3" class="section level3">
 <h3><span class="header-section-number">8.0.1</span> Getting Started</h3>
@@ -250,25 +252,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To download a copy of the press release for the poll, conducted by WIN-Gallup International, click on the following link:</p>
 <p><a href="https://canvas.northwestern.edu/files/5047539/download?download_frd=1">Download the Press Release</a></p>
 <p>Take a moment to review the report, then address the following questions.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 1:</strong> In the first paragraph, several key findings are reported. Do these percentages appear to be <em>sample statistics</em> (derived from the sample data) or <em>population parameters</em>?</p>
-</blockquote>
-<blockquote>
 <p><strong>Exercise 2:</strong> The title of the report is “Global Index of Religiosity and Atheism”. To generalize the report’s findings to the global human population, what must we assume about the sampling method? Does that seem like a reasonable assumption?</p>
-</blockquote>
+<hr />
 </div>
 <div id="the-data-3" class="section level2">
 <h2><span class="header-section-number">8.2</span> The data</h2>
 <p>Turn your attention to Table 6 (pages 15 and 16), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this dataset into R with the following command.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/atheism.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;atheism.RData&quot;</span>)</a>
 <a class="sourceLine" id="cb101-2" data-line-number="2"><span class="kw">load</span>(<span class="st">&quot;atheism.RData&quot;</span>)</a></code></pre></div>
-<blockquote>
+<hr />
 <p><strong>Exercise 3:</strong> What does each row of Table 6 correspond to? What does each row of <code>atheism</code> correspond to?</p>
-</blockquote>
+<hr />
 <p>To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the United States. Towards the bottom of Table 6, we see that this is 5%. We should be able to come to the same number using the <code>atheism</code> data.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 4:</strong> Using the command below, create a new dataframe called <code>us12</code> that contains only the rows in <code>atheism</code> associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?</p>
-</blockquote>
+<hr />
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">us12 &lt;-<span class="st"> </span><span class="kw">subset</span>(atheism, nationality <span class="op">==</span><span class="st"> &quot;United States&quot;</span> <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> &quot;2012&quot;</span>)</a></code></pre></div>
 </div>
 <div id="inference-on-proportions" class="section level2">
@@ -307,12 +307,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb103-26" data-line-number="26">ub &lt;-<span class="st"> </span>p_hat <span class="op">+</span><span class="st"> </span>z_star<span class="op">*</span>std_err</a>
 <a class="sourceLine" id="cb103-27" data-line-number="27"><span class="kw">c</span>(lb,ub)</a></code></pre></div>
 <p>Although formal confidence intervals and hypothesis tests don’t show up in the report, suggestions of inference appear at the bottom of page 7: “In general, the error margin for surveys of this kind is <span class="math inline">\(\pm\)</span> 3-5% at 95% confidence”.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 6:</strong> Based on the work above, what is the margin of error for the estimate of the proportion of atheists in US in 2012?</p>
-</blockquote>
-<blockquote>
 <p><strong>Exercise 7:</strong> Calculate confidence intervals for the proportion of atheists in 2012 in two other countries of your choice, and report the associated margins of error. Be sure to note whether the conditions for inference are met. It may be helpful to create new data sets for each of the two countries first, and then use these data sets during calculations.</p>
-</blockquote>
+<hr />
 </div>
 <div id="how-does-the-proportion-affect-the-margin-of-error" class="section level2">
 <h2><span class="header-section-number">8.4</span> How does the proportion affect the margin of error?</h2>
@@ -343,16 +341,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb105-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb105-10" data-line-number="10"><span class="kw">hist</span>(p_hats, <span class="dt">main =</span> <span class="st">&quot;p = 0.1, n = 1040&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.18</span>))</a></code></pre></div>
 <p>These commands build up the sampling distribution of <span class="math inline">\(\hat{p}\)</span> using the familiar <code>for</code> loop. You can read the sampling procedure for the first line of code inside the <code>for</code> loop as, “take a sample of size <span class="math inline">\(n\)</span> with replacement from the choices of atheist and non-atheist with probabilities <span class="math inline">\(p\)</span> and <span class="math inline">\(1 - p\)</span>, respectively.” The second line in the loop says, “calculate the proportion of atheists in this sample and record this value.” The loop allows us to repeat this process 5,000 times to build a good representation of the sampling distribution.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 9:</strong> Describe the sampling distribution of sample proportions for <span class="math inline">\(n = 1040\)</span> and <span class="math inline">\(p = 0.1\)</span>. Be sure to note the center, spread, and shape. <em>Hint:</em> Remember that R has functions such as <code>mean</code> to calculate summary statistics.</p>
-</blockquote>
-<blockquote>
 <p><strong>Exercise 10:</strong> Repeat the above simulation three more times but with modified sample sizes and proportions: for <span class="math inline">\(n = 400\)</span> and <span class="math inline">\(p = 0.1\)</span>, <span class="math inline">\(n = 1040\)</span> and <span class="math inline">\(p = 0.02\)</span>, and <span class="math inline">\(n = 400\)</span> and <span class="math inline">\(p = 0.02\)</span>. Plot all four histograms together by running the <code>par(mfrow = c(2, 2))</code> command before creating the histograms. You may need to expand the plot window to accommodate the larger two-by-two plot. Describe the three new sampling distributions. Based on these limited plots, how does <span class="math inline">\(n\)</span> appear to affect the distribution of <span class="math inline">\(\hat{p}\)</span>? How does <span class="math inline">\(p\)</span> affect the sampling distribution?</p>
-</blockquote>
+<hr />
 <p>Once you’re done, you can reset the layout of the plotting window by using the command <code>par(mfrow = c(1, 1))</code> command or clicking on “Clear All” above the plotting window (if using RStudio). Note that the latter will get rid of all your previous plots.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 11:</strong> If you refer to Table 6, you’ll find that Australia has a sample proportion of 0.1 on a sample size of 1040, and that Ecuador has a sample proportion of 0.02 on 400 subjects. Let’s suppose for this exercise that these point estimates are actually the truth. Then given the shape of their respective sampling distributions, do you think it is sensible to proceed with inference and report margin of errors, as the report does? – Checking our condition for at least 10 observed successes and failures.</p>
-</blockquote>
 <hr />
 </div>
 <div id="on-your-own-6" class="section level2">
