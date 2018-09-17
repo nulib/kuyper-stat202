@@ -1,6 +1,6 @@
 bookdown::gitbook:
   includes:
-    in_header: metadata.html
+    in_header: ['metadata.html', 'google-analytics.html']
   css: style.css
   split_by: chapter
   config:
