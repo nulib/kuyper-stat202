@@ -1,5 +1,6 @@
 ---
 title: "OpenIntro Statistics: Labs for R"
+author: ['Andrew Bray', 'Mine Çetinkaya-Rundel', 'Arend Kuyper']
 date: "`r format(Sys.time(), '%Y')`"
 site: bookdown::bookdown_site
 documentclass: book
