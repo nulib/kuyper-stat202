@@ -13,9 +13,7 @@ description: "This book contains labs for an introduction to statistics course. 
 
 These lab exercises supplement the third edition of [OpenIntro Statistics](https://www.openintro.org/stat/index.php) textbook. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.
 
-This version of the labs have been modified by [Arend Kuyper](https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html) to include new datasets and examples for introductory statistics courses at Northwestern University. Visit [Labs for R](https://www.openintro.org/stat/labs.php) at OpenIntro for the original materials.
-
-The chapters in this book were adapted from labs originally written by Mark Hansen and adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
+This version of the labs have been modified by [Arend Kuyper](https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html) to include new datasets and examples for introductory statistics courses at Northwestern University. Visit [Labs for R](https://www.openintro.org/stat/labs.php) at OpenIntro for the original materials. The chapters in this book were adapted from labs originally written by Mark Hansen and adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
 
 ## Using these labs
 
