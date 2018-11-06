@@ -232,7 +232,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="the-survey" class="section level2">
 <h2><span class="header-section-number">8.1</span> The survey</h2>
 <p>To download a copy of the press release for the poll, conducted by WIN-Gallup International, click on the following link:</p>
-<p><a href="https://canvas.northwestern.edu/files/5047539/download?download_frd=1">Download the Press Release</a></p>
+<p><a href="https://github.com/nulib/kuyper-stat202/raw/master/assets/support_doc/Global_INDEX_of_Religiosity_and_Atheism_PR_6.pdf">Download the Press Release</a></p>
 <p>Take a moment to review the report, then address the following questions.</p>
 <hr />
 <p><strong>Exercise 1:</strong> In the first paragraph, several key findings are reported. Do these percentages appear to be <em>sample statistics</em> (derived from the sample data) or <em>population parameters</em>?</p>
@@ -244,21 +244,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Turn your attention to Table 6 (pages 15 and 16), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this dataset into R with the following command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/atheism.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;atheism.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;atheism.RData&quot;</span>)</code></pre></div>
-<<<<<<< HEAD
-<blockquote>
-=======
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p><strong>Exercise 3:</strong> What does each row of Table 6 correspond to? What does each row of <code>atheism</code> correspond to?</p>
 <hr />
 <p>To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the United States. Towards the bottom of Table 6, we see that this is 5%. We should be able to come to the same number using the <code>atheism</code> data.</p>
 <hr />
 <p><strong>Exercise 4:</strong> Using the command below, create a new dataframe called <code>us12</code> that contains only the rows in <code>atheism</code> associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?</p>
-<<<<<<< HEAD
-</blockquote>
-=======
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">us12 &lt;-<span class="st"> </span><span class="kw">subset</span>(atheism, nationality <span class="op">==</span><span class="st"> &quot;United States&quot;</span> <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> &quot;2012&quot;</span>)</code></pre></div>
 </div>
 <div id="inference-on-proportions" class="section level2">

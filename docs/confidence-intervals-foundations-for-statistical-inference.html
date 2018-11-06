@@ -237,12 +237,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this lab we’ll start with a simple random sample of size 60 from the population. Specifically, this is a simple random sample of size 60. Note that the data set has information on many housing variables, but for the first portion of the lab we’ll focus on the size of the house, represented by the variable <code>Gr.Liv.Area</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area
 samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <span class="dv">60</span>)</code></pre></div>
-<<<<<<< HEAD
-<blockquote>
-<p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
-</blockquote>
-=======
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <hr />
 <p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
 <p><strong>Exercise 2:</strong> Would you expect another student’s distribution to be identical to yours? Would you expect it to be similar? Why or why not?</p>
@@ -262,11 +256,7 @@ lower &lt;-<span class="st"> </span>sample_mean <span class="op">-</span><span c
 upper &lt;-<span class="st"> </span>sample_mean <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se
 <span class="kw">c</span>(lower, upper)</code></pre></div>
 <p>This is an important inference that we’ve just made: even though we don’t know what the full population looks like, we’re 95% confident that the true average size of houses in Ames lies between the values <em>lower</em> and <em>upper</em>. There are a few conditions that must be met for this interval to be valid.</p>
-<<<<<<< HEAD
-<blockquote>
-=======
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p><strong>Exercise 3:</strong> For the confidence interval to be valid, the sample mean must be normally distributed and have standard error <span class="math inline">\(s / \sqrt{n}.\)</span> What conditions must be met for this to be true?</p>
 <hr />
 </div>
@@ -274,15 +264,6 @@ upper &lt;-<span class="st"> </span>sample_mean <span class="op">+</span><span c
 <h2><span class="header-section-number">6.4</span> Confidence levels</h2>
 <hr />
 <p><strong>Exercise 4:</strong> What does “95% confidence” mean?</p>
-<<<<<<< HEAD
-</blockquote>
-<p>In this case we have the luxury of knowing the true population mean since we have data on the entire population. This value can be calculated using the following command:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(population)</code></pre></div>
-<blockquote>
-<p><strong>Exercise 5:</strong>Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor’s interval capture this value?</p>
-</blockquote>
-=======
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <hr />
 <p>In this case we have the luxury of knowing the true population mean since we have data on the entire population. This value can be calculated using the following command:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(population)</code></pre></div>

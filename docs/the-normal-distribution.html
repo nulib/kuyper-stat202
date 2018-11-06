@@ -240,11 +240,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Since males and females tend to have different body dimensions, it will be useful to create two additional data sets: one with only men and another with only women.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
 fdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
-<<<<<<< HEAD
-<blockquote>
-=======
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p><strong>Exercise 1:</strong> Make a histogram of men’s heights and a histogram of women’s heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?</p>
 <hr />
 <p>Complete the code chunk below, by replacing <code>????</code>, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.</p>
@@ -289,12 +285,6 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x
 </ol>
 <p>Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to many more plots using the following function. It may be helpful to click the zoom button in the plot window.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnormsim</span>(fdims<span class="op">$</span>hgt)</code></pre></div>
-<<<<<<< HEAD
-<blockquote>
-<p><strong>Exercise 4:</strong> Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?</p>
-</blockquote>
-=======
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <hr />
 <p><strong>Exercise 4:</strong> Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?</p>
 <p><strong>Exercise 5:</strong>Using the same technique, determine whether or not female weights appear to come from a normal distribution.</p>

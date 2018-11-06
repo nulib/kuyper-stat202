@@ -236,16 +236,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To view the names of the variables, type the command</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(cdc)</code></pre></div>
 <p>This returns the names <code>genhlth</code>, <code>exerany</code>, <code>hlthplan</code>, <code>smoke100</code>, <code>height</code>, <code>weight</code>, <code>wtdesire</code>, <code>age</code>, and <code>gender</code>. Each one of these variables corresponds to a question that was asked in the survey. For example, for <code>genhlth</code>, respondents were asked to evaluate their general health, responding either excellent, very good, good, fair or poor. The <code>exerany</code> variable indicates whether the respondent exercised in the past month (1) or did not (0). Likewise, <code>hlthplan</code> indicates whether the respondent had some form of health coverage (1) or did not (0). The <code>smoke100</code> variable indicates whether the respondent had smoked at least 100 cigarettes in her lifetime. The other variables record the respondent’s <code>height</code> in inches, <code>weight</code> in pounds as well as their desired weight, <code>wtdesire</code>, <code>age</code> in years, and <code>gender</code>.</p>
-<<<<<<< HEAD
-<blockquote>
-<p><strong>Exercise 1:</strong></p>
-</blockquote>
-<p><strong>How many cases are there in this data set? How many variables? For each variable, identify its data type (e.g. categorical, discrete).</strong></p>
-=======
 <hr />
 <p><strong>Exercise 1:</strong> How many cases are there in this data set? How many variables? For each variable, identify its data type (e.g. categorical, discrete).</p>
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p>We can have a look at the first few entries (rows) of our data with the command</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cdc)</code></pre></div>
 <p>and similarly we can look at the last few by typing</p>
@@ -327,11 +320,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>will give you the data for men over the age of 30. The <code>|</code> character is read “or” so that</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m_or_over30 &lt;-<span class="st"> </span><span class="kw">subset</span>(cdc, gender <span class="op">==</span><span class="st"> &quot;m&quot;</span> <span class="op">|</span><span class="st"> </span>age <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>)</code></pre></div>
 <p>will take people who are men or over the age of 30 (why that’s an interesting group is hard to say, but right now the mechanics of this are the important thing). In principle, you may use as many “and” and “or” clauses as you like when forming a subset.</p>
-<<<<<<< HEAD
-<blockquote>
-=======
 <hr />
->>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p><strong>Exercise 4:</strong> Create a new object called <code>under23_and_smoke</code> that contains all observations of respondents under the age of 23 that have smoked 100 cigarettes in their lifetime. Write the command you used to create the new object as the answer to this exercise.</p>
 <hr />
 </div>
