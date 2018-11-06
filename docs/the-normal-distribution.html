@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -46,6 +49,23 @@
 
 
 
+<!-- Google Scholar -->
+<meta name="citation_title" content="OpenIntro Statistics: Labs for R">
+<meta name="citation_author" content="Bray, Andrew">
+<meta name="citation_author" content="Çetinkaya-Rundel, Mine">
+<meta name="citation_author" content="Kuyper, Arend">
+<meta name="citation_publication_date" content="2018">
+<meta name="citation_epub_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.epub">
+<meta name="citation_pdf_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.pdf">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116823108-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116823108-3');
+</script>
 
 
 <style type="text/css">
@@ -203,8 +223,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="the-normal-distribution" class="section level1">
 <h1><span class="header-section-number">4</span> The Normal Distribution</h1>
-<hr />
-<p>You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments – meaning your R script – into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab – including in the <strong>Own Your Own</strong> section.</p>
+<p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments – meaning your R script – into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab – including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="getting-started-1" class="section level2">
 <h2><span class="header-section-number">4.1</span> Getting started</h2>
@@ -221,9 +240,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Since males and females tend to have different body dimensions, it will be useful to create two additional data sets: one with only men and another with only women.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)
 fdims &lt;-<span class="st"> </span><span class="kw">subset</span>(bdims, sex <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
+<<<<<<< HEAD
 <blockquote>
+=======
+<hr />
+>>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <p><strong>Exercise 1:</strong> Make a histogram of men’s heights and a histogram of women’s heights. After plotting each histogram, it might also be helpful to construct the histograms on the same plot/axes. Complete the code below to produce such a plot. Boxplots for each gender might also be helpful. After examining the plots, how would you compare the various aspects of the two distributions?</p>
-</blockquote>
+<hr />
 <p>Complete the code chunk below, by replacing <code>????</code>, to constuct a plot containing a histogram of heights for each gender plotted on the same set of axes. Note the code alters the colors to distingish between the histograms.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### Constructing plot with histogtrams of heights by sex
 <span class="co"># 1) Calculating &amp; storing the x-axis limits to encompass all possible height values</span>
@@ -248,9 +271,9 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x
 <span class="kw">lines</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p>After plotting the density histogram with the first command, we create the x- and y-coordinates for the normal curve. We chose the <code>x</code> range as 140 to 190 in order to span the entire range of <code>fheight</code>. To create <code>y</code>, we use <code>dnorm</code> to calculate the density of each of those x-values in a distribution that is normal with mean <code>fhgtmean</code> and standard deviation <code>fhgtsd</code>. The final command draws a curve on the existing plot (the density histogram) by connecting each of the points specified by <code>x</code> and <code>y</code>. The argument <code>col</code> simply sets the color for the line to be drawn. If we left it out, the line would be drawn in black.</p>
 <p>The top of the curve is cut off because the limits of the x- and y-axes are set to best fit the histogram. To adjust the y-axis you can add a third argument to the histogram function: <code>ylim = c(0, 0.06)</code> – <strong>go back to your code and add this</strong>.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 2:</strong> Based on the this plot, does it appear that the data follow a nearly normal distribution?</p>
-</blockquote>
+<hr />
 </div>
 <div id="evaluating-the-normal-distribution" class="section level2">
 <h2><span class="header-section-number">4.4</span> Evaluating the normal distribution</h2>
@@ -266,13 +289,16 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x
 </ol>
 <p>Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to many more plots using the following function. It may be helpful to click the zoom button in the plot window.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnormsim</span>(fdims<span class="op">$</span>hgt)</code></pre></div>
+<<<<<<< HEAD
 <blockquote>
 <p><strong>Exercise 4:</strong> Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?</p>
 </blockquote>
+=======
+>>>>>>> dfcb16da19a8fb17f4e822a61b4e320857ac7c73
 <hr />
-<blockquote>
+<p><strong>Exercise 4:</strong> Does the normal probability plot for <code>fdims$hgt</code> look similar to the plots created for the simulated data? That is, do plots provide evidence that the female heights are nearly normal?</p>
 <p><strong>Exercise 5:</strong>Using the same technique, determine whether or not female weights appear to come from a normal distribution.</p>
-</blockquote>
+<hr />
 </div>
 <div id="normal-probabilities" class="section level2">
 <h2><span class="header-section-number">4.5</span> Normal probabilities</h2>
@@ -284,9 +310,8 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(<span class="dt">x
 <p>Assuming a normal distribution has allowed us to calculate a theoretical probability. If we want to calculate the probability empirically, we simply need to determine how many observations fall above 182 then divide this number by the total sample size.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(fdims<span class="op">$</span>hgt <span class="op">&gt;</span><span class="st"> </span><span class="dv">182</span>) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(fdims<span class="op">$</span>hgt)</code></pre></div>
 <p>Although the probabilities are not exactly the same, they are reasonably close. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.</p>
-<blockquote>
+<hr />
 <p><strong>Exercise 6:</strong> Write out two probability questions that you would like to answer; one regarding female heights and one regarding female weights. Calculate the those probabilities using both the theoretical normal distribution as well as the empirical distribution (four probabilities in all). Which variable, height or weight, had a closer agreement between the two methods?</p>
-</blockquote>
 <hr />
 </div>
 <div id="on-your-own-2" class="section level2">

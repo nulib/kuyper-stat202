@@ -1,8 +1,6 @@
 # Confidence Intervals - Foundations for Statistical Inference
 
-***
-
-You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
+This lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab -- including in the **Own Your Own** section.
 
 ***
 
@@ -38,13 +36,13 @@ population <- ames$Gr.Liv.Area
 samp <- sample(population, 60)
 ```
 
-> **Exercise 1:** Describe the distribution of your sample. What would you say is the "typical" size within your sample? Also state precisely what you interpreted "typical" to mean.
+---
 
-***
+**Exercise 1:** Describe the distribution of your sample. What would you say is the "typical" size within your sample? Also state precisely what you interpreted "typical" to mean.
 
-> **Exercise 2:** Would you expect another student's distribution to be identical to yours? Would you expect it to be similar? Why or why not?
+**Exercise 2:** Would you expect another student's distribution to be identical to yours? Would you expect it to be similar? Why or why not?
 
-***
+---
 
 ## Confidence intervals
 
@@ -87,11 +85,19 @@ what the full population looks like, we're 95% confident that the true
 average size of houses in Ames lies between the values *lower* and *upper*.
 There are a few conditions that must be met for this interval to be valid.
 
-> **Exercise 3:** For the confidence interval to be valid, the sample mean must be normally distributed and have standard error $s / \sqrt{n}.$ What conditions must be met for this to be true?
+---
+
+**Exercise 3:** For the confidence interval to be valid, the sample mean must be normally distributed and have standard error $s / \sqrt{n}.$ What conditions must be met for this to be true?
+
+---
 
 ## Confidence levels
 
-> **Exercise 4:** What does "95% confidence" mean?
+---
+
+**Exercise 4:** What does "95% confidence" mean?
+
+---
 
 In this case we have the luxury of knowing the true population mean since we
 have data on the entire population. This value can be calculated using the
@@ -101,13 +107,13 @@ following command:
 mean(population)
 ```
 
-> **Exercise 5:**Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor's interval capture this value?
+---
 
-***
+**Exercise 5:**Does your confidence interval capture the true average size of houses in Ames? If you are working on this lab in a classroom, does your neighbor's interval capture this value?
 
-> **Exercise 6:** Each student in your class should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why? If you are working in this lab in a classroom, collect data on the intervals created by other students in the class and calculate the proportion of intervals that capture the true population mean.
+**Exercise 6:** Each student in your class should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why? If you are working in this lab in a classroom, collect data on the intervals created by other students in the class and calculate the proportion of intervals that capture the true population mean.
 
-***
+---
 
 Using R, we're going to recreate many samples to learn more about how sample means and confidence intervals vary from one sample to another. *Loops* come in handy here (If you are unfamiliar with loops, review the **Foundations for Statistical Inference (Lab 04)**).
 

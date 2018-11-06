@@ -1,7 +1,6 @@
 # Multiple Linear Regression
 
-* * *
-You do not have to turn in a lab report and/or your code. The lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section. 
+This lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. We would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section. 
 
 * * *
 
@@ -54,13 +53,11 @@ runs_full <- lm(runs ~ ., data = mlb11_runs)
 summary(runs_full)
 ```
 
-***
+---
 
-> **Exercise 1:**
+**Exercise 1:** How many variables are being used to predict `runs` in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model's $R^2_{adj}$?
 
-**How many variables are being used to predict `runs` in the full model? How many parameters are being estimated in the full model? How many of the parameters are significantly different than 0 at the 0.05 level? What is the full model's $R^2_{adj}$?**
-
-***
+---
 
 Now that we have a full model defined we can go about backwards model selection. The `step()` function in R makes it extremely easy to use AIC (Akiake's Information Criterion) for model selection. Similar to $R^2_{adj}$, AIC applies a penalty to models using more predictor variables. Run the following code to determine the best model for predicting a team's runs in a season using backward selection with AIC as the criterion (note that lower AIC indicates a better model). 
 
@@ -69,13 +66,11 @@ runs_backAIC <- step(runs_full, direction = "backward")
 summary(runs_backAIC)
 ```
 
-***
+---
 
-> **Exercise 2:**
+**Exercise 2:** How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs?
 
-**How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs?** 
-
-***
+---
 
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting backward selection. Remember that $R^2_{adj}$ indicates a better model.
 
@@ -160,13 +155,11 @@ runs_backPval <- lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hi
 summary(runs_backPval)
 ```
 
-***
+---
 
-> **Exercise 4:**
+**Exercise 4:** Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs? Why might someone prefer this final model over all of the models thus far?
 
-**Which variables ended up in the final model using a p-value method with a 0.05 significance level as our criterion when conducting backward selection? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher $R^2_{adj}$ than the full model for runs? Why might someone prefer this final model over all of the models thus far?**
-
-***
+---
 
 ### Predicting runs with forward selection 
 
@@ -185,13 +178,11 @@ runs_forwardAIC <- step(runs_null, direction = "forward", scope = formula(runs_f
 summary(runs_forwardAIC)
 ```
 
-***
+---
 
-> **Exercise 5:**
+**Exercise 5:** How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn't always happen?
 
-**How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn't always happen?**
-
-***
+---
 
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting forward selection. Remember that $R^2_{adj}$ indicates a better model.
 
@@ -245,13 +236,11 @@ runs_forwardADJr <- lm(runs ~ new_obs + stolen_bases, mlb11_runs)
 summary(runs_forwardADJr)
 ```
 
-***
+---
 
-> **Exercise 6:**
+**Exercise 6:** Does the final model selected using forward selection with $R^2_{adj}$ differ from the final model using forward selection with AIC?
 
-**Does the final model selected using forward selection with $R^2_{adj}$ differ from the final model using forward selection with AIC?**
-
-***
+---
 
 Finally let's use a p-value method with a 0.05 significance level as our criterion when conducting forward selection. Remember that hlower p-values are consider better so we add a variable when it has the lowest p-value and is less than 0.05. If newly added variable is not less than 0.05 then we stop and conclude that we have arrived at our final model. Fortunately, R does have a function that makes this easier which is `add1()`. We must input model fit, the possible full model, and then indicate that the `test = "F"` so p-values are printed. 
 
@@ -272,11 +261,11 @@ runs_forwardPval <- lm(runs ~ new_obs + stolen_bases, mlb11_runs)
 summary(runs_forwardPval)
 ```
 
-***
+---
 
-> **Exercise 7:** What do you note about the final model selected using forward selection with p-values? This does not always occur.**
+**Exercise 7:** What do you note about the final model selected using forward selection with p-values? This does not always occur.
 
-***
+---
 
 ## Assessing the conditions
 

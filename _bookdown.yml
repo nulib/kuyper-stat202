@@ -1,5 +1,5 @@
 book_filename: "kuyper-stat202"
-# repo: 
+repo: https://github.com/nulib/kuyper-stat202/
 delete_merged_file: true
 output_dir: "docs"
 clean: [packages.bib]

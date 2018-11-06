@@ -1,5 +1,6 @@
 ---
 title: "OpenIntro Statistics: Labs for R"
+author: ['Andrew Bray', 'Mine Çetinkaya-Rundel', 'Arend Kuyper']
 date: "`r format(Sys.time(), '%Y')`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -8,17 +9,14 @@ biblio-style: apalike
 link-citations: yes
 description: "This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena."
 ---
-# Preface {-} 
+# Preface {-}
 
-These lab exercises supplement the third edition of [OpenIntro Statistics](https://www.openintro.org/stat/index.php) textbook. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena. 
+These lab exercises supplement the third edition of [OpenIntro Statistics](https://www.openintro.org/stat/index.php) textbook. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.
 
-This version of the labs have been modified by [Arend Kuyper](https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html) to include new datasets and examples for introductory statistics courses at Northwestern University. Visit [Labs for R](https://www.openintro.org/stat/labs.php) at OpenIntro for the original materials. 
-
-The chapters in this book were adapted from labs originally written by Mark Hansen and adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel. 
+This version of the labs have been modified by [Arend Kuyper](https://www.statistics.northwestern.edu/people/faculty/arend-m-kuyper.html) to include new datasets and examples for introductory statistics courses at Northwestern University. Visit [Labs for R](https://www.openintro.org/stat/labs.php) at OpenIntro for the original materials. The chapters in this book were adapted from labs originally written by Mark Hansen and adapted for OpenIntro by Andrew Bray and Mine Çetinkaya-Rundel.
 
 ## Using these labs
 
 All of the labs on this website are made available under a [Creative Commons Attribution-ShareAlike license](https://creativecommons.org/licenses/by-sa/3.0/). You are free to copy, redistribute, and modify the material in any format so long as you provide attribution. Any derivative versions of the content must be distributed under the same license.  
 
 ![Creative Commons Attribution ShareAlike ](./assets/images/by-sa.png)
-

@@ -22,6 +22,9 @@
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
 
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
 
 
 <meta name="date" content="2018-01-01">
@@ -46,6 +49,23 @@
 
 
 
+<!-- Google Scholar -->
+<meta name="citation_title" content="OpenIntro Statistics: Labs for R">
+<meta name="citation_author" content="Bray, Andrew">
+<meta name="citation_author" content="Çetinkaya-Rundel, Mine">
+<meta name="citation_author" content="Kuyper, Arend">
+<meta name="citation_publication_date" content="2018">
+<meta name="citation_epub_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.epub">
+<meta name="citation_pdf_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.pdf">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116823108-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116823108-3');
+</script>
 
 
 <style type="text/css">
@@ -218,8 +238,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Step 2</strong></p>
 <p>Next you will want to create a subfolder for an individual task or sub-project (e.g. <strong>Lab 01</strong>). The graphic below displays an example folder structure.</p>
 <div class="figure">
-<img src="assets/images/01-01.png" alt="Step 2" />
-<p class="caption">Step 2</p>
+<img src="assets/images/01-01.png" />
+
 </div>
 <p><strong>Step 3</strong></p>
 <p>Open RStudio.</p>
@@ -228,32 +248,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Create a project by navigating to the upper right-hand corner of the program and clicking <strong>Project (None) » New Project</strong>.</li>
 </ol>
 <div class="figure">
-<img src="assets/images/01-02.png" alt="Step 4" />
-<p class="caption">Step 4</p>
+<img src="assets/images/01-02.png" />
+
 </div>
 <p><strong>Step 5</strong></p>
 <p>Select <strong>Existing Directory</strong>. Recall that in step 1, you created a file location for lab 1 — our data analysis project.</p>
 <div class="figure">
-<img src="assets/images/01-03.png" alt="Step 5" />
-<p class="caption">Step 5</p>
+<img src="assets/images/01-03.png" />
+
 </div>
 <p><strong>Step 6</strong></p>
 <p>Click <strong>Browse</strong> and navigate to where you created the <strong>Lab 01</strong> folder. Select this folder and then click <strong>Create Project</strong>.</p>
 <div class="figure">
-<img src="assets/images/01-04.png" alt="Step 6, 1" />
-<p class="caption">Step 6, 1</p>
+<img src="assets/images/01-04.png" />
+
 </div>
 <p>Your R project has now been created. Note that in the upper right-hand corner, the program indicates that you are working on the project named <strong>Lab 01</strong>.</p>
 <div class="figure">
-<img src="assets/images/01-05.png" alt="Step 6, 2" />
-<p class="caption">Step 6, 2</p>
+<img src="assets/images/01-05.png" />
+
 </div>
 <p><strong>Step 7</strong></p>
 <p>Creating an R script is the next MAJOR step in this process. Using a script file is key to organizing your code for quick reference. You should think of an R script file as a thorough record of how to conduct an analysis or solve the problem at hand. You should strive to make your R script as organized as possible so that someone else could work through your code and reproduce the same output/answers/results.</p>
 <p>To create an R script, go to the upper left-hand corner and click the white box icon then select <strong>R Script</strong>.</p>
 <div class="figure">
-<img src="assets/images/01-06.png" alt="Step 7" />
-<p class="caption">Step 7</p>
+<img src="assets/images/01-06.png" />
+
 </div>
 <p><strong>Step 8</strong></p>
 <p>Now you can proceed to write your code in the R Script. You can also save your progress by clicking on the save icon located in the icon bar. Notice that it is saved within your R project folder — <strong>Lab 01</strong> in this case. This is why we created an R project, so that all of our work for an analysis/project is kept in one central location.</p>
@@ -262,13 +282,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>You also have the option of running multiple lines of code by highlighting the lines of code and clicking <strong>Run</strong> or using the keyboard short cut.</p>
 <p>After running the command, the result will show up in your Console pane, which is located beneath the Script pane. In the screenshot below, you can see that our <code>2+2</code> command has generated an answer of <code>4</code>.</p>
 <div class="figure">
-<img src="assets/images/01-07.png" alt="Step 8" />
-<p class="caption">Step 8</p>
+<img src="assets/images/01-07.png" />
+
 </div>
 <p>Continue to practice writting an R script by reproducing the code depicted below. As the comments in the pictured code indicate, we are loading/reading-in the <code>arbuthnot</code> dataset. Then we are taking a look at some of the observations from the dataset by using the functions <code>head()</code> and <code>tail()</code>. Make sure to run the lines of code in order, otherwise the the software will return error messages. We suggest running one line at a time to ensure your code is typed correctly and to see what each line is doing.</p>
 <div class="figure">
-<img src="assets/images/01-08.png" alt="Step 8" />
-<p class="caption">Step 8</p>
+<img src="assets/images/01-08.png" />
+
 </div>
 <p>Notice the copious usage of comments in our analytic code. In general, analytic code should make liberal use of comments. The length and specificity of comments depends on a person’s experience with a coding language. With experience comes the understanding and ability to write concise comments that cut directly to what information is absolutely necessary to communicate. It never hurts to have more comments than actual executable code, especially for those new to coding. Keep in mind that in the future you might want to share analytic code with co-workers or peers, or go back to reference code months or years after you’ve written it.</p>
 <hr />
