@@ -1,6 +1,6 @@
 # Multiple Linear Regression
 
-This lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section. 
+This lab is structured to guide you through an organized process such that you could easily organize your code with comments --- meaning your R script --- into a lab report. We would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab --- including in the **Own Your Own** section. 
 
 * * *
 
