@@ -235,8 +235,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/ames.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;ames.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;ames.RData&quot;</span>)</code></pre></div>
 <p>We see that there are quite a few variables in the data set, enough to do a very in-depth analysis. For this lab, we’ll restrict our attention to just two of the variables: the above ground living area of the house in square feet (<code>Gr.Liv.Area</code>) and the sale price (<code>SalePrice</code>). To save some effort throughout the lab, create two variables with short names that represent these two variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">area &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area
-price &lt;-<span class="st"> </span>ames<span class="op">$</span>SalePrice</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">area &lt;-<span class="st"> </span>ames$Gr.Liv.Area
+price &lt;-<span class="st"> </span>ames$SalePrice</code></pre></div>
 <p>Let’s look at the distribution of area in our population of home sales by calculating a few summary statistics and making a histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(area)
 <span class="kw">hist</span>(area)
@@ -263,7 +263,7 @@ price &lt;-<span class="st"> </span>ames<span class="op">$</span>SalePrice</code
 <p>Not surprisingly, every time we take another random sample, we get a different sample mean. It’s useful to get a sense of just how much variability we should expect when estimating the population mean this way. The distribution of sample means, called the <em>sampling distribution</em>, can help us understand this variability. In this lab, because we have access to the population, we can build up the sampling distribution for the sample mean by repeating the above steps many times. Here we will generate 5000 samples and compute the sample mean of each.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means50 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
+for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
    samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">50</span>)
    sample_means50[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
    }
@@ -296,7 +296,7 @@ sample_means50[<span class="dv">4</span>] &lt;-<span class="st"> </span><span cl
 <p>With the for loop, these thousands of lines of code are compressed into a handful of lines. We’ve added one extra line to the code below, which prints the variable <code>i</code> during each iteration of the <code>for</code> loop. Run this code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means50 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
+for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
    samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">50</span>)
    sample_means50[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
    <span class="kw">print</span>(i)
@@ -319,7 +319,7 @@ sample_means50[<span class="dv">4</span>] &lt;-<span class="st"> </span><span cl
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means10 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 sample_means100 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
+for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">10</span>)
   sample_means10[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">100</span>)

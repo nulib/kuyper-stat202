@@ -314,71 +314,71 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>As you review the variable summaries, consider which variables are categorical and which are numerical. For numerical variables, are there outliers? If you aren’t sure or want to take a closer look at the data, make a graph.</p>
 <p>Suppose we want to investigate the typical age for mothers and fathers in North Carolina. Begin by constructing histograms, box plots, and calculating summary statistics.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mother&#39;s age</span>
-<span class="kw">hist</span>(nc<span class="op">$</span>mage)
-<span class="kw">boxplot</span>(nc<span class="op">$</span>mage, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)
-<span class="kw">summary</span>(nc<span class="op">$</span>mage)
-<span class="kw">sd</span>(nc<span class="op">$</span>mage)
-<span class="kw">IQR</span>(nc<span class="op">$</span>mage)
+<span class="kw">hist</span>(nc$mage)
+<span class="kw">boxplot</span>(nc$mage, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)
+<span class="kw">summary</span>(nc$mage)
+<span class="kw">sd</span>(nc$mage)
+<span class="kw">IQR</span>(nc$mage)
 
 <span class="co"># Father&#39;s age</span>
-<span class="kw">hist</span>(nc<span class="op">$</span>fage)
-<span class="kw">boxplot</span>(nc<span class="op">$</span>fage, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)
-<span class="kw">summary</span>(nc<span class="op">$</span>fage)
-<span class="kw">sd</span>(nc<span class="op">$</span>fage)
-<span class="kw">IQR</span>(nc<span class="op">$</span>fage)</code></pre></div>
+<span class="kw">hist</span>(nc$fage)
+<span class="kw">boxplot</span>(nc$fage, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>)
+<span class="kw">summary</span>(nc$fage)
+<span class="kw">sd</span>(nc$fage)
+<span class="kw">IQR</span>(nc$fage)</code></pre></div>
 <p>Note that <code>sd(nc$fage)</code> or <code>IQR(nc$fage)</code> do not return valid output/values. The summary output indicated that there were 171 births where a father’s age was missing or not reported. By default most R function will not return valid output when data is missing. This can be fixed by adding the argument <code>na.rm = TRUE</code> in the function call – see below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Father&#39;s age continued</span>
-<span class="kw">sd</span>(nc<span class="op">$</span>fage, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-<span class="kw">IQR</span>(nc<span class="op">$</span>fage, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">sd</span>(nc$fage, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<span class="kw">IQR</span>(nc$fage, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>Suppose we want to test the hypothesis that the mean age for women giving birth in North Carolina is 26.5 years. Calculating by “hand”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample Data</span>
-xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(nc<span class="op">$</span>mage)
-std &lt;-<span class="st"> </span><span class="kw">sd</span>(nc<span class="op">$</span>mage)
-samp_size &lt;-<span class="st"> </span><span class="kw">length</span>(nc<span class="op">$</span>mage)
+xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(nc$mage)
+std &lt;-<span class="st"> </span><span class="kw">sd</span>(nc$mage)
+samp_size &lt;-<span class="st"> </span><span class="kw">length</span>(nc$mage)
 
 <span class="co"># Hypothesis Test -- Calculating p-value</span>
-dof &lt;-<span class="st"> </span>samp_size <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
-std_err &lt;-<span class="st"> </span>std<span class="op">/</span><span class="kw">sqrt</span>(samp_size)
-test_stat &lt;-<span class="st"> </span>(xbar <span class="op">-</span><span class="st"> </span><span class="fl">26.5</span>)<span class="op">/</span>std_err
-p_value &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
+dof &lt;-<span class="st"> </span>samp_size -<span class="st"> </span><span class="dv">1</span>
+std_err &lt;-<span class="st"> </span>std/<span class="kw">sqrt</span>(samp_size)
+test_stat &lt;-<span class="st"> </span>(xbar -<span class="st"> </span><span class="fl">26.5</span>)/std_err
+p_value &lt;-<span class="st"> </span><span class="dv">2</span>*<span class="kw">pt</span>(-<span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
 p_value
 
 <span class="co"># Constructing 95% CI for the mean</span>
 t_star &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> .<span class="dv">975</span>, <span class="dt">df =</span> dof)
-LB &lt;-<span class="st"> </span>xbar <span class="op">-</span><span class="st"> </span>t_star<span class="op">*</span>std_err
-UB &lt;-<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span>t_star<span class="op">*</span>std_err
+LB &lt;-<span class="st"> </span>xbar -<span class="st"> </span>t_star*std_err
+UB &lt;-<span class="st"> </span>xbar +<span class="st"> </span>t_star*std_err
 <span class="kw">c</span>(LB,UB)</code></pre></div>
 <p>Since our p-value is less than significance level <span class="math inline">\(\alpha\)</span> (0.05), we have sufficient evidence to reject that the mean age of women giving birth in North Carolina is 26.5 years old. Note that 26.5 is not in the 95% confidence interval for the mean age of birthing women in NC. Two-tailed hypothesis tests for the mean with significance level <span class="math inline">\(\alpha\)</span> are logically equivalent to <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for the mean – <strong>this is a big deal</strong>.</p>
 <p>Let’s make use of the <code>t.test()</code> function now. The function has several inputs that you should become familiar with and work to understand.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mother&#39;s mean age -- HT and 95% CI</span>
-<span class="kw">t.test</span>(<span class="dt">x =</span> nc<span class="op">$</span>mage, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="fl">26.5</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
+<span class="kw">t.test</span>(<span class="dt">x =</span> nc$mage, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="fl">26.5</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
 <blockquote>
 <p><strong>Exercise 2:</strong> Suppose now we want test whether the mean age of NC fathers is 30 years. Use <span class="math inline">\(\alpha = 0.01\)</span>. Also construct a 99% confidence interval for the mean. Calculate by “hand” and by using <code>t.test()</code>. <em>Hint: When calculating by “hand”, missing values can be an issue so first extract and store the useful observations as shown below. The <code>t.test()</code> takes care of missingness automatically.</em></p>
 </blockquote>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract and store useful data</span>
-keep_condition &lt;-<span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(nc<span class="op">$</span>fage)
-f_age &lt;-<span class="st"> </span>nc<span class="op">$</span>fage[keep_condition]</code></pre></div>
+keep_condition &lt;-<span class="st"> </span>!<span class="kw">is.na</span>(nc$fage)
+f_age &lt;-<span class="st"> </span>nc$fage[keep_condition]</code></pre></div>
 <p>Suppose a researcher wants to test the hypothesis that in NC the mean age of fathers is different than the mean age of mothers at birth – assume an <span class="math inline">\(\alpha = 0.01\)</span>. This is a test for the difference in two population means, which requires us to ask whether the data for the two groups (mothers and fathers) is paired or not. Clearly, the data is paired since each mother and father can be reasonably matched together. First by “hand”,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Paired -- only need the differences in age</span>
-age_diff &lt;-<span class="st"> </span>nc<span class="op">$</span>mage <span class="op">-</span><span class="st"> </span>nc<span class="op">$</span>fage  
+age_diff &lt;-<span class="st"> </span>nc$mage -<span class="st"> </span>nc$fage  
 <span class="kw">summary</span>(age_diff)
 
 <span class="co"># Diff. sample statistics -- note their are missing values</span>
 xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(age_diff, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 std &lt;-<span class="st"> </span><span class="kw">sd</span>(age_diff, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-samp_size &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(age_diff))
+samp_size &lt;-<span class="st"> </span><span class="kw">sum</span>(!<span class="kw">is.na</span>(age_diff))
 
 <span class="co"># Hypothesis Test -- Calculating p-value</span>
-dof &lt;-<span class="st"> </span>samp_size <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
-std_err &lt;-<span class="st"> </span>std<span class="op">/</span><span class="kw">sqrt</span>(samp_size)
-test_stat &lt;-<span class="st"> </span>(xbar <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">/</span>std_err
-p_value &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
+dof &lt;-<span class="st"> </span>samp_size -<span class="st"> </span><span class="dv">1</span>
+std_err &lt;-<span class="st"> </span>std/<span class="kw">sqrt</span>(samp_size)
+test_stat &lt;-<span class="st"> </span>(xbar -<span class="st"> </span><span class="dv">0</span>)/std_err
+p_value &lt;-<span class="st"> </span><span class="dv">2</span>*<span class="kw">pt</span>(-<span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
 p_value
 
 <span class="co"># Constructing 99% CI for the mean</span>
 t_star &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> .<span class="dv">995</span>, <span class="dt">df =</span> dof)
-LB &lt;-<span class="st"> </span>xbar <span class="op">-</span><span class="st"> </span>t_star<span class="op">*</span>std_err
-UB &lt;-<span class="st"> </span>xbar <span class="op">+</span><span class="st"> </span>t_star<span class="op">*</span>std_err
+LB &lt;-<span class="st"> </span>xbar -<span class="st"> </span>t_star*std_err
+UB &lt;-<span class="st"> </span>xbar +<span class="st"> </span>t_star*std_err
 <span class="kw">c</span>(LB,UB)</code></pre></div>
 <p>Using <code>t.test()</code> – a few coding options.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Option 1: Calculate the differences externally and feed</span>
@@ -387,13 +387,13 @@ UB &lt;-<span class="st"> </span>xbar <span class="op">+</span><span class="st">
 
 <span class="co"># Option 2: Let the function calculate the differences by</span>
 <span class="co"># setting paired = TRUE</span>
-<span class="kw">t.test</span>(<span class="dt">x =</span> nc<span class="op">$</span>mage, <span class="dt">y =</span> nc<span class="op">$</span>fage, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">t.test</span>(<span class="dt">x =</span> nc$mage, <span class="dt">y =</span> nc$fage, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>Now consider the possible relationship between a mother’s smoking habit and the weight of her baby. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions.</p>
 <blockquote>
 <p><strong>Exercise 3:</strong> Make a side-by-side box plot of <code>habit</code> and <code>weight</code>. What does the plot highlight about the relationship between these two variables?</p>
 </blockquote>
 <p>The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following function to split the <code>weight</code> variable into the <code>habit</code> groups, then take the mean of each using the <code>mean</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(nc<span class="op">$</span>weight, nc<span class="op">$</span>habit, mean)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(nc$weight, nc$habit, mean)</code></pre></div>
 <p>There is an observed difference, but is this difference statistically significant? In order to answer this question we will conduct a hypothesis test.</p>
 <blockquote>
 <p><strong>Exercise 4:</strong> Check if the conditions necessary for inference are satisfied. Note that you will need to obtain sample sizes to check the conditions. You can compute the group size using the same <code>by</code> command above but replacing <code>mean</code> with <code>length</code>.</p>
@@ -403,28 +403,28 @@ UB &lt;-<span class="st"> </span>xbar <span class="op">+</span><span class="st">
 </blockquote>
 <p>Again, this a hypothesis test for a difference of two means, but in this case the data is not paired – there is no reasonable way of matching members from one group (smokers) to the other (non-smokers). Are the two groups independent from one another? There is no reason to believe that the groups are dependent since the records were randomly sampled. First by “hand”,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sample statistics for baby weights for smoking mothers</span>
-grp1 &lt;-<span class="st"> </span>nc<span class="op">$</span>weight[nc<span class="op">$</span>habit <span class="op">==</span><span class="st"> &quot;smoker&quot;</span>]
+grp1 &lt;-<span class="st"> </span>nc$weight[nc$habit ==<span class="st"> &quot;smoker&quot;</span>]
 xbar1 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp1, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 std1 &lt;-<span class="st"> </span><span class="kw">sd</span>(grp1, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-samp_size1 &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(grp1))
+samp_size1 &lt;-<span class="st"> </span><span class="kw">sum</span>(!<span class="kw">is.na</span>(grp1))
 
 <span class="co"># Sample statistics for baby weights for nonsmoking mothers</span>
-grp2 &lt;-<span class="st"> </span>nc<span class="op">$</span>weight[nc<span class="op">$</span>habit <span class="op">==</span><span class="st"> &quot;nonsmoker&quot;</span>]
+grp2 &lt;-<span class="st"> </span>nc$weight[nc$habit ==<span class="st"> &quot;nonsmoker&quot;</span>]
 xbar2 &lt;-<span class="st"> </span><span class="kw">mean</span>(grp2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 std2 &lt;-<span class="st"> </span><span class="kw">sd</span>(grp2, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
-samp_size2 &lt;-<span class="st"> </span><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(grp2))
+samp_size2 &lt;-<span class="st"> </span><span class="kw">sum</span>(!<span class="kw">is.na</span>(grp2))
 
 <span class="co"># Hypothesis Test -- Calculating p-value</span>
-dof &lt;-<span class="st"> </span><span class="kw">min</span>(<span class="kw">c</span>(samp_size1,samp_size2)) <span class="op">-</span><span class="st"> </span><span class="dv">1</span> 
-std_err &lt;-<span class="st"> </span><span class="kw">sqrt</span>(std1<span class="op">^</span><span class="dv">2</span><span class="op">/</span>samp_size1 <span class="op">+</span><span class="st"> </span>std2<span class="op">^</span><span class="dv">2</span><span class="op">/</span>samp_size2)
-test_stat &lt;-<span class="st"> </span>(xbar1<span class="op">-</span>xbar2 <span class="op">-</span><span class="st"> </span><span class="dv">0</span>)<span class="op">/</span>std_err
-p_value &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="op">-</span><span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
+dof &lt;-<span class="st"> </span><span class="kw">min</span>(<span class="kw">c</span>(samp_size1,samp_size2)) -<span class="st"> </span><span class="dv">1</span> 
+std_err &lt;-<span class="st"> </span><span class="kw">sqrt</span>(std1^<span class="dv">2</span>/samp_size1 +<span class="st"> </span>std2^<span class="dv">2</span>/samp_size2)
+test_stat &lt;-<span class="st"> </span>(xbar1-xbar2 -<span class="st"> </span><span class="dv">0</span>)/std_err
+p_value &lt;-<span class="st"> </span><span class="dv">2</span>*<span class="kw">pt</span>(-<span class="kw">abs</span>(test_stat),<span class="dt">df =</span> dof)
 p_value
 
 <span class="co"># Constructing 95% CI for the mean</span>
 t_star &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dt">p =</span> .<span class="dv">975</span>, <span class="dt">df =</span> dof)
-LB &lt;-<span class="st"> </span>(xbar1 <span class="op">-</span><span class="st"> </span>xbar2) <span class="op">-</span><span class="st"> </span>t_star<span class="op">*</span>std_err
-UB &lt;-<span class="st"> </span>(xbar1 <span class="op">-</span><span class="st"> </span>xbar2) <span class="op">+</span><span class="st"> </span>t_star<span class="op">*</span>std_err
+LB &lt;-<span class="st"> </span>(xbar1 -<span class="st"> </span>xbar2) -<span class="st"> </span>t_star*std_err
+UB &lt;-<span class="st"> </span>(xbar1 -<span class="st"> </span>xbar2) +<span class="st"> </span>t_star*std_err
 <span class="kw">c</span>(LB,UB)</code></pre></div>
 <p>Using <code>t.test()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note taht grp1 and grp2 come from above</span>

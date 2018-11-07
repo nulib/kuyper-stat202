@@ -71,7 +71,7 @@ Depending on which 50 homes you selected, your estimate could be a bit above or 
 
 ---
 
-Not surprisingly, every time we take another random sample, we get a different sample mean.  It's useful to get a sense of just how much variability we should expect when estimating the population mean this way. The distribution of sample means, called the *sampling distribution*, can help us understand this variability. In this lab, because we have access to the population, we can build up the sampling distribution for the sample mean by repeating the above steps many times. Here we will generate 5000 samples and compute the sample mean of each.
+Not surprisingly, every time we take another random sample, we get a different sample mean. It's useful to get a sense of just how much variability we should expect when estimating the population mean this way. The distribution of sample means, called the *sampling distribution*, can help us understand this variability. In this lab, because we have access to the population, we can build up the sampling distribution for the sample mean by repeating the above steps many times. Here we will generate 5000 samples and compute the sample mean of each.
 
 ```{r eval=FALSE}
 sample_means50 <- rep(NA, 5000)

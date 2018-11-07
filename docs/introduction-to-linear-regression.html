@@ -240,7 +240,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Exercise 1:</strong> What type of plot would you use to display the relationship between <code>runs</code> and one of the other numerical variables? Plot this relationship using the variable <code>at_bats</code> as the predictor. Does the relationship look linear? If you knew a team’s <code>at_bats</code>, would you be comfortable using a linear model to predict the number of runs?</p>
 <hr />
 <p>If the relationship looks linear, we can quantify the strength of the relationship with the correlation coefficient.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(mlb11<span class="op">$</span>runs, mlb11<span class="op">$</span>at_bats)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(mlb11$runs, mlb11$at_bats)</code></pre></div>
 </div>
 <div id="sum-of-squared-residuals" class="section level2">
 <h2><span class="header-section-number">9.3</span> Sum of squared residuals</h2>
@@ -249,13 +249,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Exercise 2:</strong> Looking at your plot from the previous exercise, describe the relationship between these two variables. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.</p>
 <hr />
 <p>Just as we used the mean and standard deviation to summarize a single variable, we can summarize the relationship between these two variables by finding the line that best follows their association. Use the following interactive function to select the line that you think does the best job of going through the cloud of points.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ss</span>(<span class="dt">x =</span> mlb11<span class="op">$</span>at_bats, <span class="dt">y =</span> mlb11<span class="op">$</span>runs)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ss</span>(<span class="dt">x =</span> mlb11$at_bats, <span class="dt">y =</span> mlb11$runs)</code></pre></div>
 <p>After running this command, you’ll be prompted to click two points on the plot to define a line. Once you’ve done that, the line you specified will be shown in black and the residuals in blue. Note that there are 30 residuals, one for each of the 30 observations. Recall that the residuals are the difference between the observed values and the values predicted by the line:</p>
 <p><span class="math display">\[
   e_i = y_i - \hat{y}_i
 \]</span></p>
 <p>The most common way to do linear regression is to select the line that minimizes the sum of squared residuals. To visualize the squared residuals, you can rerun the plot command and add the argument <code>showSquares = TRUE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ss</span>(<span class="dt">x =</span> mlb11<span class="op">$</span>at_bats, <span class="dt">y =</span> mlb11<span class="op">$</span>runs, <span class="dt">showSquares =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ss</span>(<span class="dt">x =</span> mlb11$at_bats, <span class="dt">y =</span> mlb11$runs, <span class="dt">showSquares =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>Note that the output from the <code>plot_ss</code> function provides you with the slope and intercept of your line as well as the sum of squares.</p>
 <hr />
 <p><strong>Exercise 3:</strong> Using <code>plot_ss</code>, choose a line that does a good job of minimizing the sum of squares. Run the function several times. What was the smallest sum of squares that you got? How does it compare to your neighbors?</p>
@@ -264,7 +264,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="the-linear-model" class="section level2">
 <h2><span class="header-section-number">9.4</span> The linear model</h2>
 <p>It is rather cumbersome to try to get the correct least squares line, i.e. the line that minimizes the sum of squared residuals, through trial and error. Instead we can use the <code>lm</code> function in R to fit the linear model (a.k.a. regression line).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>at_bats, <span class="dt">data =</span> mlb11)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(runs ~<span class="st"> </span>at_bats, <span class="dt">data =</span> mlb11)</code></pre></div>
 <p>The first argument in the function <code>lm</code> is a formula that takes the form <code>y ~ x</code>. Here it can be read that we want to make a linear model of <code>runs</code> as a function of <code>at_bats</code>. The second argument specifies that R should look in the <code>mlb11</code> data frame to find the <code>runs</code> and <code>at_bats</code> variables.</p>
 <p>The output of <code>lm</code> is an object that contains all of the information we need about the linear model that was just fit. We can access this information using the summary function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(m1)</code></pre></div>
@@ -280,7 +280,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="prediction-and-prediction-errors" class="section level2">
 <h2><span class="header-section-number">9.5</span> Prediction and prediction errors</h2>
 <p>Let’s create a scatterplot with the least squares line laid on top.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mlb11<span class="op">$</span>runs <span class="op">~</span><span class="st"> </span>mlb11<span class="op">$</span>at_bats)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mlb11$runs ~<span class="st"> </span>mlb11$at_bats)
 <span class="kw">abline</span>(m1)</code></pre></div>
 <p>The function <code>abline</code> plots a line based on its slope and intercept. Here, we used a shortcut by providing the model <code>m1</code>, which contains both parameter estimates. This line can be used to predict <span class="math inline">\(y\)</span> at any value of <span class="math inline">\(x\)</span>. When predictions are made for values of <span class="math inline">\(x\)</span> that are beyond the range of the observed data, it is referred to as <em>extrapolation</em> and is not usually recommended. However, predictions made within the range of the data are more reliable. They’re also used to compute the residuals.</p>
 <hr />
@@ -291,22 +291,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">9.6</span> Model diagnostics</h2>
 <p>To assess whether the linear model is reliable, we need to check for (1) linearity, (2) nearly normal residuals, and (3) constant variability.</p>
 <p><em>Linearity</em>: You already checked if the relationship between runs and at-bats is linear using a scatterplot. We should also verify this condition with a plot of the residuals vs. at-bats. Recall that any code following a <em>#</em> is intended to be a comment that helps understand the code but is ignored by R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(m1<span class="op">$</span>residuals <span class="op">~</span><span class="st"> </span>mlb11<span class="op">$</span>at_bats)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(m1$residuals ~<span class="st"> </span>mlb11$at_bats)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">3</span>)  <span class="co"># adds a horizontal dashed line at y = 0</span></code></pre></div>
 <hr />
 <p><strong>Exercise 6:</strong> Is there any apparent pattern in the residuals plot? What does this indicate about the linearity of the relationship between runs and at-bats?</p>
 <hr />
 <p><em>Nearly normal residuals</em>: To check this condition, we can look at a histogram</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(m1<span class="op">$</span>residuals)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(m1$residuals)</code></pre></div>
 <p>or a normal probability plot of the residuals. Consider simulating normal probability plots for an adequate benchmark for determining suitability of the normality assumption.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(m1<span class="op">$</span>residuals)
-<span class="kw">qqline</span>(m1<span class="op">$</span>residuals)  <span class="co"># adds diagonal line to the normal prob plot</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qqnorm</span>(m1$residuals)
+<span class="kw">qqline</span>(m1$residuals)  <span class="co"># adds diagonal line to the normal prob plot</span></code></pre></div>
 <hr />
 <p><strong>Exercise 7:</strong> Based on the histogram and the normal probability plot, does the nearly normal residuals condition appear to be met?</p>
 <hr />
 <p><em>Constant variability</em>: We can check the constant variability assumption by plotting the residuals (standardized) vs the model’s fitted-values. If there should be no clear relationship concerning the disbursement of points around a horizontal line at 0 (since residuals are scaled), then we conclude that the constant variability assumption is appropriate.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">std_residuals &lt;-<span class="st"> </span><span class="kw">scale</span>(m1<span class="op">$</span>residuals) <span class="co"># standardizes residuals</span>
-<span class="kw">plot</span>(<span class="dt">x =</span> m1<span class="op">$</span>fitted.values, <span class="dt">y =</span> std_residuals)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">std_residuals &lt;-<span class="st"> </span><span class="kw">scale</span>(m1$residuals) <span class="co"># standardizes residuals</span>
+<span class="kw">plot</span>(<span class="dt">x =</span> m1$fitted.values, <span class="dt">y =</span> std_residuals)
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="co"># adds dashed horizontal line</span></code></pre></div>
 <hr />
 <p><strong>Exercise 8:</strong> Based on the plot, does the constant variability condition appear to be met?</p>

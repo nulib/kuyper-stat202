@@ -235,7 +235,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/ames.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;ames.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;ames.RData&quot;</span>)</code></pre></div>
 <p>In this lab we’ll start with a simple random sample of size 60 from the population. Specifically, this is a simple random sample of size 60. Note that the data set has information on many housing variables, but for the first portion of the lab we’ll focus on the size of the house, represented by the variable <code>Gr.Liv.Area</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span>ames$Gr.Liv.Area
 samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <span class="dv">60</span>)</code></pre></div>
 <hr />
 <p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
@@ -251,9 +251,9 @@ samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <s
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.975</span>) <span class="co"># or</span>
 <span class="kw">qnorm</span>(<span class="fl">0.025</span>) <span class="co"># which is the negative version</span></code></pre></div>
 <p>Note that if we take 0.975 - 0.025 we get 0.95. Each tail is set to have area 0.025. Usually two decimal places of accuracy is suffcient when determining the appropriate <span class="math inline">\(z^*\)</span> value for a given confidence level. Therefore we will continue using 1.96, but keep the function above in mind when you desire to use a different confidence level or you need more precision.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se &lt;-<span class="st"> </span><span class="kw">sd</span>(samp) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">60</span>)
-lower &lt;-<span class="st"> </span>sample_mean <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se
-upper &lt;-<span class="st"> </span>sample_mean <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se &lt;-<span class="st"> </span><span class="kw">sd</span>(samp) /<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">60</span>)
+lower &lt;-<span class="st"> </span>sample_mean -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>se
+upper &lt;-<span class="st"> </span>sample_mean +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>se
 <span class="kw">c</span>(lower, upper)</code></pre></div>
 <p>This is an important inference that we’ve just made: even though we don’t know what the full population looks like, we’re 95% confident that the true average size of houses in Ames lies between the values <em>lower</em> and <em>upper</em>. There are a few conditions that must be met for this interval to be valid.</p>
 <hr />
@@ -284,14 +284,14 @@ upper &lt;-<span class="st"> </span>sample_mean <span class="op">+</span><span c
 samp_sd &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">500</span>)
 n &lt;-<span class="st"> </span><span class="dv">60</span></code></pre></div>
 <p>Now we’re ready for the loop where we calculate the means and standard deviations of 500 random samples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">500</span>){
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, n) <span class="co"># obtain a sample of size n = 60 from the population</span>
   samp_mean[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)    <span class="co"># save sample mean in ith element of samp_mean</span>
   samp_sd[i] &lt;-<span class="st"> </span><span class="kw">sd</span>(samp)        <span class="co"># save sample sd in ith element of samp_sd</span>
 }</code></pre></div>
 <p>Lastly, we construct the confidence intervals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lower_vector &lt;-<span class="st"> </span>samp_mean <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>samp_sd <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)
-upper_vector &lt;-<span class="st"> </span>samp_mean <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>samp_sd <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lower_vector &lt;-<span class="st"> </span>samp_mean -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>samp_sd /<span class="st"> </span><span class="kw">sqrt</span>(n)
+upper_vector &lt;-<span class="st"> </span>samp_mean +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>samp_sd /<span class="st"> </span><span class="kw">sqrt</span>(n)</code></pre></div>
 <p>Lower bounds of these 500 confidence intervals are stored in <code>lower_vector</code>, and the upper bounds are in <code>upper_vector</code>. Let’s view the first interval.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(lower_vector[<span class="dv">1</span>], upper_vector[<span class="dv">1</span>])</code></pre></div>
 <hr />
