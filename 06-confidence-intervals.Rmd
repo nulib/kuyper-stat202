@@ -161,7 +161,7 @@ c(lower_vector[1], upper_vector[1])
 
 ## On your own
 
--   Using the function `plot_ci()` (which was downloaded with the data set), we are able to plot the first fifity 95% confidence intervals of our 500. What proportion of the 50 plotted confidence intervals include the true population mean? Is this proportion exactly equal to the confidence level? If not, explain why. Devise and implement a process to calculate the number (and proportion) of confidence intervals that include the true population for all 500 95% confidence intervals - you don't want to have to plot and count by hand.  
+-   Using the function `plot_ci()` (which was downloaded with the data set), we are able to plot the first fifty 95% confidence intervals of our 500. What proportion of the 50 plotted confidence intervals include the true population mean? Is this proportion exactly equal to the confidence level? If not, explain why. Devise and implement a process to calculate the number (and proportion) of confidence intervals that include the true population for all 500 95% confidence intervals - you don't want to have to plot and count by hand.  
 
     ```{r plot-ci, eval=FALSE}
     plot_ci(lower_vector, upper_vector, mean(population))
