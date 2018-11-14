@@ -69,7 +69,7 @@ sd(nc$fage)
 IQR(nc$fage)
 ```
 
-Note that `sd(nc$fage)` or `IQR(nc$fage)` do not return valid output/values. The summary output indicated that there were 171 births where a father's age was missing or not reported. By default most R function will not return valid output when data is missing. This can be fixed by adding the argument `na.rm = TRUE` in the function call -- see below.
+Note that `sd(nc$fage)` or `IQR(nc$fage)` do not return valid output/values. The summary output indicated that there were 171 births where a father's age was missing or not reported. By default most R functions will not return valid output when data is missing. This can be fixed by adding the argument `na.rm = TRUE` in the function call -- see below.
 
 ```{r, eval = FALSE}
 # Father's age continued

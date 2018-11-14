@@ -71,7 +71,7 @@ qnorm(0.975) # or
 qnorm(0.025) # which is the negative version
 ```
 
-Note that if we take 0.975 - 0.025 we get 0.95. Each tail is set to have area 0.025. Usually two decimal places of accuracy is suffcient when determining the appropriate $z^*$ value for a given confidence level. Therefore we will continue using 1.96, but keep the function above in mind when you desire to use a different confidence level or you need more precision.
+Note that if we take 0.975 - 0.025 we get 0.95. Each tail is set to have area 0.025. Usually two decimal places of accuracy is sufficient when determining the appropriate $z^*$ value for a given confidence level. Therefore we will continue using 1.96, but keep the function above in mind when you desire to use a different confidence level or you need more precision.
 
 ```{r ci, eval=FALSE}
 se <- sd(samp) / sqrt(60)
