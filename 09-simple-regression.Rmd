@@ -14,7 +14,7 @@ In this lab we'll be looking at data from all 30 Major League Baseball teams and
 
 Let's load up the data for the 2011 season.
 
-```{r , eval=FALSE}
+```{r, eval = FALSE}
 download.file("http://www.openintro.org/stat/data/mlb11.RData", destfile = "mlb11.RData")
 load("mlb11.RData")
 ```
@@ -35,7 +35,7 @@ work with the newer variables on your own.
 If the relationship looks linear, we can quantify the strength of the
 relationship with the correlation coefficient.
 
-```{r cor, eval=FALSE}
+```{r cor, eval = FALSE}
 cor(mlb11$runs, mlb11$at_bats)
 ```
 
@@ -51,7 +51,7 @@ Think back to the way that we described the distribution of a single variable. R
 
 Just as we used the mean and standard deviation to summarize a single variable, we can summarize the relationship between these two variables by finding the line that best follows their association. Use the following interactive function to select the line that you think does the best job of going through the cloud of points.
 
-```{r plotss-atbats-runs, eval=FALSE}
+```{r plotss-atbats-runs, eval = FALSE}
 plot_ss(x = mlb11$at_bats, y = mlb11$runs)
 ```
 
@@ -64,7 +64,7 @@ of the 30 observations. Recall that the residuals are the difference between the
 
 The most common way to do linear regression is to select the line that minimizes the sum of squared residuals. To visualize the squared residuals, you can rerun the plot command and add the argument `showSquares = TRUE`.
 
-```{r plotss-atbats-runs-squares, eval=FALSE}
+```{r plotss-atbats-runs-squares, eval = FALSE}
 plot_ss(x = mlb11$at_bats, y = mlb11$runs, showSquares = TRUE)
 ```
 
@@ -80,7 +80,7 @@ Note that the output from the `plot_ss` function provides you with the slope and
 
 It is rather cumbersome to try to get the correct least squares line, i.e. the line that minimizes the sum of squared residuals, through trial and error. Instead we can use the `lm` function in R to fit the linear model (a.k.a. regression line).
 
-```{r m1, eval=FALSE}
+```{r m1, eval = FALSE}
 m1 <- lm(runs ~ at_bats, data = mlb11)
 ```
 
@@ -88,7 +88,7 @@ The first argument in the function `lm` is a formula that takes the form `y ~ x`
 
 The output of `lm` is an object that contains all of the information we need about the linear model that was just fit. We can access this information using the summary function.
 
-```{r summary-m1, eval=FALSE}
+```{r summary-m1, eval = FALSE}
 summary(m1)
 ```
 
@@ -110,7 +110,7 @@ One last piece of information we will discuss from the summary output is the Mul
 
 Let's create a scatterplot with the least squares line laid on top.
 
-```{r reg-with-line, eval=FALSE}
+```{r reg-with-line, eval = FALSE}
 plot(mlb11$runs ~ mlb11$at_bats)
 abline(m1)
 ```
@@ -129,7 +129,7 @@ To assess whether the linear model is reliable, we need to check for (1) lineari
 
 *Linearity*: You already checked if the relationship between runs and at-bats is linear using a scatterplot. We should also verify this condition with a plot of the residuals vs. at-bats. Recall that any code following a *#* is intended to be a comment that helps understand the code but is ignored by R.
 
-```{r residuals, eval=FALSE}
+```{r residuals, eval = FALSE}
 plot(m1$residuals ~ mlb11$at_bats)
 abline(h = 0, lty = 3)  # adds a horizontal dashed line at y = 0
 ```
@@ -142,13 +142,13 @@ abline(h = 0, lty = 3)  # adds a horizontal dashed line at y = 0
 
 *Nearly normal residuals*: To check this condition, we can look at a histogram
 
-```{r hist-res, eval=FALSE}
+```{r hist-res, eval = FALSE}
 hist(m1$residuals)
 ```
 
 or a normal probability plot of the residuals. Consider simulating normal probability plots for an adequate benchmark for determining suitability of the normality assumption.
 
-```{r eval=FALSE}
+```{r qq-res, eval = FALSE}
 qqnorm(m1$residuals)
 qqline(m1$residuals)  # adds diagonal line to the normal prob plot
 ```
@@ -161,7 +161,7 @@ qqline(m1$residuals)  # adds diagonal line to the normal prob plot
 
 *Constant variability*: We can check the constant variability assumption by plotting the residuals (standardized) vs the model's fitted-values. If there should be no clear relationship concerning the disbursement of points around a horizontal line at 0 (since residuals are scaled), then we conclude that the constant variability assumption is appropriate.   
 
-```{r eval=FALSE}
+```{r eval = FALSE}
 std_residuals <- scale(m1$residuals) # standardizes residuals
 plot(x = m1$fitted.values, y = std_residuals)
 abline(h = 0, lty = "dashed") # adds dashed horizontal line

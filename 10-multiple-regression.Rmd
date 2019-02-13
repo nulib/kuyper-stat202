@@ -14,7 +14,7 @@ In this lab we'll be looking at data from all 30 Major League Baseball teams and
 
 Let's load up the data for the 2011 season.
 
-```{r , eval=FALSE}
+```{r, eval = FALSE}
 download.file("http://www.openintro.org/stat/data/mlb11.RData", destfile = "mlb11.RData")
 load("mlb11.RData")
 ```
@@ -28,13 +28,13 @@ work with the newer variables on your own.
 
 We also would like to modify the data so that it easier to work with during model selection. We remove the variable team from the dataset and store the updated verison in `mlb11_wins`.  
 
-```{r remove-team, eval=FALSE}
+```{r remove-team, eval = FALSE}
 mlb11_wins <- mlb11[,-1] # since team is in the first column we can us -1 to remove it
 ```
 
 Since `wins` is not a player level statistic - at least for non-pitchers - we do not want to use it when predicting `runs`. Therefore we are going to create another modified dataset to utilize when attempting to find the best model for predicting the total number of `runs` for a team during a season. The reverse is not an issue when attempting to predict a team's number of wins for a season - `runs` can be used to predict `wins`.  
 
-```{r modifiy-runs, eval=FALSE}
+```{r modifiy-runs, eval = FALSE}
 mlb11_runs <- mlb11_wins[,-8] # since wins is in the 8th column we can us -8 to remove it
 ```
 
@@ -75,7 +75,7 @@ summary(runs_backAIC)
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting backward selection. Remember that $R^2_{adj}$ indicates a better model.
 
 ```{r runs_backADJr_step1, eval = FALSE, tidy = FALSE}
-## Step 1
+# Step 1
 summary(lm(runs ~ . , mlb11_runs))$adj.r
 summary(lm(runs ~ . - at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ . - hits, mlb11_runs))$adj.r
@@ -91,7 +91,7 @@ summary(lm(runs ~ . - new_obs, mlb11_runs))$adj.r
 Since the model which removed `new_onbase` has the highest $R^2_{adj}$ we move onto step 2 using that model and continue by removing one variable at a time and calculate the new $R^2_{adj}$ for each model.
 
 ```{r runs_backADJr_step2, eval = FALSE, tidy = FALSE}
-## Step 2
+# Step 2
 summary(lm(runs ~ . - new_onbase, mlb11_runs))$adj.r
 summary(lm(runs ~ . - new_onbase - at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ . - new_onbase - hits, mlb11_runs))$adj.r
@@ -106,7 +106,7 @@ summary(lm(runs ~ . - new_onbase - new_obs, mlb11_runs))$adj.r
 Since the model in step 2 that removed `strikeouts` has the highest $R^2_{adj}$ we move onto step 3 using the model that now has both `new_onbase` and `strikeouts` removed and continue by removing one variable at a time and calculating the new $R^2_{adj}$ for each model.
 
 ```{r runs_backADJr_step3, eval = FALSE, tidy = FALSE}
-## Step 3
+# Step 3
 summary(lm(runs ~ . - new_onbase - strikeouts, mlb11_runs))$adj.r
 summary(lm(runs ~ . - new_onbase - strikeouts - at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ . - new_onbase - strikeouts - hits, mlb11_runs))$adj.r
@@ -129,28 +129,28 @@ summary(runs_backADJr)
 Finally let's use a p-value method with a 0.05 significance level as our criterion when conducting backward selection. Remember that higher p-values are bad so we remove a variable when if it has the highest p-value which is greater than 0.05. If all p-values are less than 0.05 then we stop and we have arrived at our final model. Fortunately, R does have a function that makes this easier whish is `drop1()` - `add1()` is for forward selection. We must input the model fit and then indicate that `test = "F"` so p-values are printed. 
 
 ```{r runs_backPval_step1, eval = FALSE, tidy = FALSE}
-## Step 1
+# Step 1
 drop1(lm(runs ~ . , mlb11_runs), test = "F")
-## Step 2
+# Step 2
 drop1(lm(runs ~ . - new_onbase, mlb11_runs), test = "F")
-## Step 3
+# Step 3
 drop1(lm(runs ~ . - new_onbase - strikeouts, mlb11_runs), test = "F")
-## Step 4
+# Step 4
 drop1(lm(runs ~ . - new_onbase - strikeouts - homeruns, mlb11_runs), test = "F")
-## Step 5
+# Step 5
 drop1(lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats, mlb11_runs), test = "F")
-## Step 6
+# Step 6
 drop1(lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hits, mlb11_runs), test = "F")
-## Step 7
+# Step 7
 drop1(lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hits  - bat_avg, mlb11_runs), test = "F")
-## Step 8
+# Step 8
 drop1(lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hits  - bat_avg - new_slug, mlb11_runs), test = "F")
 ```
 
 Below we store the final model selected under this method and examinie it using `summary()`.
 
 ```{r runs_backPval, eval = FALSE, tidy = FALSE}
-## Final model using backward selection with p-value criterion
+# Final model using backward selection with p-value criterion
 runs_backPval <- lm(runs ~ . - new_onbase - strikeouts - homeruns - at_bats - hits  - bat_avg - new_slug, mlb11_runs)
 summary(runs_backPval)
 ```
@@ -166,7 +166,7 @@ summary(runs_backPval)
 The first step in forward selection is to set up a null/base model to build up from. This model could include variables that researchers stipulate a model must have for theoretical reasons. No such variables exisit in our case which means our null model will only have the intercept in it. We must also specify the full model so the preocedure knows which models to attempt. Note that the full model will be athe same as in backward selection. 
 
 ```{r runs_null, eval = FALSE, tidy = FALSE}
-## Creating the null model for runs
+# Creating the null model for runs
 runs_null <- lm(runs ~ 1, data = mlb11_runs)
 summary(runs_null)
 ```
@@ -187,7 +187,7 @@ summary(runs_forwardAIC)
 Instead of AIC, let's use $R^2_{adj}$ as our criterion when conducting forward selection. Remember that $R^2_{adj}$ indicates a better model.
 
 ```{r runs_forwardADJr_step1, eval = FALSE, tidy = FALSE}
-## Step 1
+# Step 1
 summary(lm(runs ~ 1 , mlb11_runs))$adj.r
 summary(lm(runs ~ + at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ + hits, mlb11_runs))$adj.r
@@ -203,7 +203,7 @@ summary(lm(runs ~ + new_obs, mlb11_runs))$adj.r
 Since the model that added `new_obs` has the highest $R^2_{adj}$ we move onto step 2 using that model and continue by adding one variable at a time and calculate the new $R^2_{adj}$ for each model.
 
 ```{r runs_forwardADJr_step2, eval = FALSE, tidy = FALSE}
-## Step 2
+# Step 2
 summary(lm(runs ~ new_obs, mlb11_runs))$adj.r
 summary(lm(runs ~ new_obs + at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ new_obs + hits, mlb11_runs))$adj.r
@@ -218,7 +218,7 @@ summary(lm(runs ~ new_obs + new_slug, mlb11_runs))$adj.r
 Since the model is step 2 that added `stolen_bases`  has the highest $R^2_{adj}$ we move onto step 3 using that model and continue by adding one variable at a time and calculate the new $R^2_{adj}$ for each model.
 
 ```{r runs_forwardADJr_step3, eval = FALSE, tidy = FALSE}
-## Step 3
+# Step 3
 summary(lm(runs ~ new_obs + stolen_bases, mlb11_runs))$adj.r
 summary(lm(runs ~ new_obs + stolen_bases + at_bats, mlb11_runs))$adj.r
 summary(lm(runs ~ new_obs + stolen_bases + hits, mlb11_runs))$adj.r
@@ -245,18 +245,18 @@ summary(runs_forwardADJr)
 Finally let's use a p-value method with a 0.05 significance level as our criterion when conducting forward selection. Remember that hlower p-values are consider better so we add a variable when it has the lowest p-value and is less than 0.05. If newly added variable is not less than 0.05 then we stop and conclude that we have arrived at our final model. Fortunately, R does have a function that makes this easier which is `add1()`. We must input model fit, the possible full model, and then indicate that the `test = "F"` so p-values are printed. 
 
 ```{r runs_forwardPval_step1, eval = FALSE, tidy = FALSE}
-## Step 1
+# Step 1
 add1(lm(runs ~ 1 , mlb11_runs), test = "F", scope = formula(runs_full))
-## Step 2
+# Step 2
 add1(lm(runs ~ new_obs , mlb11_runs), test = "F", scope = formula(runs_full))
-## Step 3
+# Step 3
 add1(lm(runs ~ new_obs + stolen_bases, mlb11_runs), test = "F", scope = formula(runs_full))
 ```
 
 Below we store the final model selected under this method and examinie it using `summary()`.
 
 ```{r runs_forwardPval, eval = FALSE, tidy = FALSE}
-## Final model using backward selection with p-value criterion
+# Final model using backward selection with p-value criterion
 runs_forwardPval <- lm(runs ~ new_obs + stolen_bases, mlb11_runs)
 summary(runs_forwardPval)
 ```

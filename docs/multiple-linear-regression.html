@@ -261,7 +261,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Exercise 2:</strong> How many steps did the backward selection using AIC conduct before selecting a model? Which variable was the first to be removed? Which variables ended up in the final model? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs?</p>
 <hr />
 <p>Instead of AIC, let’s use <span class="math inline">\(R^2_{adj}\)</span> as our criterion when conducting backward selection. Remember that <span class="math inline">\(R^2_{adj}\)</span> indicates a better model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. , mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -273,7 +273,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_slug, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_obs, mlb11_runs))<span class="op">$</span>adj.r</code></pre></div>
 <p>Since the model which removed <code>new_onbase</code> has the highest <span class="math inline">\(R^2_{adj}\)</span> we move onto step 2 using that model and continue by removing one variable at a time and calculate the new <span class="math inline">\(R^2_{adj}\)</span> for each model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 2
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 2</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -284,7 +284,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>new_slug, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>new_obs, mlb11_runs))<span class="op">$</span>adj.r</code></pre></div>
 <p>Since the model in step 2 that removed <code>strikeouts</code> has the highest <span class="math inline">\(R^2_{adj}\)</span> we move onto step 3 using the model that now has both <code>new_onbase</code> and <code>strikeouts</code> removed and continue by removing one variable at a time and calculating the new <span class="math inline">\(R^2_{adj}\)</span> for each model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 3
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 3</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -300,24 +300,24 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Which variables ended up in the final model when using backward selection with <span class="math inline">\(R^2_{adj}\)</span>? How many parameters are being estimated in this final model? How many of the parameters in this final model are significantly different than 0 at the 0.05 level? Does this final model have a higher <span class="math inline">\(R^2_{adj}\)</span> than the full model for runs? Higher than the final model when using backward selection with AIC?</li>
 </ol>
 <p>Finally let’s use a p-value method with a 0.05 significance level as our criterion when conducting backward selection. Remember that higher p-values are bad so we remove a variable when if it has the highest p-value which is greater than 0.05. If all p-values are less than 0.05 then we stop and we have arrived at our final model. Fortunately, R does have a function that makes this easier whish is <code>drop1()</code> - <code>add1()</code> is for forward selection. We must input the model fit and then indicate that <code>test = &quot;F&quot;</code> so p-values are printed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. , mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 2
+<span class="co"># Step 2</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 3
+<span class="co"># Step 3</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 4
+<span class="co"># Step 4</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 5
+<span class="co"># Step 5</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 6
+<span class="co"># Step 6</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats <span class="op">-</span><span class="st"> </span>hits, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 7
+<span class="co"># Step 7</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats <span class="op">-</span><span class="st"> </span>hits  <span class="op">-</span><span class="st"> </span>bat_avg, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)
-## Step 8
+<span class="co"># Step 8</span>
 <span class="kw">drop1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats <span class="op">-</span><span class="st"> </span>hits  <span class="op">-</span><span class="st"> </span>bat_avg <span class="op">-</span><span class="st"> </span>new_slug, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>)</code></pre></div>
 <p>Below we store the final model selected under this method and examinie it using <code>summary()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Final model using backward selection with p-value criterion
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Final model using backward selection with p-value criterion</span>
 runs_backPval &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>new_onbase <span class="op">-</span><span class="st"> </span>strikeouts <span class="op">-</span><span class="st"> </span>homeruns <span class="op">-</span><span class="st"> </span>at_bats <span class="op">-</span><span class="st"> </span>hits  <span class="op">-</span><span class="st"> </span>bat_avg <span class="op">-</span><span class="st"> </span>new_slug, mlb11_runs)
 <span class="kw">summary</span>(runs_backPval)</code></pre></div>
 <hr />
@@ -327,7 +327,7 @@ runs_backPval &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <spa
 <div id="predicting-runs-with-forward-selection" class="section level3">
 <h3><span class="header-section-number">10.3.2</span> Predicting runs with forward selection</h3>
 <p>The first step in forward selection is to set up a null/base model to build up from. This model could include variables that researchers stipulate a model must have for theoretical reasons. No such variables exisit in our case which means our null model will only have the intercept in it. We must also specify the full model so the preocedure knows which models to attempt. Note that the full model will be athe same as in backward selection.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Creating the null model for runs
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Creating the null model for runs</span>
 runs_null &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">data =</span> mlb11_runs)
 <span class="kw">summary</span>(runs_null)</code></pre></div>
 <p>Now that we have a null model defined we can go about forward model selection. Once again we will us the <code>step()</code> function in R to use AIC (Akiake’s Information Criterion) for model selection - remember that lower AIC indicates a better model.</p>
@@ -337,7 +337,7 @@ runs_null &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span cl
 <p><strong>Exercise 5:</strong> How many steps did the forward selection using AIC conduct before selecting a model? Which variable was the first to be added? Which previous selection method does this agree with - this doesn’t always happen?</p>
 <hr />
 <p>Instead of AIC, let’s use <span class="math inline">\(R^2_{adj}\)</span> as our criterion when conducting forward selection. Remember that <span class="math inline">\(R^2_{adj}\)</span> indicates a better model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="dv">1</span> , mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="op">+</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="op">+</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -349,7 +349,7 @@ runs_null &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span cl
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="op">+</span><span class="st"> </span>new_slug, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="op">+</span><span class="st"> </span>new_obs, mlb11_runs))<span class="op">$</span>adj.r</code></pre></div>
 <p>Since the model that added <code>new_obs</code> has the highest <span class="math inline">\(R^2_{adj}\)</span> we move onto step 2 using that model and continue by adding one variable at a time and calculate the new <span class="math inline">\(R^2_{adj}\)</span> for each model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 2
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 2</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -360,7 +360,7 @@ runs_null &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span cl
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>new_onbase, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>new_slug, mlb11_runs))<span class="op">$</span>adj.r</code></pre></div>
 <p>Since the model is step 2 that added <code>stolen_bases</code> has the highest <span class="math inline">\(R^2_{adj}\)</span> we move onto step 3 using that model and continue by adding one variable at a time and calculate the new <span class="math inline">\(R^2_{adj}\)</span> for each model.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 3
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 3</span>
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases <span class="op">+</span><span class="st"> </span>at_bats, mlb11_runs))<span class="op">$</span>adj.r
 <span class="kw">summary</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases <span class="op">+</span><span class="st"> </span>hits, mlb11_runs))<span class="op">$</span>adj.r
@@ -376,14 +376,14 @@ runs_null &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span cl
 <p><strong>Exercise 6:</strong> Does the final model selected using forward selection with <span class="math inline">\(R^2_{adj}\)</span> differ from the final model using forward selection with AIC?</p>
 <hr />
 <p>Finally let’s use a p-value method with a 0.05 significance level as our criterion when conducting forward selection. Remember that hlower p-values are consider better so we add a variable when it has the lowest p-value and is less than 0.05. If newly added variable is not less than 0.05 then we stop and conclude that we have arrived at our final model. Fortunately, R does have a function that makes this easier which is <code>add1()</code>. We must input model fit, the possible full model, and then indicate that the <code>test = &quot;F&quot;</code> so p-values are printed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Step 1
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Step 1</span>
 <span class="kw">add1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span><span class="dv">1</span> , mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>, <span class="dt">scope =</span> <span class="kw">formula</span>(runs_full))
-## Step 2
+<span class="co"># Step 2</span>
 <span class="kw">add1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs , mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>, <span class="dt">scope =</span> <span class="kw">formula</span>(runs_full))
-## Step 3
+<span class="co"># Step 3</span>
 <span class="kw">add1</span>(<span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases, mlb11_runs), <span class="dt">test =</span> <span class="st">&quot;F&quot;</span>, <span class="dt">scope =</span> <span class="kw">formula</span>(runs_full))</code></pre></div>
 <p>Below we store the final model selected under this method and examinie it using <code>summary()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Final model using backward selection with p-value criterion
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Final model using backward selection with p-value criterion</span>
 runs_forwardPval &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>new_obs <span class="op">+</span><span class="st"> </span>stolen_bases, mlb11_runs)
 <span class="kw">summary</span>(runs_forwardPval)</code></pre></div>
 <hr />
