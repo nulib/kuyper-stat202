@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OpenIntro Statistics: Labs for R</title>
+  <title>8 Inference for Categorical Data | OpenIntro Statistics: Labs for R</title>
   <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="OpenIntro Statistics: Labs for R" />
+  <meta property="og:title" content="8 Inference for Categorical Data | OpenIntro Statistics: Labs for R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="OpenIntro Statistics: Labs for R" />
+  <meta name="twitter:title" content="8 Inference for Categorical Data | OpenIntro Statistics: Labs for R" />
   
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
@@ -27,7 +27,7 @@
 <meta name="author" content="Arend Kuyper">
 
 
-<meta name="date" content="2018-01-01">
+<meta name="date" content="2019-01-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,6 +38,7 @@
 <link rel="next" href="introduction-to-linear-regression.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,7 +51,7 @@
 
 
 <!-- Google Scholar -->
-<meta name="citation_title" content="OpenIntro Statistics: Labs for R">
+<meta name="citation_title" content="8 Inference for Categorical Data | OpenIntro Statistics: Labs for R">
 <meta name="citation_author" content="Bray, Andrew">
 <meta name="citation_author" content="Çetinkaya-Rundel, Mine">
 <meta name="citation_author" content="Kuyper, Arend">
@@ -251,7 +252,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <hr />
 <p><strong>Exercise 4:</strong> Using the command below, create a new dataframe called <code>us12</code> that contains only the rows in <code>atheism</code> associated with respondents to the 2012 survey from the United States. Next, calculate the proportion of atheist responses. Does it agree with the percentage in Table 6? If not, why?</p>
 <hr />
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">us12 &lt;-<span class="st"> </span><span class="kw">subset</span>(atheism, nationality ==<span class="st"> &quot;United States&quot;</span> &amp;<span class="st"> </span>year ==<span class="st"> &quot;2012&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">us12 &lt;-<span class="st"> </span><span class="kw">subset</span>(atheism, nationality <span class="op">==</span><span class="st"> &quot;United States&quot;</span> <span class="op">&amp;</span><span class="st"> </span>year <span class="op">==</span><span class="st"> &quot;2012&quot;</span>)</code></pre></div>
 </div>
 <div id="inference-on-proportions" class="section level2">
 <h2><span class="header-section-number">8.3</span> Inference on proportions</h2>
@@ -263,13 +264,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>If the conditions for inference are reasonable, we can calculate the standard error and construct the interval by “hand” as outlined in our book. Note that since the goal is to construct an interval estimate for a proportion, it’s necessary to specify what constitutes a “success”, which here is a response of <code>&quot;atheist&quot;</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First we need to identify the successes and failures</span>
 <span class="co"># We can find out what our options with the following</span>
-<span class="kw">levels</span>(us12$response)
+<span class="kw">levels</span>(us12<span class="op">$</span>response)
 
 <span class="co"># Since we are looking for atheist we define a success as</span>
 <span class="co"># &quot;atheist&quot; and a failure as not atheist (regarless of other</span>
 <span class="co"># categories)</span>
 <span class="co"># -- code returns TRUE for atheist and FALSE otherwise</span>
-atheist_yes_no &lt;-<span class="st"> </span>us12$response ==<span class="st"> &quot;atheist&quot;</span>
+atheist_yes_no &lt;-<span class="st"> </span>us12<span class="op">$</span>response <span class="op">==</span><span class="st"> &quot;atheist&quot;</span>
 
 <span class="co"># Checking how many atheist and non-atheist are in the sample</span>
 <span class="co"># Also a check to verify we have at least 10 successes and failures</span>
@@ -280,13 +281,13 @@ atheist_yes_no &lt;-<span class="st"> </span>us12$response ==<span class="st"> &
 p_hat &lt;-<span class="st"> </span><span class="kw">mean</span>(atheist_yes_no)
 p_hat
 <span class="co"># Option 2</span>
-<span class="kw">sum</span>(atheist_yes_no)/<span class="kw">length</span>(atheist_yes_no)
+<span class="kw">sum</span>(atheist_yes_no)<span class="op">/</span><span class="kw">length</span>(atheist_yes_no)
 
 <span class="co"># Construct the 95% CI</span>
-std_err &lt;-<span class="st"> </span><span class="kw">sqrt</span>(p_hat*(<span class="dv">1</span>-p_hat)/<span class="kw">length</span>(atheist_yes_no))
+std_err &lt;-<span class="st"> </span><span class="kw">sqrt</span>(p_hat<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p_hat)<span class="op">/</span><span class="kw">length</span>(atheist_yes_no))
 z_star &lt;-<span class="st"> </span><span class="kw">qnorm</span>(.<span class="dv">975</span>)
-lb &lt;-<span class="st"> </span>p_hat -<span class="st"> </span>z_star*std_err
-ub &lt;-<span class="st"> </span>p_hat +<span class="st"> </span>z_star*std_err
+lb &lt;-<span class="st"> </span>p_hat <span class="op">-</span><span class="st"> </span>z_star<span class="op">*</span>std_err
+ub &lt;-<span class="st"> </span>p_hat <span class="op">+</span><span class="st"> </span>z_star<span class="op">*</span>std_err
 <span class="kw">c</span>(lb,ub)</code></pre></div>
 <p>Although formal confidence intervals and hypothesis tests don’t show up in the report, suggestions of inference appear at the bottom of page 7: “In general, the error margin for surveys of this kind is <span class="math inline">\(\pm\)</span> 3-5% at 95% confidence”.</p>
 <hr />
@@ -301,8 +302,8 @@ ub &lt;-<span class="st"> </span>p_hat +<span class="st"> </span>z_star*std_err
 <p>The first step is to make a vector <code>p</code> that is a sequence from 0 to 1 with each number separated by 0.01. We can then create a vector of the margin of error (<code>me</code>) associated with each of these values of <code>p</code> using the familiar approximate formula (<span class="math inline">\(ME = 2 \times SE\)</span>). Lastly, we plot the two vectors against each other to reveal their relationship.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">1000</span>
 p &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)
-me &lt;-<span class="st"> </span><span class="dv">2</span> *<span class="st"> </span><span class="kw">sqrt</span>(p *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>p)/n)
-<span class="kw">plot</span>(me ~<span class="st"> </span>p, <span class="dt">ylab =</span> <span class="st">&quot;Margin of Error&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Population Proportion&quot;</span>)</code></pre></div>
+me &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(p <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p)<span class="op">/</span>n)
+<span class="kw">plot</span>(me <span class="op">~</span><span class="st"> </span>p, <span class="dt">ylab =</span> <span class="st">&quot;Margin of Error&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Population Proportion&quot;</span>)</code></pre></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Describe the relationship between <code>p</code> and <code>me</code>.</li>
 </ol>
@@ -316,9 +317,9 @@ me &lt;-<span class="st"> </span><span class="dv">2</span> *<span class="st"> </
 n &lt;-<span class="st"> </span><span class="dv">1040</span>
 p_hats &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">5000</span>)
 
-for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
-  samp &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;atheist&quot;</span>, <span class="st">&quot;non_atheist&quot;</span>), n, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(p, <span class="dv">1</span>-p))
-  p_hats[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(samp ==<span class="st"> &quot;atheist&quot;</span>)/n
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
+  samp &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;atheist&quot;</span>, <span class="st">&quot;non_atheist&quot;</span>), n, <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(p, <span class="dv">1</span><span class="op">-</span>p))
+  p_hats[i] &lt;-<span class="st"> </span><span class="kw">sum</span>(samp <span class="op">==</span><span class="st"> &quot;atheist&quot;</span>)<span class="op">/</span>n
 }
 
 <span class="kw">hist</span>(p_hats, <span class="dt">main =</span> <span class="st">&quot;p = 0.1, n = 1040&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.18</span>))</code></pre></div>
@@ -351,12 +352,12 @@ for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
 <p>The code below demonstrates appling these methods/functions to construct a 95% confidence interval for the proportion of atheists in the United States in 2012 (Exercise 5).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># First we need to identify the successes and failures</span>
 <span class="co"># We can find out what our options with the following</span>
-<span class="kw">levels</span>(us12$response)
+<span class="kw">levels</span>(us12<span class="op">$</span>response)
 
 <span class="co"># Next we define a success as &quot;atheist&quot; and a failure as not</span>
 <span class="co"># being an atheist -- code returns TRUE for atheist and FALSE</span>
 <span class="co"># otherwise</span>
-atheist_yes_no &lt;-<span class="st"> </span>us12$response ==<span class="st"> &quot;atheist&quot;</span>
+atheist_yes_no &lt;-<span class="st"> </span>us12<span class="op">$</span>response <span class="op">==</span><span class="st"> &quot;atheist&quot;</span>
 
 <span class="co"># We require the number of successess/atheists</span>
 num_success &lt;-<span class="st"> </span><span class="kw">sum</span>(atheist_yes_no)
@@ -400,7 +401,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -410,6 +411,10 @@ gitbook.start({
 "size": "2"
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -428,7 +433,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

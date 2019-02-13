@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OpenIntro Statistics: Labs for R</title>
+  <title>6 Confidence Intervals - Foundations for Statistical Inference | OpenIntro Statistics: Labs for R</title>
   <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="OpenIntro Statistics: Labs for R" />
+  <meta property="og:title" content="6 Confidence Intervals - Foundations for Statistical Inference | OpenIntro Statistics: Labs for R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="OpenIntro Statistics: Labs for R" />
+  <meta name="twitter:title" content="6 Confidence Intervals - Foundations for Statistical Inference | OpenIntro Statistics: Labs for R" />
   
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
@@ -27,7 +27,7 @@
 <meta name="author" content="Arend Kuyper">
 
 
-<meta name="date" content="2018-01-01">
+<meta name="date" content="2019-01-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,6 +38,7 @@
 <link rel="next" href="inference-for-numerical-data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,7 +51,7 @@
 
 
 <!-- Google Scholar -->
-<meta name="citation_title" content="OpenIntro Statistics: Labs for R">
+<meta name="citation_title" content="6 Confidence Intervals - Foundations for Statistical Inference | OpenIntro Statistics: Labs for R">
 <meta name="citation_author" content="Bray, Andrew">
 <meta name="citation_author" content="Çetinkaya-Rundel, Mine">
 <meta name="citation_author" content="Kuyper, Arend">
@@ -235,7 +236,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/ames.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;ames.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;ames.RData&quot;</span>)</code></pre></div>
 <p>In this lab we’ll start with a simple random sample of size 60 from the population. Specifically, this is a simple random sample of size 60. Note that the data set has information on many housing variables, but for the first portion of the lab we’ll focus on the size of the house, represented by the variable <code>Gr.Liv.Area</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span>ames$Gr.Liv.Area
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area
 samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <span class="dv">60</span>)</code></pre></div>
 <hr />
 <p><strong>Exercise 1:</strong> Describe the distribution of your sample. What would you say is the “typical” size within your sample? Also state precisely what you interpreted “typical” to mean.</p>
@@ -250,10 +251,10 @@ samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, <s
 <p>We can calculate a 95% confidence interval for a sample mean by adding and subtracting 1.96 standard errors to the point estimate (See Section 4.2.3 if you are unfamiliar with this formula). Note that the 1.96 is the result of rounding and we could ues R to find a more precise value which is provided in the code below.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.975</span>) <span class="co"># or</span>
 <span class="kw">qnorm</span>(<span class="fl">0.025</span>) <span class="co"># which is the negative version</span></code></pre></div>
-<p>Note that if we take 0.975 - 0.025 we get 0.95. Each tail is set to have area 0.025. Usually two decimal places of accuracy is suffcient when determining the appropriate <span class="math inline">\(z^*\)</span> value for a given confidence level. Therefore we will continue using 1.96, but keep the function above in mind when you desire to use a different confidence level or you need more precision.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se &lt;-<span class="st"> </span><span class="kw">sd</span>(samp) /<span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">60</span>)
-lower &lt;-<span class="st"> </span>sample_mean -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>se
-upper &lt;-<span class="st"> </span>sample_mean +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>se
+<p>Note that if we take 0.975 - 0.025 we get 0.95. Each tail is set to have area 0.025. Usually two decimal places of accuracy is sufficient when determining the appropriate <span class="math inline">\(z^*\)</span> value for a given confidence level. Therefore we will continue using 1.96, but keep the function above in mind when you desire to use a different confidence level or you need more precision.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">se &lt;-<span class="st"> </span><span class="kw">sd</span>(samp) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">60</span>)
+lower &lt;-<span class="st"> </span>sample_mean <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se
+upper &lt;-<span class="st"> </span>sample_mean <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>se
 <span class="kw">c</span>(lower, upper)</code></pre></div>
 <p>This is an important inference that we’ve just made: even though we don’t know what the full population looks like, we’re 95% confident that the true average size of houses in Ames lies between the values <em>lower</em> and <em>upper</em>. There are a few conditions that must be met for this interval to be valid.</p>
 <hr />
@@ -284,14 +285,14 @@ upper &lt;-<span class="st"> </span>sample_mean +<span class="st"> </span><span 
 samp_sd &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">500</span>)
 n &lt;-<span class="st"> </span><span class="dv">60</span></code></pre></div>
 <p>Now we’re ready for the loop where we calculate the means and standard deviations of 500 random samples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">500</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">500</span>){
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(population, n) <span class="co"># obtain a sample of size n = 60 from the population</span>
   samp_mean[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)    <span class="co"># save sample mean in ith element of samp_mean</span>
   samp_sd[i] &lt;-<span class="st"> </span><span class="kw">sd</span>(samp)        <span class="co"># save sample sd in ith element of samp_sd</span>
 }</code></pre></div>
 <p>Lastly, we construct the confidence intervals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lower_vector &lt;-<span class="st"> </span>samp_mean -<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>samp_sd /<span class="st"> </span><span class="kw">sqrt</span>(n)
-upper_vector &lt;-<span class="st"> </span>samp_mean +<span class="st"> </span><span class="fl">1.96</span> *<span class="st"> </span>samp_sd /<span class="st"> </span><span class="kw">sqrt</span>(n)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lower_vector &lt;-<span class="st"> </span>samp_mean <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>samp_sd <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)
+upper_vector &lt;-<span class="st"> </span>samp_mean <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>samp_sd <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)</code></pre></div>
 <p>Lower bounds of these 500 confidence intervals are stored in <code>lower_vector</code>, and the upper bounds are in <code>upper_vector</code>. Let’s view the first interval.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(lower_vector[<span class="dv">1</span>], upper_vector[<span class="dv">1</span>])</code></pre></div>
 <hr />
@@ -299,7 +300,7 @@ upper_vector &lt;-<span class="st"> </span>samp_mean +<span class="st"> </span><
 <div id="on-your-own-4" class="section level2">
 <h2><span class="header-section-number">6.5</span> On your own</h2>
 <ul>
-<li><p>Using the function <code>plot_ci()</code> (which was downloaded with the data set), we are able to plot the first fifity 95% confidence intervals of our 500. What proportion of the 50 plotted confidence intervals include the true population mean? Is this proportion exactly equal to the confidence level? If not, explain why. Devise and implement a process to calculate the number (and proportion) of confidence intervals that include the true population for all 500 95% confidence intervals - you don’t want to have to plot and count by hand.</p>
+<li><p>Using the function <code>plot_ci()</code> (which was downloaded with the data set), we are able to plot the first fifty 95% confidence intervals of our 500. What proportion of the 50 plotted confidence intervals include the true population mean? Is this proportion exactly equal to the confidence level? If not, explain why. Devise and implement a process to calculate the number (and proportion) of confidence intervals that include the true population for all 500 95% confidence intervals - you don’t want to have to plot and count by hand.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot_ci</span>(lower_vector, upper_vector, <span class="kw">mean</span>(population))</code></pre></div></li>
 <li><p>Suppose we want 90% confidence intervals instead of 95% confidence intervals. What is the appropriate critical value?</p></li>
 <li><p>Construct 500 90% confidence intervals. You do not need to obtain new samples, simply calculate new intervals based on the sample means and standard deviations you have already collected. Using the <code>plot_ci</code> function, plot the first 50 90% confidence intervals and calculate the proportion of intervals that include the true population mean. How does this percentage compare to the confidence level selected for the intervals? Using the method which you implemented in question 1 of the <strong>On Your Own</strong> section, determine the number (and proportion) of the 500 randomly generated 90% confidence intervals that include the true population mean.</p></li>
@@ -333,7 +334,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -343,6 +344,10 @@ gitbook.start({
 "size": "2"
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -361,7 +366,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

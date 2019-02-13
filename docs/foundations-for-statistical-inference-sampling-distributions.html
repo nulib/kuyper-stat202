@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OpenIntro Statistics: Labs for R</title>
+  <title>5 Foundations for Statistical Inference - Sampling Distributions | OpenIntro Statistics: Labs for R</title>
   <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="OpenIntro Statistics: Labs for R" />
+  <meta property="og:title" content="5 Foundations for Statistical Inference - Sampling Distributions | OpenIntro Statistics: Labs for R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="OpenIntro Statistics: Labs for R" />
+  <meta name="twitter:title" content="5 Foundations for Statistical Inference - Sampling Distributions | OpenIntro Statistics: Labs for R" />
   
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
@@ -27,7 +27,7 @@
 <meta name="author" content="Arend Kuyper">
 
 
-<meta name="date" content="2018-01-01">
+<meta name="date" content="2019-01-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,6 +38,7 @@
 <link rel="next" href="confidence-intervals-foundations-for-statistical-inference.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,7 +51,7 @@
 
 
 <!-- Google Scholar -->
-<meta name="citation_title" content="OpenIntro Statistics: Labs for R">
+<meta name="citation_title" content="5 Foundations for Statistical Inference - Sampling Distributions | OpenIntro Statistics: Labs for R">
 <meta name="citation_author" content="Bray, Andrew">
 <meta name="citation_author" content="Çetinkaya-Rundel, Mine">
 <meta name="citation_author" content="Kuyper, Arend">
@@ -235,8 +236,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/ames.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;ames.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;ames.RData&quot;</span>)</code></pre></div>
 <p>We see that there are quite a few variables in the data set, enough to do a very in-depth analysis. For this lab, we’ll restrict our attention to just two of the variables: the above ground living area of the house in square feet (<code>Gr.Liv.Area</code>) and the sale price (<code>SalePrice</code>). To save some effort throughout the lab, create two variables with short names that represent these two variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">area &lt;-<span class="st"> </span>ames$Gr.Liv.Area
-price &lt;-<span class="st"> </span>ames$SalePrice</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">area &lt;-<span class="st"> </span>ames<span class="op">$</span>Gr.Liv.Area
+price &lt;-<span class="st"> </span>ames<span class="op">$</span>SalePrice</code></pre></div>
 <p>Let’s look at the distribution of area in our population of home sales by calculating a few summary statistics and making a histogram.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(area)
 <span class="kw">hist</span>(area)
@@ -263,7 +264,7 @@ price &lt;-<span class="st"> </span>ames$SalePrice</code></pre></div>
 <p>Not surprisingly, every time we take another random sample, we get a different sample mean. It’s useful to get a sense of just how much variability we should expect when estimating the population mean this way. The distribution of sample means, called the <em>sampling distribution</em>, can help us understand this variability. In this lab, because we have access to the population, we can build up the sampling distribution for the sample mean by repeating the above steps many times. Here we will generate 5000 samples and compute the sample mean of each.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means50 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
    samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">50</span>)
    sample_means50[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
    }
@@ -296,7 +297,7 @@ sample_means50[<span class="dv">4</span>] &lt;-<span class="st"> </span><span cl
 <p>With the for loop, these thousands of lines of code are compressed into a handful of lines. We’ve added one extra line to the code below, which prints the variable <code>i</code> during each iteration of the <code>for</code> loop. Run this code.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means50 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
    samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">50</span>)
    sample_means50[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
    <span class="kw">print</span>(i)
@@ -319,7 +320,7 @@ for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample_means10 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 sample_means100 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">5000</span>)
 
-for(i in <span class="dv">1</span>:<span class="dv">5000</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>){
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">10</span>)
   sample_means10[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(samp)
   samp &lt;-<span class="st"> </span><span class="kw">sample</span>(area, <span class="dv">100</span>)
@@ -377,7 +378,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -387,6 +388,10 @@ gitbook.start({
 "size": "2"
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
@@ -405,7 +410,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;
