@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>8 Introduction to Linear Regression | OpenIntro Statistics: Labs for R</title>
+  <title>Chapter 9 Introduction to Linear Regression | OpenIntro Statistics: Labs for R</title>
   <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="8 Introduction to Linear Regression | OpenIntro Statistics: Labs for R" />
+  <meta property="og:title" content="Chapter 9 Introduction to Linear Regression | OpenIntro Statistics: Labs for R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Introduction to Linear Regression | OpenIntro Statistics: Labs for R" />
+  <meta name="twitter:title" content="Chapter 9 Introduction to Linear Regression | OpenIntro Statistics: Labs for R" />
   
   <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="inference-for-categorical-data.html">
-<link rel="next" href="multiple-linear-regression.html">
+<link rel="prev" href="07-categorical-data.html">
+<link rel="next" href="09-multiple-regression.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
 
 
 <!-- Google Scholar -->
-<meta name="citation_title" content="8 Introduction to Linear Regression | OpenIntro Statistics: Labs for R">
+<meta name="citation_title" content="Chapter 9 Introduction to Linear Regression | OpenIntro Statistics: Labs for R">
 <meta name="citation_author" content="Bray, Andrew">
 <meta name="citation_author" content="Çetinkaya-Rundel, Mine">
 <meta name="citation_author" content="Kuyper, Arend">
@@ -152,83 +152,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://goo.gl/forms/sFCy9jDaTQfrZtuW2">Report an error</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#working-efficiently-with-rstudio"><i class="fa fa-check"></i><b>0.1</b> Working Efficiently with RStudio</a><ul>
-<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#why-rstudio"><i class="fa fa-check"></i><b>0.1.1</b> Why RStudio?</a></li>
-<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#setting-up-an-r-project"><i class="fa fa-check"></i><b>0.1.2</b> Setting Up an R Project</a></li>
-<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#summary"><i class="fa fa-check"></i><b>0.1.3</b> Summary</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html"><i class="fa fa-check"></i><b>1</b> Working Efficiently with RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#why-rstudio"><i class="fa fa-check"></i><b>1.1</b> Why RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#setting-up-an-r-project"><i class="fa fa-check"></i><b>1.2</b> Setting Up an R Project</a></li>
+<li class="chapter" data-level="1.3" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="2" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#the-data-dr.arbuthnots-baptism-records"><i class="fa fa-check"></i><b>2.1</b> The Data: Dr. Arbuthnot’s Baptism Records</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#some-exploration"><i class="fa fa-check"></i><b>2.2</b> Some Exploration</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#on-your-own"><i class="fa fa-check"></i><b>2.3</b> On Your Own</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R and RStudio</a><ul>
-<li class="chapter" data-level="1.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-data-dr.arbuthnots-baptism-records"><i class="fa fa-check"></i><b>1.1</b> The Data: Dr. Arbuthnot’s Baptism Records</a></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#some-exploration"><i class="fa fa-check"></i><b>1.2</b> Some Exploration</a></li>
-<li class="chapter" data-level="1.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#on-your-own"><i class="fa fa-check"></i><b>1.3</b> On Your Own</a></li>
+<li class="chapter" data-level="3" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html"><i class="fa fa-check"></i><b>3</b> Introduction to Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#summaries-and-tables"><i class="fa fa-check"></i><b>3.2</b> Summaries and tables</a></li>
+<li class="chapter" data-level="3.3" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#interlude-how-r-thinks-about-data"><i class="fa fa-check"></i><b>3.3</b> Interlude: How R thinks about data</a></li>
+<li class="chapter" data-level="3.4" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#a-little-more-on-subsetting"><i class="fa fa-check"></i><b>3.4</b> A little more on subsetting</a></li>
+<li class="chapter" data-level="3.5" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#quantitative-data"><i class="fa fa-check"></i><b>3.5</b> Quantitative data</a></li>
+<li class="chapter" data-level="3.6" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#on-your-own-1"><i class="fa fa-check"></i><b>3.6</b> On Your Own</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introduction-to-data.html"><a href="introduction-to-data.html"><i class="fa fa-check"></i><b>2</b> Introduction to Data</a><ul>
-<li class="chapter" data-level="2.1" data-path="introduction-to-data.html"><a href="introduction-to-data.html#getting-started"><i class="fa fa-check"></i><b>2.1</b> Getting started</a></li>
-<li class="chapter" data-level="2.2" data-path="introduction-to-data.html"><a href="introduction-to-data.html#summaries-and-tables"><i class="fa fa-check"></i><b>2.2</b> Summaries and tables</a></li>
-<li class="chapter" data-level="2.3" data-path="introduction-to-data.html"><a href="introduction-to-data.html#interlude-how-r-thinks-about-data"><i class="fa fa-check"></i><b>2.3</b> Interlude: How R thinks about data</a></li>
-<li class="chapter" data-level="2.4" data-path="introduction-to-data.html"><a href="introduction-to-data.html#a-little-more-on-subsetting"><i class="fa fa-check"></i><b>2.4</b> A little more on subsetting</a></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-data.html"><a href="introduction-to-data.html#quantitative-data"><i class="fa fa-check"></i><b>2.5</b> Quantitative data</a></li>
-<li class="chapter" data-level="2.6" data-path="introduction-to-data.html"><a href="introduction-to-data.html#on-your-own-1"><i class="fa fa-check"></i><b>2.6</b> On Your Own</a></li>
+<li class="chapter" data-level="4" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html"><i class="fa fa-check"></i><b>4</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="4.1" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#the-data"><i class="fa fa-check"></i><b>4.2</b> The Data</a></li>
+<li class="chapter" data-level="4.3" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#evaluating-the-normal-distribution"><i class="fa fa-check"></i><b>4.4</b> Evaluating the normal distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#normal-probabilities"><i class="fa fa-check"></i><b>4.5</b> Normal probabilities</a></li>
+<li class="chapter" data-level="4.6" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#on-your-own-2"><i class="fa fa-check"></i><b>4.6</b> On Your Own</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html"><i class="fa fa-check"></i><b>3</b> The Normal Distribution</a><ul>
-<li class="chapter" data-level="3.1" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#getting-started-1"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
-<li class="chapter" data-level="3.2" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#the-data"><i class="fa fa-check"></i><b>3.2</b> The Data</a></li>
-<li class="chapter" data-level="3.3" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#normal-distribution"><i class="fa fa-check"></i><b>3.3</b> Normal distribution</a></li>
-<li class="chapter" data-level="3.4" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#evaluating-the-normal-distribution"><i class="fa fa-check"></i><b>3.4</b> Evaluating the normal distribution</a></li>
-<li class="chapter" data-level="3.5" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#normal-probabilities"><i class="fa fa-check"></i><b>3.5</b> Normal probabilities</a></li>
-<li class="chapter" data-level="3.6" data-path="the-normal-distribution.html"><a href="the-normal-distribution.html#on-your-own-2"><i class="fa fa-check"></i><b>3.6</b> On Your Own</a></li>
+<li class="chapter" data-level="5" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html"><i class="fa fa-check"></i><b>5</b> Foundations for Statistical Inference - Sampling Distributions</a><ul>
+<li class="chapter" data-level="5.1" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#getting-started-2"><i class="fa fa-check"></i><b>5.1</b> Getting started</a></li>
+<li class="chapter" data-level="5.2" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#the-data-1"><i class="fa fa-check"></i><b>5.2</b> The data</a></li>
+<li class="chapter" data-level="5.3" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#the-unknown-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> The unknown sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#interlude-the-for-loop"><i class="fa fa-check"></i><b>5.4</b> Interlude: The <code>for</code> loop</a></li>
+<li class="chapter" data-level="5.5" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#sample-size-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.5</b> Sample size and the sampling distribution</a></li>
+<li class="chapter" data-level="5.6" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#on-your-own-3"><i class="fa fa-check"></i><b>5.6</b> On your own</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html"><i class="fa fa-check"></i><b>4</b> Foundations for Statistical Inference - Sampling Distributions</a><ul>
-<li class="chapter" data-level="4.1" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#getting-started-2"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
-<li class="chapter" data-level="4.2" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#the-data-1"><i class="fa fa-check"></i><b>4.2</b> The data</a></li>
-<li class="chapter" data-level="4.3" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#the-unknown-sampling-distribution"><i class="fa fa-check"></i><b>4.3</b> The unknown sampling distribution</a></li>
-<li class="chapter" data-level="4.4" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#interlude-the-for-loop"><i class="fa fa-check"></i><b>4.4</b> Interlude: The <code>for</code> loop</a></li>
-<li class="chapter" data-level="4.5" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#sample-size-and-the-sampling-distribution"><i class="fa fa-check"></i><b>4.5</b> Sample size and the sampling distribution</a></li>
-<li class="chapter" data-level="4.6" data-path="foundations-for-statistical-inference-sampling-distributions.html"><a href="foundations-for-statistical-inference-sampling-distributions.html#on-your-own-3"><i class="fa fa-check"></i><b>4.6</b> On your own</a></li>
+<li class="chapter" data-level="6" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html"><i class="fa fa-check"></i><b>6</b> Confidence Intervals - Foundations for Statistical Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#sampling-from-ames-iowa"><i class="fa fa-check"></i><b>6.1</b> Sampling from Ames, Iowa</a></li>
+<li class="chapter" data-level="6.2" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#the-data-2"><i class="fa fa-check"></i><b>6.2</b> The data</a></li>
+<li class="chapter" data-level="6.3" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence intervals</a></li>
+<li class="chapter" data-level="6.4" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#confidence-levels"><i class="fa fa-check"></i><b>6.4</b> Confidence levels</a></li>
+<li class="chapter" data-level="6.5" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#on-your-own-4"><i class="fa fa-check"></i><b>6.5</b> On your own</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals - Foundations for Statistical Inference</a><ul>
-<li class="chapter" data-level="5.1" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#sampling-from-ames-iowa"><i class="fa fa-check"></i><b>5.1</b> Sampling from Ames, Iowa</a></li>
-<li class="chapter" data-level="5.2" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#the-data-2"><i class="fa fa-check"></i><b>5.2</b> The data</a></li>
-<li class="chapter" data-level="5.3" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#confidence-intervals"><i class="fa fa-check"></i><b>5.3</b> Confidence intervals</a></li>
-<li class="chapter" data-level="5.4" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#confidence-levels"><i class="fa fa-check"></i><b>5.4</b> Confidence levels</a></li>
-<li class="chapter" data-level="5.5" data-path="confidence-intervals-foundations-for-statistical-inference.html"><a href="confidence-intervals-foundations-for-statistical-inference.html#on-your-own-4"><i class="fa fa-check"></i><b>5.5</b> On your own</a></li>
+<li class="chapter" data-level="7" data-path="06-numerical-data.html"><a href="06-numerical-data.html"><i class="fa fa-check"></i><b>7</b> Inference for Numerical Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="06-numerical-data.html"><a href="06-numerical-data.html#overview"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="06-numerical-data.html"><a href="06-numerical-data.html#north-carolina-births"><i class="fa fa-check"></i><b>7.2</b> North Carolina births</a></li>
+<li class="chapter" data-level="7.3" data-path="06-numerical-data.html"><a href="06-numerical-data.html#exploratory-analysis"><i class="fa fa-check"></i><b>7.3</b> Exploratory analysis</a></li>
+<li class="chapter" data-level="7.4" data-path="06-numerical-data.html"><a href="06-numerical-data.html#on-your-own-5"><i class="fa fa-check"></i><b>7.4</b> On your own</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html"><i class="fa fa-check"></i><b>6</b> Inference for Numerical Data</a><ul>
-<li class="chapter" data-level="6.1" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
-<li class="chapter" data-level="6.2" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#north-carolina-births"><i class="fa fa-check"></i><b>6.2</b> North Carolina births</a></li>
-<li class="chapter" data-level="6.3" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#exploratory-analysis"><i class="fa fa-check"></i><b>6.3</b> Exploratory analysis</a></li>
-<li class="chapter" data-level="6.4" data-path="inference-for-numerical-data.html"><a href="inference-for-numerical-data.html#on-your-own-5"><i class="fa fa-check"></i><b>6.4</b> On your own</a></li>
+<li class="chapter" data-level="8" data-path="07-categorical-data.html"><a href="07-categorical-data.html"><i class="fa fa-check"></i><b>8</b> Inference for Categorical Data</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="07-categorical-data.html"><a href="07-categorical-data.html#getting-started-3"><i class="fa fa-check"></i><b>8.0.1</b> Getting Started</a></li>
+<li class="chapter" data-level="8.1" data-path="07-categorical-data.html"><a href="07-categorical-data.html#the-survey"><i class="fa fa-check"></i><b>8.1</b> The survey</a></li>
+<li class="chapter" data-level="8.2" data-path="07-categorical-data.html"><a href="07-categorical-data.html#the-data-3"><i class="fa fa-check"></i><b>8.2</b> The data</a></li>
+<li class="chapter" data-level="8.3" data-path="07-categorical-data.html"><a href="07-categorical-data.html#inference-on-proportions"><i class="fa fa-check"></i><b>8.3</b> Inference on proportions</a></li>
+<li class="chapter" data-level="8.4" data-path="07-categorical-data.html"><a href="07-categorical-data.html#how-does-the-proportion-affect-the-margin-of-error"><i class="fa fa-check"></i><b>8.4</b> How does the proportion affect the margin of error?</a></li>
+<li class="chapter" data-level="8.5" data-path="07-categorical-data.html"><a href="07-categorical-data.html#success-failure-condition"><i class="fa fa-check"></i><b>8.5</b> Success-failure condition</a></li>
+<li class="chapter" data-level="8.6" data-path="07-categorical-data.html"><a href="07-categorical-data.html#on-your-own-6"><i class="fa fa-check"></i><b>8.6</b> On your own</a></li>
+<li class="chapter" data-level="8.7" data-path="07-categorical-data.html"><a href="07-categorical-data.html#options-for-using-built-in-functions-in-r-prop.test-binom.test"><i class="fa fa-check"></i><b>8.7</b> Options for using built in functions in R: <code>prop.test()</code> &amp; <code>binom.test()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html"><i class="fa fa-check"></i><b>7</b> Inference for Categorical Data</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#getting-started-3"><i class="fa fa-check"></i><b>7.0.1</b> Getting Started</a></li>
-<li class="chapter" data-level="7.1" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#the-survey"><i class="fa fa-check"></i><b>7.1</b> The survey</a></li>
-<li class="chapter" data-level="7.2" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#the-data-3"><i class="fa fa-check"></i><b>7.2</b> The data</a></li>
-<li class="chapter" data-level="7.3" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#inference-on-proportions"><i class="fa fa-check"></i><b>7.3</b> Inference on proportions</a></li>
-<li class="chapter" data-level="7.4" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#how-does-the-proportion-affect-the-margin-of-error"><i class="fa fa-check"></i><b>7.4</b> How does the proportion affect the margin of error?</a></li>
-<li class="chapter" data-level="7.5" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#success-failure-condition"><i class="fa fa-check"></i><b>7.5</b> Success-failure condition</a></li>
-<li class="chapter" data-level="7.6" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#on-your-own-6"><i class="fa fa-check"></i><b>7.6</b> On your own</a></li>
-<li class="chapter" data-level="7.7" data-path="inference-for-categorical-data.html"><a href="inference-for-categorical-data.html#options-for-using-built-in-functions-in-r-prop.test-binom.test"><i class="fa fa-check"></i><b>7.7</b> Options for using built in functions in R: <code>prop.test()</code> &amp; <code>binom.test()</code></a></li>
+<li class="chapter" data-level="9" data-path="08-simple-regression.html"><a href="08-simple-regression.html"><i class="fa fa-check"></i><b>9</b> Introduction to Linear Regression</a><ul>
+<li class="chapter" data-level="9.1" data-path="08-simple-regression.html"><a href="08-simple-regression.html#batter-up-getting-started"><i class="fa fa-check"></i><b>9.1</b> Batter up (Getting Started)</a></li>
+<li class="chapter" data-level="9.2" data-path="08-simple-regression.html"><a href="08-simple-regression.html#the-data-4"><i class="fa fa-check"></i><b>9.2</b> The data</a></li>
+<li class="chapter" data-level="9.3" data-path="08-simple-regression.html"><a href="08-simple-regression.html#sum-of-squared-residuals"><i class="fa fa-check"></i><b>9.3</b> Sum of squared residuals</a></li>
+<li class="chapter" data-level="9.4" data-path="08-simple-regression.html"><a href="08-simple-regression.html#the-linear-model"><i class="fa fa-check"></i><b>9.4</b> The linear model</a></li>
+<li class="chapter" data-level="9.5" data-path="08-simple-regression.html"><a href="08-simple-regression.html#prediction-and-prediction-errors"><i class="fa fa-check"></i><b>9.5</b> Prediction and prediction errors</a></li>
+<li class="chapter" data-level="9.6" data-path="08-simple-regression.html"><a href="08-simple-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>9.6</b> Model diagnostics</a></li>
+<li class="chapter" data-level="9.7" data-path="08-simple-regression.html"><a href="08-simple-regression.html#on-your-own-7"><i class="fa fa-check"></i><b>9.7</b> On Your Own</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html"><i class="fa fa-check"></i><b>8</b> Introduction to Linear Regression</a><ul>
-<li class="chapter" data-level="8.1" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#batter-up-getting-started"><i class="fa fa-check"></i><b>8.1</b> Batter up (Getting Started)</a></li>
-<li class="chapter" data-level="8.2" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#the-data-4"><i class="fa fa-check"></i><b>8.2</b> The data</a></li>
-<li class="chapter" data-level="8.3" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#sum-of-squared-residuals"><i class="fa fa-check"></i><b>8.3</b> Sum of squared residuals</a></li>
-<li class="chapter" data-level="8.4" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#the-linear-model"><i class="fa fa-check"></i><b>8.4</b> The linear model</a></li>
-<li class="chapter" data-level="8.5" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#prediction-and-prediction-errors"><i class="fa fa-check"></i><b>8.5</b> Prediction and prediction errors</a></li>
-<li class="chapter" data-level="8.6" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>8.6</b> Model diagnostics</a></li>
-<li class="chapter" data-level="8.7" data-path="introduction-to-linear-regression.html"><a href="introduction-to-linear-regression.html#on-your-own-7"><i class="fa fa-check"></i><b>8.7</b> On Your Own</a></li>
+<li class="chapter" data-level="10" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="10.1" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#getting-started-4"><i class="fa fa-check"></i><b>10.1</b> Getting Started</a></li>
+<li class="chapter" data-level="10.2" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#the-data-5"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
+<li class="chapter" data-level="10.3" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#the-search-for-the-best-model"><i class="fa fa-check"></i><b>10.3</b> The search for the best model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#predicting-runs-with-backward-selection"><i class="fa fa-check"></i><b>10.3.1</b> Predicting runs with backward selection</a></li>
+<li class="chapter" data-level="10.3.2" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#predicting-runs-with-forward-selection"><i class="fa fa-check"></i><b>10.3.2</b> Predicting runs with forward selection</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>9</b> Multiple Linear Regression</a><ul>
-<li class="chapter" data-level="9.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#getting-started-4"><i class="fa fa-check"></i><b>9.1</b> Getting Started</a></li>
-<li class="chapter" data-level="9.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-data-5"><i class="fa fa-check"></i><b>9.2</b> The data</a></li>
-<li class="chapter" data-level="9.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#the-search-for-the-best-model"><i class="fa fa-check"></i><b>9.3</b> The search for the best model</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#predicting-runs-with-backward-selection"><i class="fa fa-check"></i><b>9.3.1</b> Predicting runs with backward selection</a></li>
-<li class="chapter" data-level="9.3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#predicting-runs-with-forward-selection"><i class="fa fa-check"></i><b>9.3.2</b> Predicting runs with forward selection</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#assessing-the-conditions"><i class="fa fa-check"></i><b>9.4</b> Assessing the conditions</a></li>
-<li class="chapter" data-level="9.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#on-your-own-8"><i class="fa fa-check"></i><b>9.5</b> On Your Own</a></li>
+<li class="chapter" data-level="10.4" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#assessing-the-conditions"><i class="fa fa-check"></i><b>10.4</b> Assessing the conditions</a></li>
+<li class="chapter" data-level="10.5" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#on-your-own-8"><i class="fa fa-check"></i><b>10.5</b> On Your Own</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://www.library.northwestern.edu/research/scholarly/digital-publishing.html" target="blank">Published by Northwestern University Libraries</a></li>
@@ -251,16 +250,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="introduction-to-linear-regression" class="section level1">
-<h1><span class="header-section-number">8</span> Introduction to Linear Regression</h1>
+<h1><span class="header-section-number">Chapter 9</span> Introduction to Linear Regression</h1>
 <p>This lab is structured to guide you through an organized process such that you could easily organize your code with comments — meaning your R script — into a lab report. I would suggest getting into the habit of writing an organized and commented R script that completes the tasks and answers the questions provided in the lab — including in the <strong>Own Your Own</strong> section.</p>
 <hr />
 <div id="batter-up-getting-started" class="section level2">
-<h2><span class="header-section-number">8.1</span> Batter up (Getting Started)</h2>
+<h2><span class="header-section-number">9.1</span> Batter up (Getting Started)</h2>
 <p>The movie <a href="http://en.wikipedia.org/wiki/Moneyball_(film)">Moneyball</a> focuses on the “quest for the secret of success in baseball”. It follows a low-budget team, the Oakland Athletics, who believed that underused statistics, such as a player’s ability to get on base, betterpredict the ability to score runs than typical statistics like home runs, RBIs (runs batted in), and batting average. Obtaining players who excelled in these underused statistics turned out to be much more affordable for the team.</p>
 <p>In this lab we’ll be looking at data from all 30 Major League Baseball teams and examining the linear relationship between runs scored in a season and a number of other player statistics. Our aim will be to summarize these relationships both graphically and numerically in order to find which variable, if any, helps us best predict a team’s runs scored in a season.</p>
 </div>
 <div id="the-data-4" class="section level2">
-<h2><span class="header-section-number">8.2</span> The data</h2>
+<h2><span class="header-section-number">9.2</span> The data</h2>
 <p>Let’s load up the data for the 2011 season.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">download.file</span>(<span class="st">&quot;http://www.openintro.org/stat/data/mlb11.RData&quot;</span>, <span class="dt">destfile =</span> <span class="st">&quot;mlb11.RData&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;mlb11.RData&quot;</span>)</code></pre>
@@ -278,7 +277,7 @@ relationship with the correlation coefficient.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(mlb11<span class="op">$</span>runs, mlb11<span class="op">$</span>at_bats)</code></pre>
 </div>
 <div id="sum-of-squared-residuals" class="section level2">
-<h2><span class="header-section-number">8.3</span> Sum of squared residuals</h2>
+<h2><span class="header-section-number">9.3</span> Sum of squared residuals</h2>
 <p>Think back to the way that we described the distribution of a single variable. Recall that we discussed characteristics such as center, spread, and shape. It’s also useful to be able to describe the relationship of two numerical variables, such as <code>runs</code> and <code>at_bats</code> above.</p>
 <hr />
 <p><strong>Exercise 2:</strong> Looking at your plot from the previous exercise, describe the relationship between these two variables. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.</p>
@@ -298,7 +297,7 @@ of the 30 observations. Recall that the residuals are the difference between the
 <hr />
 </div>
 <div id="the-linear-model" class="section level2">
-<h2><span class="header-section-number">8.4</span> The linear model</h2>
+<h2><span class="header-section-number">9.4</span> The linear model</h2>
 <p>It is rather cumbersome to try to get the correct least squares line, i.e. the line that minimizes the sum of squared residuals, through trial and error. Instead we can use the <code>lm</code> function in R to fit the linear model (a.k.a. regression line).</p>
 <pre class="sourceCode r"><code class="sourceCode r">m1 &lt;-<span class="st"> </span><span class="kw">lm</span>(runs <span class="op">~</span><span class="st"> </span>at_bats, <span class="dt">data =</span> mlb11)</code></pre>
 <p>The first argument in the function <code>lm</code> is a formula that takes the form <code>y ~ x</code>. Here it can be read that we want to make a linear model of <code>runs</code> as a function of <code>at_bats</code>. The second argument specifies that R should look in the <code>mlb11</code> data frame to find the <code>runs</code> and <code>at_bats</code> variables.</p>
@@ -314,7 +313,7 @@ of the 30 observations. Recall that the residuals are the difference between the
 <hr />
 </div>
 <div id="prediction-and-prediction-errors" class="section level2">
-<h2><span class="header-section-number">8.5</span> Prediction and prediction errors</h2>
+<h2><span class="header-section-number">9.5</span> Prediction and prediction errors</h2>
 <p>Let’s create a scatterplot with the least squares line laid on top.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(mlb11<span class="op">$</span>runs <span class="op">~</span><span class="st"> </span>mlb11<span class="op">$</span>at_bats)
 <span class="kw">abline</span>(m1)</code></pre>
@@ -324,7 +323,7 @@ of the 30 observations. Recall that the residuals are the difference between the
 <hr />
 </div>
 <div id="model-diagnostics" class="section level2">
-<h2><span class="header-section-number">8.6</span> Model diagnostics</h2>
+<h2><span class="header-section-number">9.6</span> Model diagnostics</h2>
 <p>To assess whether the linear model is reliable, we need to check for (1) linearity, (2) nearly normal residuals, and (3) constant variability.</p>
 <p><em>Linearity</em>: You already checked if the relationship between runs and at-bats is linear using a scatterplot. We should also verify this condition with a plot of the residuals vs. at-bats. Recall that any code following a <em>#</em> is intended to be a comment that helps understand the code but is ignored by R.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(m1<span class="op">$</span>residuals <span class="op">~</span><span class="st"> </span>mlb11<span class="op">$</span>at_bats)
@@ -349,7 +348,7 @@ of the 30 observations. Recall that the residuals are the difference between the
 <hr />
 </div>
 <div id="on-your-own-7" class="section level2">
-<h2><span class="header-section-number">8.7</span> On Your Own</h2>
+<h2><span class="header-section-number">9.7</span> On Your Own</h2>
 <ul>
 <li><p>Choose another traditional variable from <code>mlb11</code> that you think might be a good predictor of <code>runs</code>. Produce a scatterplot of the two variables and fit a linear model. At a glance, does there seem to be a linear relationship?</p></li>
 <li><p>How does this relationship compare to the relationship between <code>runs</code> and <code>at_bats</code>? Use the R<span class="math inline">\(^2\)</span> values from the two model summaries to compare. Does your variable seem to predict <code>runs</code> better than <code>at_bats</code>? How can you tell?</p></li>
@@ -365,8 +364,8 @@ of the 30 observations. Recall that the residuals are the difference between the
           </div>
         </div>
       </div>
-<a href="inference-for-categorical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multiple-linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="07-categorical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="09-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
