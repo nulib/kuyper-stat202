@@ -1,6 +1,13 @@
 language: r
 pandoc_version: 1.19.2.1
 
+r_packages:
+  - devtools
+
+r_github_packages:
+  - nulib/kuyper-stat202
+
+
 #env:
 #  global:
 #    - secure: A_LONG_ENCRYPTED_STRING
