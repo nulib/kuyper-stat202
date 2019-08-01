@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nulib/kuyper-stat202.svg?branch=master)](https://travis-ci.org/nulib/kuyper-stat202)
+
 This is an R Project that uses the Bookdown package to develop a lab manual for Introduction to Statistics (STAT 202) with Prof. Arend Kuyper. 
 
 ## Prerequisites
