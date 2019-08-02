@@ -188,7 +188,7 @@ cdc$weight[567]
 
 Similarly, for just the first 10 respondents
 
-```{rweight-first10, eval=FALSE}
+```{r weight-first10, eval=FALSE}
 cdc$weight[1:10]
 ```
 
