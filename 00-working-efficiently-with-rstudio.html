@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 1 Working Efficiently with RStudio | OpenIntro Statistics: Labs for R</title>
+  <meta name="description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 1 Working Efficiently with RStudio | OpenIntro Statistics: Labs for R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Working Efficiently with RStudio | OpenIntro Statistics: Labs for R" />
+  
+  <meta name="twitter:description" content="This book contains labs for an introduction to statistics course. Each lab steps through the process of using the R programming language for collecting, analyzing, and using statistical data to make inferences and conclusions about real world phenomena." />
+  
+
+<meta name="author" content="Andrew Bray">
+<meta name="author" content="Mine Çetinkaya-Rundel">
+<meta name="author" content="Arend Kuyper">
+
+
+<meta name="date" content="2019-01-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="01-intro-to-r-and-rstudio.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<!-- Google Scholar -->
+<meta name="citation_title" content="Chapter 1 Working Efficiently with RStudio | OpenIntro Statistics: Labs for R">
+<meta name="citation_author" content="Bray, Andrew">
+<meta name="citation_author" content="Çetinkaya-Rundel, Mine">
+<meta name="citation_author" content="Kuyper, Arend">
+<meta name="citation_publication_date" content="2018">
+<meta name="citation_epub_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.epub">
+<meta name="citation_pdf_url" content="https://nulib.github.io/kuyper-stat202/kuyper-stat202.pdf">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116823108-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116823108-3');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">OpenIntro Statistics: Labs for R</a></li>
+<li><a href="https://goo.gl/forms/sFCy9jDaTQfrZtuW2">Report an error</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html"><i class="fa fa-check"></i><b>1</b> Working Efficiently with RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#why-rstudio"><i class="fa fa-check"></i><b>1.1</b> Why RStudio?</a></li>
+<li class="chapter" data-level="1.2" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#setting-up-an-r-project"><i class="fa fa-check"></i><b>1.2</b> Setting Up an R Project</a></li>
+<li class="chapter" data-level="1.3" data-path="00-working-efficiently-with-rstudio.html"><a href="00-working-efficiently-with-rstudio.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction to R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#the-data-dr.arbuthnots-baptism-records"><i class="fa fa-check"></i><b>2.1</b> The Data: Dr. Arbuthnot’s Baptism Records</a></li>
+<li class="chapter" data-level="2.2" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#some-exploration"><i class="fa fa-check"></i><b>2.2</b> Some Exploration</a></li>
+<li class="chapter" data-level="2.3" data-path="01-intro-to-r-and-rstudio.html"><a href="01-intro-to-r-and-rstudio.html#on-your-own"><i class="fa fa-check"></i><b>2.3</b> On Your Own</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html"><i class="fa fa-check"></i><b>3</b> Introduction to Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a></li>
+<li class="chapter" data-level="3.2" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#summaries-and-tables"><i class="fa fa-check"></i><b>3.2</b> Summaries and tables</a></li>
+<li class="chapter" data-level="3.3" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#interlude-how-r-thinks-about-data"><i class="fa fa-check"></i><b>3.3</b> Interlude: How R thinks about data</a></li>
+<li class="chapter" data-level="3.4" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#a-little-more-on-subsetting"><i class="fa fa-check"></i><b>3.4</b> A little more on subsetting</a></li>
+<li class="chapter" data-level="3.5" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#quantitative-data"><i class="fa fa-check"></i><b>3.5</b> Quantitative data</a></li>
+<li class="chapter" data-level="3.6" data-path="02-intro-to-data.html"><a href="02-intro-to-data.html#on-your-own-1"><i class="fa fa-check"></i><b>3.6</b> On Your Own</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html"><i class="fa fa-check"></i><b>4</b> The Normal Distribution</a><ul>
+<li class="chapter" data-level="4.1" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#getting-started-1"><i class="fa fa-check"></i><b>4.1</b> Getting started</a></li>
+<li class="chapter" data-level="4.2" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#the-data"><i class="fa fa-check"></i><b>4.2</b> The Data</a></li>
+<li class="chapter" data-level="4.3" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#normal-distribution"><i class="fa fa-check"></i><b>4.3</b> Normal distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#evaluating-the-normal-distribution"><i class="fa fa-check"></i><b>4.4</b> Evaluating the normal distribution</a></li>
+<li class="chapter" data-level="4.5" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#normal-probabilities"><i class="fa fa-check"></i><b>4.5</b> Normal probabilities</a></li>
+<li class="chapter" data-level="4.6" data-path="03-normal-distribution.html"><a href="03-normal-distribution.html#on-your-own-2"><i class="fa fa-check"></i><b>4.6</b> On Your Own</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html"><i class="fa fa-check"></i><b>5</b> Foundations for Statistical Inference - Sampling Distributions</a><ul>
+<li class="chapter" data-level="5.1" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#getting-started-2"><i class="fa fa-check"></i><b>5.1</b> Getting started</a></li>
+<li class="chapter" data-level="5.2" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#the-data-1"><i class="fa fa-check"></i><b>5.2</b> The data</a></li>
+<li class="chapter" data-level="5.3" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#the-unknown-sampling-distribution"><i class="fa fa-check"></i><b>5.3</b> The unknown sampling distribution</a></li>
+<li class="chapter" data-level="5.4" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#interlude-the-for-loop"><i class="fa fa-check"></i><b>5.4</b> Interlude: The <code>for</code> loop</a></li>
+<li class="chapter" data-level="5.5" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#sample-size-and-the-sampling-distribution"><i class="fa fa-check"></i><b>5.5</b> Sample size and the sampling distribution</a></li>
+<li class="chapter" data-level="5.6" data-path="04-sampling-distributions.html"><a href="04-sampling-distributions.html#on-your-own-3"><i class="fa fa-check"></i><b>5.6</b> On your own</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html"><i class="fa fa-check"></i><b>6</b> Confidence Intervals - Foundations for Statistical Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#sampling-from-ames-iowa"><i class="fa fa-check"></i><b>6.1</b> Sampling from Ames, Iowa</a></li>
+<li class="chapter" data-level="6.2" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#the-data-2"><i class="fa fa-check"></i><b>6.2</b> The data</a></li>
+<li class="chapter" data-level="6.3" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#confidence-intervals"><i class="fa fa-check"></i><b>6.3</b> Confidence intervals</a></li>
+<li class="chapter" data-level="6.4" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#confidence-levels"><i class="fa fa-check"></i><b>6.4</b> Confidence levels</a></li>
+<li class="chapter" data-level="6.5" data-path="05-confidence-intervals.html"><a href="05-confidence-intervals.html#on-your-own-4"><i class="fa fa-check"></i><b>6.5</b> On your own</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="06-numerical-data.html"><a href="06-numerical-data.html"><i class="fa fa-check"></i><b>7</b> Inference for Numerical Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="06-numerical-data.html"><a href="06-numerical-data.html#overview"><i class="fa fa-check"></i><b>7.1</b> Overview</a></li>
+<li class="chapter" data-level="7.2" data-path="06-numerical-data.html"><a href="06-numerical-data.html#north-carolina-births"><i class="fa fa-check"></i><b>7.2</b> North Carolina births</a></li>
+<li class="chapter" data-level="7.3" data-path="06-numerical-data.html"><a href="06-numerical-data.html#exploratory-analysis"><i class="fa fa-check"></i><b>7.3</b> Exploratory analysis</a></li>
+<li class="chapter" data-level="7.4" data-path="06-numerical-data.html"><a href="06-numerical-data.html#on-your-own-5"><i class="fa fa-check"></i><b>7.4</b> On your own</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="07-categorical-data.html"><a href="07-categorical-data.html"><i class="fa fa-check"></i><b>8</b> Inference for Categorical Data</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="07-categorical-data.html"><a href="07-categorical-data.html#getting-started-3"><i class="fa fa-check"></i><b>8.0.1</b> Getting Started</a></li>
+<li class="chapter" data-level="8.1" data-path="07-categorical-data.html"><a href="07-categorical-data.html#the-survey"><i class="fa fa-check"></i><b>8.1</b> The survey</a></li>
+<li class="chapter" data-level="8.2" data-path="07-categorical-data.html"><a href="07-categorical-data.html#the-data-3"><i class="fa fa-check"></i><b>8.2</b> The data</a></li>
+<li class="chapter" data-level="8.3" data-path="07-categorical-data.html"><a href="07-categorical-data.html#inference-on-proportions"><i class="fa fa-check"></i><b>8.3</b> Inference on proportions</a></li>
+<li class="chapter" data-level="8.4" data-path="07-categorical-data.html"><a href="07-categorical-data.html#how-does-the-proportion-affect-the-margin-of-error"><i class="fa fa-check"></i><b>8.4</b> How does the proportion affect the margin of error?</a></li>
+<li class="chapter" data-level="8.5" data-path="07-categorical-data.html"><a href="07-categorical-data.html#success-failure-condition"><i class="fa fa-check"></i><b>8.5</b> Success-failure condition</a></li>
+<li class="chapter" data-level="8.6" data-path="07-categorical-data.html"><a href="07-categorical-data.html#on-your-own-6"><i class="fa fa-check"></i><b>8.6</b> On your own</a></li>
+<li class="chapter" data-level="8.7" data-path="07-categorical-data.html"><a href="07-categorical-data.html#options-for-using-built-in-functions-in-r-prop.test-binom.test"><i class="fa fa-check"></i><b>8.7</b> Options for using built in functions in R: <code>prop.test()</code> &amp; <code>binom.test()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="08-simple-regression.html"><a href="08-simple-regression.html"><i class="fa fa-check"></i><b>9</b> Introduction to Linear Regression</a><ul>
+<li class="chapter" data-level="9.1" data-path="08-simple-regression.html"><a href="08-simple-regression.html#batter-up-getting-started"><i class="fa fa-check"></i><b>9.1</b> Batter up (Getting Started)</a></li>
+<li class="chapter" data-level="9.2" data-path="08-simple-regression.html"><a href="08-simple-regression.html#the-data-4"><i class="fa fa-check"></i><b>9.2</b> The data</a></li>
+<li class="chapter" data-level="9.3" data-path="08-simple-regression.html"><a href="08-simple-regression.html#sum-of-squared-residuals"><i class="fa fa-check"></i><b>9.3</b> Sum of squared residuals</a></li>
+<li class="chapter" data-level="9.4" data-path="08-simple-regression.html"><a href="08-simple-regression.html#the-linear-model"><i class="fa fa-check"></i><b>9.4</b> The linear model</a></li>
+<li class="chapter" data-level="9.5" data-path="08-simple-regression.html"><a href="08-simple-regression.html#prediction-and-prediction-errors"><i class="fa fa-check"></i><b>9.5</b> Prediction and prediction errors</a></li>
+<li class="chapter" data-level="9.6" data-path="08-simple-regression.html"><a href="08-simple-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>9.6</b> Model diagnostics</a></li>
+<li class="chapter" data-level="9.7" data-path="08-simple-regression.html"><a href="08-simple-regression.html#on-your-own-7"><i class="fa fa-check"></i><b>9.7</b> On Your Own</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html"><i class="fa fa-check"></i><b>10</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="10.1" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#getting-started-4"><i class="fa fa-check"></i><b>10.1</b> Getting Started</a></li>
+<li class="chapter" data-level="10.2" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#the-data-5"><i class="fa fa-check"></i><b>10.2</b> The data</a></li>
+<li class="chapter" data-level="10.3" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#the-search-for-the-best-model"><i class="fa fa-check"></i><b>10.3</b> The search for the best model</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#predicting-runs-with-backward-selection"><i class="fa fa-check"></i><b>10.3.1</b> Predicting runs with backward selection</a></li>
+<li class="chapter" data-level="10.3.2" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#predicting-runs-with-forward-selection"><i class="fa fa-check"></i><b>10.3.2</b> Predicting runs with forward selection</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#assessing-the-conditions"><i class="fa fa-check"></i><b>10.4</b> Assessing the conditions</a></li>
+<li class="chapter" data-level="10.5" data-path="09-multiple-regression.html"><a href="09-multiple-regression.html#on-your-own-8"><i class="fa fa-check"></i><b>10.5</b> On Your Own</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://www.library.northwestern.edu/research/scholarly/digital-publishing.html" target="blank">Published by Northwestern University Libraries</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">OpenIntro Statistics: Labs for R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-efficiently-with-rstudio" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Working Efficiently with RStudio</h1>
+<div id="why-rstudio" class="section level2">
+<h2><span class="header-section-number">1.1</span> Why RStudio?</h2>
+<p>RStudio is an extremely powerful tool that is intended to optimize how we interact with the statistical software known as <a href="https://www.r-project.org/about.html">R</a>. We could use R’s basic interface, but <a href="https://www.rstudio.com/">RStudio</a> is designed to streamline and organize statistical and analytic work with R. Like any tool we must learn how to use it properly, which is the focus of this lab.</p>
+<p>While it might seem clunky or cumbersome at first, it is important to discipline yourself and adhere to sound workflow practices. Doing this from the very beginning will payoff immensely in later labs and beyond — whether or not you intend to work with RStudio in the future. Exercising and expanding your mind to preform analytic coding will make you a better critical thinker and problem solver.</p>
+<hr />
+</div>
+<div id="setting-up-an-r-project" class="section level2">
+<h2><span class="header-section-number">1.2</span> Setting Up an R Project</h2>
+<p>It is important to recognize that quality analytic work requires that your work be easy to follow, replicate, and reference by others or by the future you. Therefore it is imperative that you strive to be as organized as possible. RStudio helps you organize all your work on a given data analysis/project through the creation of R projects.</p>
+<p>There are several ways one could go about creating an R project, but we would suggest following the steps outlined below. These steps outline how to get setup for the first lab, but should, with obvious alterations, be followed for each lab.</p>
+<p><strong>Step 1</strong></p>
+<p>Create a folder somewhere on your computer, say on your desktop, and give it a descriptive name (e.g. STAT 202). This folder is where you will keep all of your work for each lab. You could save all your electronic notes here too.</p>
+<p><strong>Step 2</strong></p>
+<p>Next you will want to create a subfolder for an individual task or sub-project (e.g. <strong>Lab 01</strong>). The graphic below displays an example folder structure.</p>
+<p><img src="assets/images/01-01.png" /></p>
+<p><strong>Step 3</strong></p>
+<p>Open RStudio.</p>
+<p><strong>Step 4</strong></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Create a project by navigating to the upper right-hand corner of the program and clicking <strong>Project (None) » New Project</strong>.</li>
+</ol>
+<p><img src="assets/images/01-02.png" /></p>
+<p><strong>Step 5</strong></p>
+<p>Select <strong>Existing Directory</strong>. Recall that in step 1, you created a file location for lab 1 — our data analysis project.</p>
+<p><img src="assets/images/01-03.png" /></p>
+<p><strong>Step 6</strong></p>
+<p>Click <strong>Browse</strong> and navigate to where you created the <strong>Lab 01</strong> folder. Select this folder and then click <strong>Create Project</strong>.</p>
+<p><img src="assets/images/01-04.png" /></p>
+<p>Your R project has now been created. Note that in the upper right-hand corner, the program indicates that you are working on the project named <strong>Lab 01</strong>.</p>
+<p><img src="assets/images/01-05.png" /></p>
+<p><strong>Step 7</strong></p>
+<p>Creating an R script is the next MAJOR step in this process. Using a script file is key to organizing your code for quick reference. You should think of an R script file as a thorough record of how to conduct an analysis or solve the problem at hand. You should strive to make your R script as organized as possible so that someone else could work through your code and reproduce the same output/answers/results.</p>
+<p>To create an R script, go to the upper left-hand corner and click the white box icon then select <strong>R Script</strong>.</p>
+<p><img src="assets/images/01-06.png" /></p>
+<p><strong>Step 8</strong></p>
+<p>Now you can proceed to write your code in the R Script. You can also save your progress by clicking on the save icon located in the icon bar. Notice that it is saved within your R project folder — <strong>Lab 01</strong> in this case. This is why we created an R project, so that all of our work for an analysis/project is kept in one central location.</p>
+<p>Now, let’s practice writing some R code. Good analytic code requires good comments. Comments are meant for human consumption and to explain what the executable code is doing. Therefore we need to let the program know that it is a comment and that it should not attempt to run it. In R, <code>#</code> is used to signal a comment. In RStudio, this will turn the line green, which indicates that it will be read as a comment — see the figure below. Also notice how we use white space (empty lines) to make it easier on our eyes to navigate and read the script file. <strong>Practice by typying the code that is pictured.</strong></p>
+<p>We can use R as a calculator, as shown below. To run the line of code <code>2+2</code>, you place your cursor anywhere on the that line of code and click <strong>Run</strong>, which is located in the top right corner of the script pane. Alternatively, you could have used the keyboard short cut of <strong>Command + return</strong> (Mac) or <strong>ctrl + enter</strong> (PC).</p>
+<p>You also have the option of running multiple lines of code by highlighting the lines of code and clicking <strong>Run</strong> or using the keyboard short cut.</p>
+<p>After running the command, the result will show up in your Console pane, which is located beneath the Script pane. In the screenshot below, you can see that our <code>2+2</code> command has generated an answer of <code>4</code>.</p>
+<p><img src="assets/images/01-07.png" /></p>
+<p>Continue to practice writting an R script by reproducing the code depicted below. As the comments in the pictured code indicate, we are loading/reading-in the <code>arbuthnot</code> dataset. Then we are taking a look at some of the observations from the dataset by using the functions <code>head()</code> and <code>tail()</code>. Make sure to run the lines of code in order, otherwise the the software will return error messages. We suggest running one line at a time to ensure your code is typed correctly and to see what each line is doing.</p>
+<p><img src="assets/images/01-08.png" /></p>
+<p>Notice the copious usage of comments in our analytic code. In general, analytic code should make liberal use of comments. The length and specificity of comments depends on a person’s experience with a coding language. With experience comes the understanding and ability to write concise comments that cut directly to what information is absolutely necessary to communicate. It never hurts to have more comments than actual executable code, especially for those new to coding. Keep in mind that in the future you might want to share analytic code with co-workers or peers, or go back to reference code months or years after you’ve written it.</p>
+<hr />
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">1.3</span> Summary</h2>
+<p>The essential workflow that should be followed for each lab:</p>
+<ol style="list-style-type: decimal">
+<li>Create and work in an R project to ensure all work is kept in a single location.</li>
+<li>Organize your work within an R script.
+<ul>
+<li>Use comments to clearly communicate what the code is doing.</li>
+<li>Use white space (empty lines and spaces) to make the document easier to read and navigate.</li>
+</ul></li>
+</ol>
+<p>There are many other features of RStudio that you’ll find useful, but are not covered in this document. RStudio strives to provide help in many different ways:</p>
+<ol style="list-style-type: decimal">
+<li>The help tab within the lower right-hand pane.</li>
+<li>Help automatically appears when typing a function (auto-complete).</li>
+<li>You may begin by typing the name of function and it will suggest several options.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="01-intro-to-r-and-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "serif",
+"size": "2"
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["kuyper-stat202.pdf", "kuyper-stat202.epub"],
+"toc": {
+"collapse": "none"
+},
+"highlight": "tango"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
